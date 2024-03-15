@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guesser Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Guess the AI-generated Image</h2>
+    <div class="row">
+        {% for card in question_cards %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ card.image_url }}" class="card-img-top" alt="Question Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ card.username }}</h5>
+                    <p class="card-text">{{ '🔥' * (card.difficulty == 'hard' and 3 or card.difficulty == 'medium' and 2 or 1) }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

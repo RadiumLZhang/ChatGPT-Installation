@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Question</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Submit a New Question for Theme: {{ theme.name }}</h2>
+    <div class="row">
+        <!-- Textbox on the left -->
+        <div class="col-md-6">
+
+            <p>Please use text-to-image generator to generate an image among the shown images to fool the user on the other side.</p>
+            <!-- Suggested Prompts -->
+            <div id="suggested-prompts">
+                {% for prompt in theme.suggested_prompts %}
+                <button type="button" class="btn btn-outline-primary btn-sm m-1 prompt-option" onclick="addPrompt('{{ prompt }}')">{{ prompt }}</button>
+                {% endfor %}
+            </div>
+
+            <div class="textarea-container">
+                <textarea id="suggested-prompt" class="form-control" rows="3" placeholder="Type something here or Click on the theme description to fill this with suggested prompt."></textarea>
+                <button id="generate-btn" class="btn btn-primary submit-btn">Generate</button>
+            </div>
+
+            <div id="generated-images-container" class="row mt-3"></div>
+
+            <!-- Add your form for submitting a new question here -->
+        </div>
+
+        <!-- Images on the right -->
+        <div class="col-md-6">
+            {% for image in images %}
+            <img src="{{ url_for('static', filename=image.image_path) }}" class="img-fluid mb-3" alt="Image" style="max-height: 100px; width: auto;">
+            {% endfor %}
+
+            <button id="confirm-btn" class="btn btn-success mt-3" style="display: none;">Confirm</button>
+        </div>
+
+
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

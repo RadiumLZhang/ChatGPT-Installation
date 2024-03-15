@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Questions</h2>
+    <ul class="list-group">
+        <!-- Dynamically list questions here -->
+        {% for question in questions %}
+        <li class="list-group-item">
+            <p>{{ question.content }}</p>
+            <a href="/question/{{ question.id }}/answer" class="btn btn-secondary">Answer</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
