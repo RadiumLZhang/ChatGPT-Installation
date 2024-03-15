@@ -7,34 +7,6 @@ function addPrompt(prompt) {
 }
 
 document.getElementById('generate-btn').addEventListener('click', function() {
-    // const promptText = document.getElementById('suggested-prompt').value; // Simulate using prompt text
-    // const imagesGeneratedCount = 4; // Number of images to simulate generation for
-    // const generatedImagesContainer = document.getElementById('generated-images-container');
-    // generatedImagesContainer.innerHTML = ''; // Clear previous images
-    //
-    // // Simulate API response delay
-    // setTimeout(() => {
-    //     for (let i = 0; i < imagesGeneratedCount; i++) {
-    //         // Simulate API response data
-    //         const data = {
-    //             imageUrl: '/static/images/image_generated.jpeg', // Path to your static test image
-    //             imageId: `testImageId${i}` // Simulated unique ID for each image
-    //         };
-    //
-    //         const imgElement = document.createElement('img');
-    //         imgElement.src = data.imageUrl;
-    //         imgElement.classList.add('img-fluid', 'generated-img', 'm-2');
-    //         imgElement.setAttribute('data-img-id', data.imageId);
-    //         imgElement.onclick = function() { selectGeneratedImage(this); };
-    //         generatedImagesContainer.appendChild(imgElement);
-    //
-    //         if (i === imagesGeneratedCount - 1) {
-    //             // Show confirm button after all images have been "generated" and displayed
-    //             document.getElementById('confirm-btn').style.display = 'block';
-    //         }
-    //     }
-    // }, 1000); // Adjust delay as needed to simulate network latency'
-
     var prompt = document.getElementById('suggested-prompt').value;
 
     // Make a POST request to the backend server
@@ -45,14 +17,33 @@ document.getElementById('generate-btn').addEventListener('click', function() {
         },
         body: JSON.stringify({ prompt: prompt }),
     })
-    .then(response => response.json())
+    .then(response => {
+        // This function is executed when the fetch request is successful.
+        // 'response' contains the response from the server.
+        // Here, we extract JSON data from the response.
+        return response.json(); // This returns a promise
+     })
     .then(data => {
-        // Handle the response from the server
-        console.log(data.output); // Output of the Python script
-        // Display the output or perform further actions as needed
+        console.log('Success:', data);
+        const images = data.images; // Extract the array of image URLs
+
+        // Clear previous images
+        const generatedImagesContainer = document.getElementById('generated-images-container');
+        generatedImagesContainer.innerHTML = '';
+
+        // Display the four largest-numbered images
+        images.forEach(imageUrl => {
+            const imgElement = document.createElement('img');
+            imgElement.src = imageUrl;
+            imgElement.classList.add('img-fluid', 'generated-img', 'm-2');
+            generatedImagesContainer.appendChild(imgElement);
+        });
+
+        // Show confirm button after all images have been displayed
+        document.getElementById('confirm-btn').style.display = 'block';
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.error('Caught an error:', error);
     });
 });
 
