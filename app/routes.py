@@ -4,6 +4,7 @@ from app.models import User, Question, Image, Theme, Answer
 from flask import render_template
 from sqlalchemy.sql.expression import func
 import subprocess
+import shlex
 
 # Home Page
 @app.route('/')
@@ -47,7 +48,7 @@ def generate_image():
 	conda_activate_command = 'source /opt/homebrew/anaconda3/bin/activate ssh-env'
 
 	# Construct the command to activate the Conda environment and execute the Python script
-	conda_activate_command = 'source /opt/homebrew/anaconda3/bin/activate ssh-env && python generate_image.py ' + prompt
+	conda_activate_command = 'source /opt/homebrew/anaconda3/bin/activate ssh-env && python3 generate_image.py ' + shlex.quote(prompt)
 
 	# Execute the command
 	try:
@@ -55,7 +56,9 @@ def generate_image():
 		output = result.stdout
 		error = result.stderr
 		print("Script output:", output)
-		print("Script error:", error)
+
+		if error:
+			print("Script error:", error)
 		# Return response based on output/error
 		return jsonify({'output': output, 'error': error}), 200
 	except Exception as e:
