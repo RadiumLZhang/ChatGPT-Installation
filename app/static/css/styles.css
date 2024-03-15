@@ -1,0 +1,27 @@
+.theme-description {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+textarea-container {
+    /* If you want to explicitly set the container's size */
+    width: 100%; /* Or any specific width */
+    display: block; /* Adjust display property if needed */
+    position: relative; /* For absolute positioning of the button */
+}
+
+.textarea-container textarea {
+    width: 100%; /* Makes the textarea fill the container */
+    height: 200px; /* Adjust height as needed */
+    /* Add padding if you want some space inside the textarea */
+    padding: 10px;
+}
+.submit-btn {
+    position: absolute;
+    right: 10px; /* Adjust based on padding/spacing */
+    bottom: 10px; /* Adjust based on padding/spacing */
+}
+
+.selected-img {
+    border: 2px solid #007bff; /* Bootstrap primary color for example */
+}
