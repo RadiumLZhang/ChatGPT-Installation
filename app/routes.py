@@ -4,7 +4,7 @@ from app.models import User, Question, Image, Theme, Answer
 from flask import render_template
 from sqlalchemy.sql.expression import func
 import subprocess
-import shlex
+import shlex, os
 
 # Home Page
 @app.route('/')
@@ -59,12 +59,30 @@ def generate_image():
 
 		if error:
 			print("Script error:", error)
-		# Return response based on output/error
-		return jsonify({'output': output, 'error': error}), 200
+			return jsonify({'error': error}), 500
+
+		# Get the list of generated image files
+		base_dir = os.path.dirname(os.path.abspath(__file__))
+		image_dir = os.path.join(base_dir, 'static', 'generated', 'samples')
+		image_files = [f for f in os.listdir(image_dir) if f.endswith('.png')]
+
+		# Sort the image files based on their filenames (assuming they are numbered)
+		sorted_images = sorted(image_files, key=lambda x: int(x.split('.')[0]))
+
+		# Get only the four largest-numbered images
+		largest_images = sorted_images[-4:]
+
+		# Construct URLs for the largest images
+		image_urls = [f'/static/generated/samples/{filename}' for filename in largest_images]
+
+		print("Image URLs:", image_urls)
+		# Return response with output, error, and list of generated images
+		return jsonify({'output': output, 'error': error, 'images': image_urls}), 200
+
 	except Exception as e:
-		print("Error executing script:", e)
-		# Handle error response
-		return jsonify({'error': str(e)}), 500
+			print("Error executing script:", e)
+			# Handle error response
+			return jsonify({'error': str(e)}), 500
 
 '''
 @app.route('/question', methods=['POST'])

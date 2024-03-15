@@ -1,7 +1,11 @@
-import paramiko
-
+import warnings
+from cryptography.utils import CryptographyDeprecationWarning
+with warnings.catch_warnings():
+    warnings.filterwarnings('ignore', category=CryptographyDeprecationWarning)
+    import paramiko
+import os
+import stat
 def ssh_command(hostname, username, password, command):
-    print("ssh_command called")
     # Create an SSH client instance
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -17,38 +21,83 @@ def ssh_command(hostname, username, password, command):
         output = stdout.read().decode()
         error = stderr.read().decode()
 
-        return output, error
+        return output, error, ssh
 
     except paramiko.AuthenticationException:
-        return None, "Authentication failed. Please check your credentials."
+        return None, "Authentication failed. Please check your credentials.", None
+    except Exception as e:
+        return None, str(e), None
+
+
+def sftp_transfer(ssh, remote_path, local_path):
+    try:
+        # Create a transport object based on the existing SSH connection
+        transport = ssh.get_transport()
+
+        # Create an SFTP client instance
+        sftp = paramiko.SFTPClient.from_transport(transport)
+
+        # Recursive function to transfer directories and files
+        def _transfer_files(remote_dir, local_dir):
+            for item in sftp.listdir_attr(remote_dir):
+                remote_item = os.path.join(remote_dir, item.filename)
+                local_item = os.path.join(local_dir, item.filename)
+
+                if stat.S_ISDIR(item.st_mode):
+                    os.makedirs(local_item, exist_ok=True)
+                    _transfer_files(remote_item, local_item)
+                else:
+                    sftp.get(remote_item, local_item)
+
+        # Call the recursive function to transfer files
+        _transfer_files(remote_path, local_path)
+
+        return True, None
+    except Exception as e:
+        return False, str(e)
     finally:
-        # Close the SSH session
-        ssh.close()
+        # Close the SFTP connection
+        if 'sftp' in locals():
+            sftp.close()
+        if 'transport' in locals():
+            transport.close()
 
 def main(prompt):
-
     # Server details
     hostname = "gpu-stats-2021.iac.gatech.edu"
     username = "lzhang793"
     password = "Vanessa0729"
 
-    # Commands to execute
-    commands = [
-        "conda bash",
-        "cd ~/stable-diffusion",
-        "conda activate ldm",
+    # Concatenate commands into a single string
+    command = (
+        f"cd ~/stable-diffusion; "
+        f"conda activate ldm; "
         f"python scripts/txt2img.py --prompt '{prompt}'"
-    ]
+    )
 
-    # Execute commands one by one
-    output = ""
-    error = ""
-    for cmd in commands:
-        command_output, command_error = ssh_command(hostname, username, password, cmd)
-        output += command_output
-        error += command_error
+    # Execute the concatenated command
+    output, error, ssh = ssh_command(hostname, username, password, command)
 
-    return output, error
+    if error:
+        print("Error:", error)
+        # TODO: global seed is 42, change to random seed, ask Mel
+        # TODO: Error: Global seed set to 42
+        #return output, error
+
+    # Now, perform SFTP transfer
+    remote_path = "/home/lzhang793/stable-diffusion/outputs/txt2img-samples/"
+    local_path = os.path.expanduser("~/ChatGPT-Installation/app/static/generated/")
+
+    success, sftp_error = sftp_transfer(ssh, remote_path, local_path)
+
+    # Close the SSH connection
+    ssh.close()
+
+    if success:
+        return output, None
+    else:
+        return output, sftp_error
+
 
 if __name__ == "__main__":
     print("generate_image.py called")
