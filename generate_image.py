@@ -72,7 +72,7 @@ def main(prompt):
     command = (
         f"cd ~/stable-diffusion; "
         f"conda activate ldm; "
-        f"python scripts/txt2img.py --prompt '{prompt}'"
+        f"python scripts/txt2img.py --W 256 --H 256 --prompt '{prompt}';"
     )
 
     # Execute the concatenated command
@@ -80,8 +80,8 @@ def main(prompt):
 
     if error:
         print("Error:", error)
-        # TODO: global seed is 42, change to random seed, ask Mel
-        # TODO: Error: Global seed set to 42
+        # TODO: global seed is 42, change to random seed
+        # TODO: 'Error: Global seed set to 42', not an error, it's a warning
         #return output, error
 
     # Now, perform SFTP transfer
