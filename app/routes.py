@@ -41,6 +41,7 @@ def generate_image():
 	# Retrieve the prompt from the request
 	prompt = request.json.get('prompt')
 
+	print("Prompt:", prompt)
 	# Activate the 'ssh-env' Conda environment
 	# TODO: Replace with the path to conda executable
 
