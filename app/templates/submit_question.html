@@ -33,9 +33,13 @@
 
         <!-- Images on the right -->
         <div class="col-md-6">
-            {% for image in images %}
-            <img src="{{ url_for('static', filename=image.image_path) }}" class="img-fluid mb-3" alt="Image" style="max-height: 100px; width: auto;">
-            {% endfor %}
+            <!-- Textarea for user's words -->
+            <textarea id="user-words" class="form-control" rows="3" placeholder="Type your words here..."></textarea>
+
+            <!-- Frame for the selected image -->
+            <div id="selected-image-frame" class="mt-3">
+                <!-- The selected image will be inserted here -->
+            </div>
 
             <button id="confirm-btn" class="btn btn-success mt-3" style="display: none;">Confirm</button>
         </div>

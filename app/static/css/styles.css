@@ -23,5 +23,9 @@ textarea-container {
 }
 
 .selected-img {
-    border: 2px solid #007bff; /* Bootstrap primary color for example */
+    border: 2px solid #00ff00; /* Green border */
+}
+
+.btn-success {
+    background-color: #00ff00; /* Green background */
 }
