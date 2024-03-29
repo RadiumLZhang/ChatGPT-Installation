@@ -18,25 +18,45 @@ document.getElementById('generate-btn').addEventListener('click', function() {
         body: JSON.stringify({ prompt: prompt }),
     })
     .then(response => {
-        // This function is executed when the fetch request is successful.
-        // 'response' contains the response from the server.
-        // Here, we extract JSON data from the response.
-        return response.json(); // This returns a promise
-     })
+        return response.json();
+    })
     .then(data => {
         console.log('Success:', data);
-        const images = data.images; // Extract the array of image URLs
+        const images = data.images;
 
         // Clear previous images
         const generatedImagesContainer = document.getElementById('generated-images-container');
         generatedImagesContainer.innerHTML = '';
 
-        // Display the four largest-numbered images
+        // Display the images with a select button under each one
         images.forEach(imageUrl => {
             const imgElement = document.createElement('img');
             imgElement.src = imageUrl;
             imgElement.classList.add('img-fluid', 'generated-img', 'm-2');
+
+            const selectButton = document.createElement('button');
+            selectButton.innerText = 'Select';
+            selectButton.classList.add('btn', 'btn-primary', 'select-btn', 'm-2');
+            selectButton.addEventListener('click', function() {
+                // Deselect any previously selected image and button
+                document.querySelectorAll('.selected-img').forEach(img => img.classList.remove('selected-img'));
+                document.querySelectorAll('.btn-success').forEach(btn => btn.classList.replace('btn-success', 'btn-primary'));
+
+                // Highlight the selected image and button
+                imgElement.classList.add('selected-img');
+                selectButton.classList.replace('btn-primary', 'btn-success');
+
+                // Fill the selected image into the selected-image-frame
+                const selectedImageFrame = document.getElementById('selected-image-frame');
+                selectedImageFrame.innerHTML = ''; // Clear any previously selected image
+                const selectedImage = document.createElement('img');
+                selectedImage.src = imageUrl;
+                selectedImage.classList.add('img-fluid');
+                selectedImageFrame.appendChild(selectedImage);
+            });
+
             generatedImagesContainer.appendChild(imgElement);
+            generatedImagesContainer.appendChild(selectButton);
         });
 
         // Show confirm button after all images have been displayed
