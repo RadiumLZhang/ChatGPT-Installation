@@ -47,6 +47,19 @@
 
     </div>
 </div>
+
+<div id="creator-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <form id="creator-form">
+            <label for="creator-name">Enter your name:</label>
+            <input type="text" id="creator-name" required>
+            <input type="hidden" id="theme-id" name="theme_id" value="{{ theme.id }}">
+            <input type="submit" id="submit-btn" disabled>
+        </form>
+    </div>
+</div>
+
 <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>

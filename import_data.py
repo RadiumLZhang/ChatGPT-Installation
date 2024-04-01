@@ -1,6 +1,6 @@
 import csv
 from app import db  # Adjust this import path to match where you initialize your SQLAlchemy db instance
-from app.models import Theme, Image  # Adjust this import path to your models
+from app.models import Theme, Image, Post  # Adjust this import path to your models
 from flask import Flask
 from config import Config  # Adjust if your configuration setup differs
 
@@ -33,7 +33,24 @@ def import_images_from_csv(csv_path):
 				db.session.add(image)
 			db.session.commit()
 
+
+def import_posts_from_csv(csv_path):
+	app = create_app()
+	with app.app_context():
+		with open(csv_path, newline='') as csvfile:
+			reader = csv.DictReader(csvfile)
+			for row in reader:
+				image = Image(image_path=row['image_path'], theme_id=row['theme_id'], is_generated=False)
+				db.session.add(image)
+				db.session.flush()  # This is to get the id of the newly created Image object
+
+				# Create the Post object
+				post = Post(content=row['post_content'], theme_id=row['theme_id'], image_id=image.id)
+				db.session.add(post)
+			db.session.commit()
+
 if __name__ == '__main__':
 	print('Importing themes and images from CSV')
 	import_themes_from_csv('data/themes.csv')
 	import_images_from_csv('data/images.csv')
+	import_posts_from_csv('data/posts.csv')

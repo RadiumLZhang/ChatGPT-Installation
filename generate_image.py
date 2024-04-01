@@ -39,7 +39,12 @@ def sftp_transfer(ssh, remote_path, local_path):
 
         # Recursive function to transfer directories and files
         def _transfer_files(remote_dir, local_dir):
-            for item in sftp.listdir_attr(remote_dir):
+            items = sftp.listdir_attr(remote_dir)
+            # Sort the items by their modification time (mtime)
+            items.sort(key=lambda item: item.st_mtime)
+            # Only keep the last 4 items
+            items = items[-5:]
+            for item in items:
                 remote_item = os.path.join(remote_dir, item.filename)
                 local_item = os.path.join(local_dir, item.filename)
 
@@ -48,7 +53,6 @@ def sftp_transfer(ssh, remote_path, local_path):
                     _transfer_files(remote_item, local_item)
                 else:
                     sftp.get(remote_item, local_item)
-
         # Call the recursive function to transfer files
         _transfer_files(remote_path, local_path)
 

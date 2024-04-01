@@ -1,6 +1,6 @@
 from app import app, db
 from flask import request, jsonify, render_template
-from app.models import User, Question, Image, Theme, Answer
+from app.models import User, Question, Image, Theme, Answer, Post
 from flask import render_template
 from sqlalchemy.sql.expression import func
 import subprocess
@@ -100,42 +100,211 @@ def submit_question():
 	return jsonify({'message': 'Question submitted successfully'}), 201
 '''
 
-# Answer Question
-@app.route('/question/<int:question_id>/answer', methods=['POST'])
-def answer_question(question_id):
-	question = Question.query.get_or_404(question_id)
+@app.route('/save', methods=['POST'])
+def save_question():
 	data = request.get_json()
-	user_id = data.get('user_id')
-	content = data.get('content')
-	is_correct = data.get('is_correct', False)  # This needs a method to evaluate correctness
-	answer = Answer(content=content, user_id=user_id, question_id=question.id, is_correct=is_correct)
-	db.session.add(answer)
-	db.session.commit()
-	return jsonify({'message': 'Answer submitted successfully'}), 201
+	prompt = data['prompt']
+	image_path = data['image']
+	creator_name = data['creator']
+	theme_id = data['theme_id']
+	content = data['content']
+
+	creator = User.query.filter_by(username=creator_name).first()
+	if not creator:
+		creator = User(username=creator_name)
+		db.session.add(creator)
+		db.session.flush()
+
+	insert_into_database(prompt, content, image_path, creator.id, theme_id)
+
+	return jsonify({'message': 'Question saved successfully'}), 200
+
+
+def insert_into_database(prompt, content, image_path, creator_id, theme_id):
+    # Create a new Image object
+    new_image = Image(image_path=image_path, is_generated=True)
+
+    # Add the new image to the session
+    db.session.add(new_image)
+    db.session.flush()  # This is needed to generate the id for new_image
+
+    # Create a new Question object with the id of the new image
+    new_question = Question(content=content, prompt = prompt, generated_image_id=new_image.id, creator_id=creator_id, theme_id=theme_id)
+
+    # Add the new question to the session
+    db.session.add(new_question)
+
+    # Commit the session to save the new image and question in the database
+    db.session.commit()
+
+# Answer Question
 
 # List Questions
 @app.route('/questions', methods=['GET'])
 def list_questions():
-	questions = Question.query.all()
-	questions_data = [{'id': q.id, 'content': q.content} for q in questions]
-	return jsonify(questions_data)
+    questions = Question.query.all()
+    questions_data = [
+        {
+            'id': q.id,
+            'prompt': q.prompt,
+            'content': q.content,
+            'theme_id': q.theme_id,
+            'creator_id': q.creator_id,
+            'create_time': q.create_time,
+            'generated_image_id': q.generated_image_id
+        }
+        for q in questions
+    ]
+    return jsonify(questions_data)
+
+from sqlalchemy.sql.expression import func
 
 @app.route('/guesser')
 def guesser():
-	questions = Question.query.all()  # Simplified; you might want to add filters or ordering
-	question_cards = []
-	for question in questions:
-		# Simplify: Classify difficulty based on a placeholder function
-		difficulty = classify_difficulty(question)
-		# Placeholder for fetching one image; adjust based on your model relationships
-		image_url = question.images[0].image_path if question.images else None
-		question_cards.append({
-			'username': question.creator.username,  # Adjust based on your User model
-			'difficulty': difficulty,
-			'image_url': image_url
-		})
-	return render_template('guesser.html', question_cards=question_cards)
+    # Randomly select 4 questions
+    questions = Question.query.order_by(func.random()).limit(4).all()
+    question_cards = []
+    for question in questions:
+        # Simplify: Classify difficulty based on a placeholder function
+        difficulty = question.difficulty
+        # Fetch the image related to the question
+        image = Image.query.get(question.generated_image_id)
+        image_url = image.image_path if image else None
+        question_cards.append({
+			'id': question.id,
+            'username': question.creator.username,  # Adjust based on your User model
+            'difficulty': difficulty,
+            'image_url': image_url
+        })
+    return render_template('guesser.html', question_cards=question_cards)
 
-def classify_difficulty(question):
-	# Placeholder for your logic to determine question difficulty
-	return "medium"
+
+# def classify_difficulty(question):
+# 	# Placeholder for your logic to determine question difficulty
+# 	return "New"
+
+
+
+# @app.route('/get_question_by_difficulty', methods=['POST'])
+# def get_question_by_difficulty():
+#     data = request.get_json()
+#     difficulty = data.get('difficulty')
+#
+#     # Query the database for a question with the specified difficulty level
+#     question = Question.query.filter_by(difficulty=difficulty).order_by(func.random()).first()
+#
+#     if question is None:
+#         return jsonify({'message': 'No question found for the specified difficulty level'}), 404
+#
+#     # Return the question in the response
+#     question_data = {
+#         'id': question.id,
+#         'content': question.content,
+#         'difficulty': question.difficulty,
+#         'theme_id': question.theme_id,
+#         'creator_id': question.creator_id
+#     }
+#     return jsonify(question_data)
+
+
+
+@app.route('/question/<int:question_id>/answer', methods=['POST'])
+def answer_question(question_id):
+    question = Question.query.get_or_404(question_id)
+    data = request.get_json()
+    user_id = data.get('user_id')
+    content = data.get('content')
+    is_correct = data.get('is_correct', False)  # This needs a method to evaluate correctness
+    answer = Answer(content=content, user_id=user_id, question_id=question.id, is_correct=is_correct)
+    db.session.add(answer)
+
+    # Calculate the new difficulty level
+    n_selected = Answer.query.filter_by(question_id=question.id, is_correct=True).count()
+    n_appear = Answer.query.filter_by(question_id=question.id).count()
+    ratio = n_selected / n_appear if n_appear > 0 else 0
+
+    if ratio < 0.2:
+        difficulty = 'Hard'
+    elif ratio < 0.3:
+        difficulty = 'Medium'
+    else:
+        difficulty = 'Easy'
+
+    # Update the question's difficulty level
+    question.difficulty = difficulty
+
+    db.session.commit()
+    return jsonify({'message': 'Answer submitted successfully'}), 201
+
+@app.route('/get_question_by_difficulty', methods=['POST'])
+def get_question_by_difficulty():
+    data = request.get_json()
+    # print the difficulty level
+    print("Difficulty level:", data.get('difficulty'))
+    difficulty = data.get('difficulty')
+
+    # Query the database for a question with the specified difficulty level
+    question = Question.query.filter_by(difficulty=difficulty).order_by(func.random()).first()
+
+    if question is None:
+        return jsonify({'message': 'No question found for the specified difficulty level'}), 404
+
+    # Return the question in the response
+    question_data = {
+        'id': question.id,
+        'content': question.content,
+        'difficulty': question.difficulty,
+        'theme_id': question.theme_id,
+        'creator_id': question.creator_id
+    }
+    return jsonify(question_data)
+
+
+
+@app.route('/get_post_by_theme', methods=['POST'])
+def get_post_by_theme():
+    data = request.get_json()
+    theme = data.get('theme')
+
+    # Query the database for a post with the specified theme
+    post = Post.query.filter_by(theme_id=theme).order_by(func.random()).first()
+
+    if post is None:
+        return jsonify({'message': 'No post found for the specified theme'}), 404
+
+    # Return the post in the response
+    post_data = {
+        'id': post.id,
+        'content': post.content,
+        'theme_id': post.theme_id,
+        'image_id': post.image_id
+    }
+    return jsonify(post_data)
+
+
+@app.route('/post')
+def post_page():
+    # Randomly select a post
+    post = Post.query.order_by(func.random()).first()
+    post_image = Image.query.get(post.image_id)
+    post_data = {
+        'id': post.id,
+        'content': post.content,
+        'theme_id': post.theme_id,
+        'image_path': post_image.image_path
+    }
+
+    # Randomly select a question
+    question = Question.query.order_by(func.random()).first()
+    question_image = Image.query.get(question.generated_image_id)
+    question_data = {
+        'id': question.id,
+        'content': question.content,
+        'difficulty': question.difficulty,
+        'theme_id': question.theme_id,
+        'creator_id': question.creator_id,
+        'image_path': question_image.image_path
+    }
+
+    # Render the post page with the selected post and question
+    return render_template('post.html', post=post_data, question=question_data)

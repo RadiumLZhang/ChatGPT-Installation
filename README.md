@@ -86,3 +86,18 @@ pip install Flask Flask-SQLAlchemy
 
 Execute the script to set up your environment:
 ./setup_env.sh
+
+
+
+
+
+---
+
+### Questions
+
+1. Guesser page: 2 posts, one is AI generated, the other one is human made. 
+   1. Where the human genearted one come from? 
+   2. if the comparisons in a group is different, the answer would be different. 
+
+2. Database prepared
+3. 

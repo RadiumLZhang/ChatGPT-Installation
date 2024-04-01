@@ -42,16 +42,20 @@ class Theme(db.Model):
 
 class Question(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
+	prompt = db.Column(db.String(200), nullable=False)
+	content = db.Column(db.String(200), nullable=False)  # Add this line
 	theme_id = db.Column(db.Integer, db.ForeignKey('theme.id'), nullable=False)
 	creator_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	create_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-	#origin_image_ids = db.Column(db.String, nullable=False)  # Comma-separated image IDs
 	generated_image_id = db.Column(db.Integer, db.ForeignKey('image.id'), nullable=True)
+	difficulty = db.Column(db.String(20), nullable=False, default='New')
 
-	question_image_link = db.Table('question_image_link',
-	                               db.Column('question_id', db.Integer, db.ForeignKey('question.id'), primary_key=True),
-	                               db.Column('image_id', db.Integer, db.ForeignKey('image.id'), primary_key=True)
-	                               )
+class Post(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	content = db.Column(db.String(200), nullable=False)
+	theme_id = db.Column(db.Integer, db.ForeignKey('theme.id'), nullable=False)
+	image_id = db.Column(db.Integer, db.ForeignKey('image.id'), nullable=False)
+
 class Answer(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	question_id = db.Column(db.Integer, db.ForeignKey('question.id'), nullable=False)
