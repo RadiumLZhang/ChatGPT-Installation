@@ -67,11 +67,79 @@ document.getElementById('generate-btn').addEventListener('click', function() {
     });
 });
 
-function selectGeneratedImage(imgElement) {
-    // Deselect any previously selected image
-    document.querySelectorAll('.generated-img').forEach(img => img.classList.remove('selected-img'));
-    // Highlight the selected image
-    imgElement.classList.add('selected-img');
-    // Optionally, store the selected image URL or ID for further processing
-}
+document.getElementById('confirm-btn').addEventListener('click', function() {
+    var prompt = document.getElementById('suggested-prompt').value;
+    var selectedImage = document.querySelector('.selected-img').src;
 
+    // Open the modal
+    var modal = document.getElementById('creator-modal');
+    modal.style.display = 'block';
+
+    // Enable the submit button when the user enters their name
+    document.getElementById('creator-name').addEventListener('input', function() {
+        var submitBtn = document.getElementById('submit-btn');
+        if (this.value) {
+            submitBtn.disabled = false;
+        } else {
+            submitBtn.disabled = true;
+        }
+    });
+
+    // Save the data into the database when the form is submitted
+    document.getElementById('creator-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var creatorName = document.getElementById('creator-name').value;
+        var themeId = document.getElementById('theme-id').value;
+        var prompt = document.getElementById('suggested-prompt').value;
+        var selectedImage = document.querySelector('.selected-img').src;
+        var content = document.getElementById('user-words').value;
+
+        // TODO - Remove the hardcoded URL
+        selectedImage = selectedImage.replace('http://127.0.0.1:8080/static/', '');
+        // Make a POST request to the backend server
+        fetch('/save', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ prompt: prompt, image: selectedImage, creator: creatorName, theme_id: themeId, content: content}),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Success:', data);
+            modal.style.display = 'none';
+            window.location.href = '/';  // Redirect to the main page
+        })
+        .catch(error => {
+            console.error('Caught an error:', error);
+        });
+    });
+
+    // Close the modal when the 'close-btn' is clicked
+    document.getElementsByClassName('close-btn')[0].onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    // Close the modal when the user clicks outside of the modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+});
+
+
+$(document).ready(function() {
+    // Add click event listener to each image
+    $('.selectable-img').click(function() {
+        // Remove border from all images
+        $('.selectable-img').removeClass('selected-img');
+        // Add border to clicked image
+        $(this).addClass('selected-img');
+    });
+});

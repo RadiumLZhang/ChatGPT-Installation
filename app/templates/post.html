@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Post Page</title>
+    <style>
+        .box {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-$END$
+    <div class="box">
+        <h1>Post</h1>
+        <p>{{ post.content }}</p>
+        <img src="{{ url_for('static', filename=post.image_path) }}" alt="Post Image">
+    </div>
+
+    <div class="box">
+        <h1>Question</h1>
+        <p>{{ question.content }}</p>
+        <img src="{{ url_for('static', filename=question.image_path) }}" alt="Question Image">
+    </div>
 </body>
 </html>
