@@ -2,21 +2,194 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Fool Your Friend</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleguide.css') }}">
+
+    <style>
+        .intro {
+          background-color: #ffffff;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          width: 100%;
+        }
+
+        .intro .overlap-group-wrapper {
+          background-color: #ffffff;
+          border: 0px solid;
+          border-color: #000000;
+          width: 1920px;
+          height: 1080px;
+        }
+
+        .intro .overlap-group {
+          position: relative;
+          width: 1238px;
+          height: 748px;
+          top: 140px;
+          left: 341px;
+        }
+
+        .intro {
+          position: absolute;
+          width: 1238px;
+          height: 696px;
+          top: 0;
+          left: 0;
+        }
+
+        .intro .text-wrapper {
+          position: absolute;
+          width: 820px;
+          top: 268px;
+          left: 209px;
+          font-family: "Open Sans", Helvetica;
+          font-weight: 600;
+          color: #000000;
+          font-size: 24px;
+          text-align: center;
+          letter-spacing: 0;
+          line-height: normal;
+        }
+
+        .intro .fool-your-friend {
+          position: absolute;
+          width: 417px;
+          top: 205px;
+          left: 411px;
+          -webkit-text-stroke: 2px #3f1651;
+          font-family: "Open Sans", Helvetica;
+          font-weight: 700;
+          color: #3f1651;
+          font-size: 36px;
+          text-align: center;
+          letter-spacing: 0;
+          line-height: normal;
+          white-space: nowrap;
+        }
+
+        .intro .enter-the-game-as {
+          position: absolute;
+          width: 238px;
+          top: 428px;
+          left: 500px;
+          -webkit-text-stroke: 2px #3f1651;
+          font-family: "DIN Alternate-Bold", Helvetica;
+          font-weight: 700;
+          color: #3f1651;
+          font-size: 24px;
+          text-align: center;
+          letter-spacing: 0;
+          line-height: normal;
+          white-space: nowrap;
+        }
+
+        .intro .element-mesmerizing {
+          position: absolute;
+          width: 1237px;
+          height: 695px;
+          top: 53px;
+          left: 1px;
+          object-fit: cover;
+        }
+
+        .intro .frame {
+          display: flex;
+          width: 362px;
+          align-items: flex-start;
+          gap: 42px;
+          position: absolute;
+          top: 485px;
+          left: 438px;
+        }
+
+        .intro .component {
+          display: flex;
+          width: 160px;
+          height: 64px;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          padding: 10px;
+          position: relative;
+          background-color: #9c3587;
+          border-radius: 8px;
+        }
+
+        .intro .button {
+          all: unset;
+          box-sizing: border-box;
+          position: relative;
+          width: fit-content;
+          font-family: "Open Sans", Helvetica;
+          font-weight: 600;
+          color: #ffffff;
+          font-size: 24px;
+          text-align: center;
+          letter-spacing: 0;
+          line-height: normal;
+        }
+
+        .intro .div {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          position: absolute;
+          top: 71px;
+          left: 1114px;
+        }
+
+        .intro .square {
+          position: relative;
+          width: 24px;
+          height: 24px;
+        }
+
+        .intro .text-wrapper-2 {
+          position: relative;
+          width: fit-content;
+          margin-top: -1px;
+          font-family: "Open Sans Hebrew-Bold", Helvetica;
+          font-weight: 700;
+          color: var(--brand-color);
+          font-size: 20px;
+          text-align: center;
+          letter-spacing: 0;
+          line-height: normal;
+        }
+    </style>
 </head>
+
 <body>
-<div class="container">
-    <h1>Fool Your Friend</h1>
-    <p>AI can manifest super-human ability, while it can also generate misinformation and disinformation. Play a game with your friend to see how text-to-image generator can generate an image to fool your friend as if it’s a real one.</p>
-    <p>Enter the game as:</p>
-    <p>
-        <a href="/guesser" class="btn btn-primary">Guesser</a>
-        <a href="/submit-question" class="btn btn-primary">Fooler</a>
-    </p>
-</div>
-<div class="container text-right">
-    <a href="/questions" class="btn btn-secondary">Ranking</a>
+<div class="intro">
+  <div class="overlap-group-wrapper">
+    <div class="overlap-group">
+      <p class="text-wrapper">
+        AI can manifest super-human ability, while it can also generate misinformation and disinformation. Play a
+        game with your friend to see how text-to-image generator can generate an image to fool your friend as if
+        it’s a real one.
+      </p>
+      <div class="fool-your-friend">FOOL YOUR FRIEND</div>
+      <p class="enter-the-game-as">Enter the game as:</p>
+      <img class="element-mesmerizing" src="/static/background/Entry.svg"/>
+      <div class="frame">
+          <div class="component"><button class="button" onclick="window.location.href='/guesser'">Guesser</button></div>
+          <div class="component"><button class="button" onclick="window.location.href='/submit-question'">Fooler</button></div>
+      </div>
+      <div class="div" onclick="myFunction(this)">
+        <img class="square" src="https://c.animaapp.com/ykC4692T/img/square.svg" />
+        <div class="text-wrapper-2">Ranking</div>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
+
+<script>
+    function myFunction(x) {
+        x.classList.toggle("change");
+        window.location.href = "/questions";
+    }
+</script>
 </html>

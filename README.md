@@ -100,4 +100,4 @@ Execute the script to set up your environment:
    2. if the comparisons in a group is different, the answer would be different. 
 
 2. Database prepared
-3. 
+   1. 

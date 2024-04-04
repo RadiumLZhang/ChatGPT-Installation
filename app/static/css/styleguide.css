@@ -1,0 +1,22 @@
+:root {
+  --brand-color: rgba(156, 53, 135, 1);
+  --variable-collection: rgba(255, 255, 255, 1);
+  --variable-collection-accent-color: rgba(229, 63, 113, 1);
+  --variable-collection-duplicate: rgba(255, 255, 255, 1);
+  --variable-collection-background-color: rgba(252, 249, 251, 1);
+  --variable-collection-word-color: rgba(67, 67, 67, 1);
+  --variable-collection-line: rgba(193, 194, 195, 1);
+  --variable-collection-line-2: rgba(179, 179, 180, 1);
+  --lighttexttextrev-1: rgba(255, 255, 255, 1);
+  --black: rgba(15, 20, 25, 1);
+  --dark-5: rgba(91, 112, 131, 1);
+  --lightbrandbrand-6: rgba(117, 89, 255, 1);
+  --lightbrandbrand-7: rgba(81, 55, 210, 1);
+  --label-medium-font-family: "Mulish", Helvetica;
+  --label-medium-font-weight: 600;
+  --label-medium-font-size: 14px;
+  --label-medium-letter-spacing: 0px;
+  --label-medium-line-height: 20px;
+  --label-medium-font-style: normal;
+
+}

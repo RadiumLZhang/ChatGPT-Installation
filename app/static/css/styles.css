@@ -1,86 +1,854 @@
-.theme-description {
-    cursor: pointer;
-    text-decoration: underline;
+.fooler-image {
+  background-color: #9c358705;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
 
-textarea-container {
-    /* If you want to explicitly set the container's size */
-    width: 100%; /* Or any specific width */
-    display: block; /* Adjust display property if needed */
-    position: relative; /* For absolute positioning of the button */
+.fooler-image .div {
+  background-color: #9c358705;
+  width: 1920px;
+  height: 1080px;
+  position: relative;
 }
 
-.textarea-container textarea {
-    width: 100%; /* Makes the textarea fill the container */
-    height: 200px; /* Adjust height as needed */
-    /* Add padding if you want some space inside the textarea */
-    padding: 10px;
-}
-.submit-btn {
-    position: absolute;
-    right: 10px; /* Adjust based on padding/spacing */
-    bottom: 10px; /* Adjust based on padding/spacing */
+.fooler-image .overlap {
+  position: absolute;
+  width: 1920px;
+  height: 779px;
+  top: 126px;
+  left: 0;
 }
 
-.selected-img {
-    border: 2px solid #00ff00; /* Green border */
+.fooler-image .rectangle {
+  position: absolute;
+  width: 833px;
+  height: 646px;
+  top: 70px;
+  left: 997px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: var(--variable-collection-line);
 }
 
-.btn-success {
-    background-color: #00ff00; /* Green background */
+.fooler-image .text-wrapper {
+  position: absolute;
+  width: 543px;
+  top: 223px;
+  left: 125px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: normal;
 }
 
-/* modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+.fooler-image .your {
+  position: absolute;
+  width: 175px;
+  top: 535px;
+  left: 1323px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
 }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+.fooler-image .element-primary-button {
+  display: inline-flex;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0px 12px;
+  position: absolute;
+  top: 290px;
+  left: 782px;
+  background-color: var(--lightbrandbrand-6);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+.fooler-image .leading-icon {
+  position: relative;
+  width: 14px;
+  height: 14px;
 }
 
-.close-btn:hover,
-.close-btn:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.fooler-image .text {
+  font-weight: var(--label-medium-font-weight);
+  color: var(--lighttexttextrev-1);
+  text-align: center;
+  position: relative;
+  width: fit-content;
+  font-family: var(--label-medium-font-family);
+  font-size: var(--label-medium-font-size);
+  letter-spacing: var(--label-medium-letter-spacing);
+  line-height: var(--label-medium-line-height);
+  white-space: nowrap;
+  font-style: var(--label-medium-font-style);
+}
+
+.fooler-image .frame {
+  display: flex;
+  flex-direction: column;
+  width: 1920px;
+  height: 779px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.fooler-image .frame-2 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 96px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.fooler-image .frame-3 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 42px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.fooler-image .frame-4 {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.fooler-image .div-wrapper {
+  display: inline-flex;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 10px 10px 0px;
+  position: relative;
+}
+
+.fooler-image .p {
+  position: relative;
+  width: 786px;
+  margin-top: -6px;
+  margin-bottom: -4px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.fooler-image .frame-5 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.fooler-image .frame-6 {
+  /*display: inline-flex;*/
+  /*height: 28px;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  /*gap: 10px;*/
+  /*padding: 5px 11px;*/
+  /*position: relative;*/
+  /*flex: 0 0 auto;*/
+  /*background-color: #c486b7;*/
+  /*border-radius: 8px;*/
+  /*overflow: hidden;*/
+}
+
+.fooler-image .text-wrapper-2 {
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.fooler-image .button-prompt {
+  position: relative;
+  display: inline-flex;
+  padding: 5px 11px; /* You can adjust padding as needed */
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #c486b7; /* Assuming the original background is transparent */
+  border: transparent;
+  border-radius: 4px; /* You can adjust the border-radius as needed */
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+  cursor: pointer; /* Adding pointer cursor to indicate it's clickable */
+  text-decoration: none; /* Removing any default text decoration */
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 8px;
+}
+
+.fooler-image .button-prompt:active, .active {
+  position: relative;
+  display: inline-flex;
+  padding: 5px 11px; /* You can adjust padding as needed */
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #9C3587; /* Assuming the original background is transparent */
+  border: transparent;
+  border-radius: 4px; /* You can adjust the border-radius as needed */
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+  cursor: pointer; /* Adding pointer cursor to indicate it's clickable */
+  text-decoration: none; /* Removing any default text decoration */
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 8px;
 }
 
 
-.selected {
-    border: 3px solid #000;
+
+
+.fooler-image .general-rotate {
+  position: relative;
+  width: 15px;
+  height: 15px;
+}
+
+.fooler-image .rectangle-2 {
+  position: relative;
+  width: 800px;
+  height: 118px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: var(--variable-collection-line);
+}
+
+.fooler-image .rectangle-2 textarea{
+  position: relative;
+  width: 100%;
+  height: 100%; /* Adjust height for text input */
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid var(--variable-collection-line); /* Use the same border color */
+  font-family: "Open Sans", Helvetica; /* Add font-family if needed */
+  font-size: 14px; /* Add font-size if needed */
+  padding: 10px; /* Add padding to make it look like a textbox */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  outline: none;
+  resize: none; /* Disable resizing */
+}
+
+.fooler-image .generate-btn {
+  width: 128px;
+  height: 48px;
+  background-color: #9C3587;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  border-radius: 8px;
+  border: none; /* Remove border */
+  cursor: pointer; /* Add pointer cursor to indicate it's clickable */
+  font-family: "Open Sans", Helvetica; /* Add font-family if needed */
+  font-weight: 600; /* Add font-weight if needed */
+  color: #ffffff; /* Add text color if needed */
+  font-size: 14px; /* Add font-size if needed */
+  text-align: center; /* Center align text */
+  text-decoration: none; /* Remove any default text decoration */
+}
+
+.fooler-image .generate-btn:disabled {
+  width: 128px;
+  height: 48px;
+  background-color: #9c358780; /* a lighter shade of the original color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  border-radius: 8px;
+  border: none; /* Remove border */
+  cursor: pointer; /* Add pointer cursor to indicate it's clickable */
+  font-family: "Open Sans", Helvetica; /* Add font-family if needed */
+  font-weight: 600; /* Add font-weight if needed */
+  color: #ffffff; /* Add text color if needed */
+  font-size: 14px; /* Add font-size if needed */
+  text-align: center; /* Center align text */
+  text-decoration: none; /* Remove any default text decoration */
 }
 
 
-.image-container {
-    position: relative;
+.fooler-image .frame-7 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  flex: 0 0 auto;
 }
 
-.difficulty {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
+.fooler-image .frame-8 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.fooler-image .group {
+  position: relative;
+  width: 182.42px;
+  height: 182px;
+}
+
+.fooler-image .overlap-group {
+  position: relative;
+  width: 182px;
+  height: 182px;
+  border-radius: 8px;
+}
+
+.fooler-image .element-primary-button-2 {
+  display: flex;
+  width: 182px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0px 16px;
+  position: absolute;
+  top: 67px;
+  left: 0;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid;
+  border-color: #7459ff;
+}
+
+.fooler-image .text-2 {
+  font-weight: 700;
+  color: #7459ff;
+  position: relative;
+  width: fit-content;
+  font-family: "Mulish", Helvetica;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.fooler-image .component {
+  width: 182px;
+  height: 48px;
+  position: absolute;
+  top: 67px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 2px solid;
+  border-color: var(--brand-color);
+}
+
+.fooler-image .button {
+  all: unset;
+  box-sizing: border-box;
+  margin-top: -3px;
+  color: var(--brand-color);
+  font-size: 22px;
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.fooler-image .overlap-group-wrapper {
+  position: absolute;
+  width: 182px;
+  height: 182px;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 3px solid;
+  border-color: var(--variable-collection-accent-color);
+  /*background-image: url(https://c.animaapp.com/YGZ9wAHJ/img/frame-3790-2@2x.png);*/
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.fooler-image .vector-wrapper {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  top: 11px;
+  left: 147px;
+  background-color: #e53f71;
+  border-radius: 4px;
+}
+
+.fooler-image .vector {
+  position: absolute;
+  width: 16px;
+  height: 14px;
+  top: 6px;
+  left: 4px;
+}
+
+.fooler-image .button-wrapper {
+  width: 182px;
+  height: 48px;
+  background-color: #9c3587;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.fooler-image .button-2 {
+  all: unset;
+  box-sizing: border-box;
+  margin-top: -3.5px;
+  margin-bottom: -1.5px;
+  color: #ffffff;
+  font-size: 24px;
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.fooler-image .frame-image {
+  position: absolute;
+  width: 182px;
+  height: 182px;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.fooler-image .component-2 {
+  width: 182px;
+  height: 48px;
+  border: 2px solid;
+  border-color: var(--brand-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.fooler-image .text-wrapper-3 {
+  position: absolute;
+  top: 149px;
+  left: 13px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  color: #424242;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.fooler-image .container-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 820px;
+  height: 643px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+}
+
+.fooler-image .container {
+  display: flex;
+  width: 754px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 18px 0px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+}
+
+.fooler-image .side {
+  display: inline-flex;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  flex: 0 0 auto;
+}
+
+.fooler-image .avatar-medium {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 129095.7px;
+  overflow: hidden;
+}
+
+.fooler-image .profile-picture {
+  position: absolute;
+  width: 39px;
+  height: 39px;
+  top: 1px;
+  left: 0;
+  object-fit: cover;
+}
+
+.fooler-image .main {
+  display: flex;
+  flex-direction: column;
+  width: 657.1px;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+}
+
+.fooler-image .user {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0px 0px 5.16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.fooler-image .text-wrapper-4 {
+  margin-top: -1.29px;
+  font-family: "Roboto", Helvetica;
+  font-weight: 700;
+  color: var(--black);
+  font-size: 18px;
+  white-space: nowrap;
+  position: relative;
+  width: fit-content;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.fooler-image .text-wrapper-5 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.29px;
+  font-family: "Roboto", Helvetica;
+  font-weight: 400;
+  color: var(--dark-5);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.fooler-image .content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  border: 2px solid;
+  border-color: var(--variable-collection-accent-color);
+}
+
+.fooler-image .frame-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.fooler-image .frame-12 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 6px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.fooler-image .text-wrapper-6 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Roboto", Helvetica;
+  font-weight: 400;
+  color: #0f1419b2;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.fooler-image .media {
+  display: flex;
+  align-items: flex-start;
+  padding: 12.91px 0px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  border-radius: 20.66px;
+  overflow: hidden;
+}
+
+.fooler-image .frame-13 {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 12px;
+  background-image: url(https://c.animaapp.com/YGZ9wAHJ/img/frame-3921@2x.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.fooler-image .image {
+  position: relative;
+  width: 655px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.fooler-image .overlap-wrapper {
+  position: absolute;
+  width: 1920px;
+  height: 126px;
+  top: 0;
+  left: 0;
+  background-color: #00000099;
+}
+
+.fooler-image .overlap-2 {
+  position: relative;
+  height: 127px;
+  top: -1px;
+}
+
+.fooler-image .rectangle-3 {
+  position: absolute;
+  width: 1920px;
+  height: 126px;
+  top: 1px;
+  left: 0;
+  background-color: #3f1b4e;
+}
+
+.fooler-image .fool-your-friend {
+  position: absolute;
+  top: 50px;
+  left: 74px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 34px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.fooler-image .span {
+  font-weight: 800;
+}
+
+.fooler-image .text-wrapper-7 {
+  font-family: "Open Sans", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 34px;
+  letter-spacing: 0;
+}
+
+.fooler-image .text-wrapper-8 {
+  position: absolute;
+  top: 62px;
+  left: 361px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 22px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.fooler-image .frame-14 {
+  display: inline-flex;
+  flex-direction: column;
+  height: 126px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 64px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.fooler-image .frame-15 {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.fooler-image .fool-your-friend-2 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 800;
+  color: #ffffff;
+  font-size: 34px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.fooler-image .text-wrapper-9 {
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 22px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.fooler-image .element-mesmerizing {
+  position: absolute;
+  width: 1920px;
+  height: 123px;
+  top: 1px;
+  left: 0;
+  object-fit: cover;
+}
+
+.fooler-image .frame-16 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 42px;
+  position: absolute;
+  top: 920px;
+  left: 1468px;
+}
+
+.fooler-image .component-3 {
+  width: 160px;
+  height: 64px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 2px solid;
+  border-color: #9c3587;
+}
+
+.fooler-image .button-3 {
+  all: unset;
+  box-sizing: border-box;
+  color: var(--brand-color);
+  font-size: 24px;
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.fooler-image .component-4 {
+  all: unset;
+  box-sizing: border-box;
+  width: 160px;
+  height: 64px;
+  background-color: #9c358780;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.fooler-image .button-4 {
+  all: unset;
+  box-sizing: border-box;
+  color: #ffffff;
+  font-size: 24px;
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
 }
