@@ -2,31 +2,153 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Submit Question</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleguide.css') }}">
 </head>
 <body>
+<div class="fooler-image">
+    <div class="div">
+        <div class="overlap">
+            <div class="rectangle"></div>
+            <div class="frame">
+                <div class="frame-2">
+                    <div class="frame-3">
+                        <div class="frame-4">
+                            <div class="div-wrapper">
+                                <p class="p">
+                                    Please use text-to-image generator to generate an image among the shown images to
+                                    fool the user on
+                                    the other side
+                                </p>
+                            </div>
+                            <div class="frame-5" id="suggested-prompts">
+                                {% for prompt in theme.suggested_prompts %}
+                                <div class="frame-6">
+<!--                                    <p class="text-wrapper-2" onclick="addPrompt('{{ prompt }}')">{{ prompt }}</p>-->
+                                    <button type="button" class="button-prompt" onclick="addPrompt('{{ prompt }}')">{{ prompt }}</button>
+                                </div>
+                                {% endfor %}
+
+                                <img class="general-rotate"
+                                     src="https://c.animaapp.com/YGZ9wAHJ/img/general-rotate-1.svg"/>
+                            </div>
+                        </div>
+                        <div class="rectangle-2">
+                            <textarea id="suggested-prompt"
+                                      placeholder="Type something here or Click on the theme description to fill this with suggested prompt."></textarea>
+                        </div>
+
+                        <button id="generate-btn" class="generate-btn" disabled="true">Generate</button>
+                        <div class="frame-7">
+                            <div class="frame-7" id="generated-images-container">
+                                <!--                                <div class="frame-8">-->
+                                <!--                                    <div class="group">-->
+                                <!--                                        <div class="overlap-group">-->
+                                <!--                                            <div class="overlap-group-wrapper">-->
+                                <!--                                                <div class="vector-wrapper">-->
+                                <!--                                                    <img class="vector"-->
+                                <!--                                                         src="https://c.animaapp.com/YGZ9wAHJ/img/vector-10-1.svg"/>-->
+                                <!--                                                </div>-->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="button-wrapper">-->
+                                <!--                                        <button class="button-2">Select</button>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                                <!--                                <div class="frame-8">-->
+                                <!--                                    <div class="group">-->
+                                <!--                                        <div class="overlap-group">-->
+                                <!--                                            <div class="frame-11"></div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                    <div class="component-2">-->
+                                <!--                                        <button class="button">Select</button>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-wrapper">
+                        <div class="container">
+                            <div class="side">
+                                <div class="avatar-medium">
+                                    <img class="profile-picture"
+                                         src="https://c.animaapp.com/YGZ9wAHJ/img/profile-picture-1@2x.png"/>
+                                </div>
+                            </div>
+                            <div class="main">
+                                <div class="user">
+                                    <div class="text-wrapper-4">Devon Lane</div>
+                                    <div class="text-wrapper-5">@johndue</div>
+                                </div>
+                                <div class="content">
+                                    <div class="frame-wrapper">
+                                        <div class="frame-12"><p class="text-wrapper-6">Add your own words here!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="frame-13" id="frame-13"></div>
+                                </div>
+                                <img class="image" src="https://c.animaapp.com/YGZ9wAHJ/img/image-3.png"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlap-wrapper">
+            <div class="overlap-2">
+                <div class="rectangle-3"></div>
+                <p class="fool-your-friend">
+                    <span class="span">Fool</span> <span class="text-wrapper-7"> your friend</span>
+                </p>
+                <p class="text-wrapper-8">AI can generate misinformation and disinformation</p>
+                <div class="rectangle-3"></div>
+                <div class="frame-14">
+                    <div class="frame-15">
+                        <div class="fool-your-friend-2">Fool Your Friend</div>
+                        <p class="text-wrapper-9">AI can generate misinformation and disinformation</p>
+                    </div>
+                </div>
+                <img
+                        class="element-mesmerizing"
+                        src="https://c.animaapp.com/YGZ9wAHJ/img/484831-mesmerizing-images-that-ai-generated----xl-1024-v1-0-1-1.png"
+                />
+            </div>
+        </div>
+        <div class="frame-16">
+            <div class="component-3">
+                <button class="button-3">Exit</button>
+            </div>
+            <button class="component-4">
+                <button class="button-4">Confirm</button>
+            </button>
+        </div>
+    </div>
+</div>
+
+
 <div class="container">
-    <h2>Submit a New Question for Theme: {{ theme.name }}</h2>
+
     <div class="row">
         <!-- Textbox on the left -->
         <div class="col-md-6">
-
-            <p>Please use text-to-image generator to generate an image among the shown images to fool the user on the other side.</p>
             <!-- Suggested Prompts -->
-            <div id="suggested-prompts">
+            <!--<div id="suggested-prompts">
                 {% for prompt in theme.suggested_prompts %}
                 <button type="button" class="btn btn-outline-primary btn-sm m-1 prompt-option" onclick="addPrompt('{{ prompt }}')">{{ prompt }}</button>
                 {% endfor %}
-            </div>
+            </div>-->
 
             <div class="textarea-container">
-                <textarea id="suggested-prompt" class="form-control" rows="3" placeholder="Type something here or Click on the theme description to fill this with suggested prompt."></textarea>
-                <button id="generate-btn" class="btn btn-primary submit-btn">Generate</button>
+                <!-- <textarea id="suggested-prompt" class="form-control" rows="3" placeholder="Type something here or Click on the theme description to fill this with suggested prompt."></textarea> -->
+                <!-- <button id="generate-btn" class="btn btn-primary submit-btn">Generate</button> -->
             </div>
 
-            <div id="generated-images-container" class="row mt-3"></div>
+            <!--<div id="generated-images-container" class="row mt-3"></div>-->
 
             <!-- Add your form for submitting a new question here -->
         </div>
@@ -37,9 +159,9 @@
             <textarea id="user-words" class="form-control" rows="3" placeholder="Type your words here..."></textarea>
 
             <!-- Frame for the selected image -->
-            <div id="selected-image-frame" class="mt-3">
-                <!-- The selected image will be inserted here -->
-            </div>
+            <!-- <div id="selected-image-frame" class="mt-3">
+                   The selected image will be inserted here </div>
+           -->
 
             <button id="confirm-btn" class="btn btn-success mt-3" style="display: none;">Confirm</button>
         </div>

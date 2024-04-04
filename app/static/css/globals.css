@@ -1,0 +1,51 @@
+/* Home page */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:700,600");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
+}
+@font-face {
+  font-family: "DIN Alternate-Bold";
+  src: url("https://anima-uploads.s3.amazonaws.com/5a28d61267f362000cf908db/DIN Alternate Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Open Sans Hebrew-Bold";
+  src: url("https://anima-uploads.s3.amazonaws.com/5afa8ed32dd930000b33d32a/OpenSansHebrew-Bold.ttf") format("truetype");
+}
+
+/* submit_question */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,800|Mulish:var(--label-medium-font-weight)|Roboto:700,400");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
+}
+
