@@ -120,7 +120,7 @@ def save_question():
 	return jsonify({'message': 'Question saved successfully'}), 200
 
 
-def insert_into_database(prompt, content, image_path, creator_id, theme_id):
+def insert_into_database(prompt, content, image_path, creator_id, theme_id=1):
     # Create a new Image object
     new_image = Image(image_path=image_path, is_generated=True)
 

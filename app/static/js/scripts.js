@@ -88,6 +88,15 @@ document.getElementById('generate-btn').addEventListener('click', function () {
                     // change frame-13 background image to the selected image
                     const frame13 = document.getElementById('frame-13');
                     frame13.style.backgroundImage = `url(${imageUrl})`;
+                    // change picture-wrapper border invisible
+                    const pictureWrapper = document.getElementById('picture-wrapper');
+                    pictureWrapper.style.border = 'none';
+
+                    // Enable the confirm button when an image is selected and user-words are entered
+                    const userWords = document.getElementById('user-words');
+                    if (userWords.value.trim()) {
+                        document.getElementById('confirm-btn').disabled = false;
+                    }
                 });
 
                 generatedImagesContainer.appendChild(frame8Div);
@@ -103,7 +112,7 @@ document.getElementById('generate-btn').addEventListener('click', function () {
 
 document.getElementById('confirm-btn').addEventListener('click', function () {
     var prompt = document.getElementById('suggested-prompt').value;
-    var selectedImage = document.querySelector('.selected-img').src;
+    var selectedImage = document.querySelector('.frame-13').style.backgroundImage;
 
     // Open the modal
     var modal = document.getElementById('creator-modal');
@@ -125,11 +134,14 @@ document.getElementById('confirm-btn').addEventListener('click', function () {
         var creatorName = document.getElementById('creator-name').value;
         var themeId = document.getElementById('theme-id').value;
         var prompt = document.getElementById('suggested-prompt').value;
-        var selectedImage = document.querySelector('.selected-img').src;
+        var selectedImage = document.getElementById('frame-13').style.backgroundImage;
         var content = document.getElementById('user-words').value;
 
         // TODO - Remove the hardcoded URL
-        selectedImage = selectedImage.replace('http://127.0.0.1:8080/static/', '');
+        // the selected image: url("/static/generated/samples/00605.png")
+        // use expression it to "/static/generated/samples/00605.png"
+        selectedImage = selectedImage.match(/url\("(.*)"\)/)[1];
+
         // Make a POST request to the backend server
         fetch('/save', {
             method: 'POST',
@@ -161,9 +173,9 @@ document.getElementById('confirm-btn').addEventListener('click', function () {
     });
 
     // Close the modal when the 'close-btn' is clicked
-    document.getElementsByClassName('close-btn')[0].onclick = function () {
-        modal.style.display = 'none';
-    }
+    // document.getElementsByClassName('close-btn')[0].onclick = function () {
+    //     modal.style.display = 'none';
+    // }
 
     // Close the modal when the user clicks outside of the modal
     window.onclick = function (event) {
@@ -191,5 +203,20 @@ document.getElementById('suggested-prompt').addEventListener('input', function (
         generateBtn.disabled = false;
     } else {
         generateBtn.disabled = true;
+    }
+});
+
+document.querySelector('.button-3').addEventListener('click', function () {
+    window.location.href = '/';
+});
+
+document.getElementById('user-words').addEventListener('input', function () {
+    // if frame-13 background image is not empty and user-words is not empty, enable confirm button
+    var frame13 = document.getElementById('frame-13');
+    var confirmBtn = document.getElementById('confirm-btn');
+    if (frame13.style.backgroundImage && this.value.trim()) {
+        confirmBtn.disabled = false;
+    } else {
+        confirmBtn.disabled = true;
     }
 });

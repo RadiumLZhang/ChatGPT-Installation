@@ -25,8 +25,10 @@
                             <div class="frame-5" id="suggested-prompts">
                                 {% for prompt in theme.suggested_prompts %}
                                 <div class="frame-6">
-<!--                                    <p class="text-wrapper-2" onclick="addPrompt('{{ prompt }}')">{{ prompt }}</p>-->
-                                    <button type="button" class="button-prompt" onclick="addPrompt('{{ prompt }}')">{{ prompt }}</button>
+                                    <!--                                    <p class="text-wrapper-2" onclick="addPrompt('{{ prompt }}')">{{ prompt }}</p>-->
+                                    <button type="button" class="button-prompt" onclick="addPrompt('{{ prompt }}')">{{
+                                        prompt }}
+                                    </button>
                                 </div>
                                 {% endfor %}
 
@@ -84,13 +86,19 @@
                                     <div class="text-wrapper-5">@johndue</div>
                                 </div>
                                 <div class="content">
-                                    <div class="frame-wrapper">
-                                        <div class="frame-12"><p class="text-wrapper-6">Add your own words here!</p>
-                                        </div>
-                                    </div>
+
+                                    <!--                                    <div class="frame-12">-->
+                                    <!--                                        <p class="text-wrapper-6">Add your own words here!</p>-->
+                                    <textarea id="user-words" class="form-control"
+                                              placeholder="Add your own words here!"></textarea>
+                                    <!--                                    </div>-->
+
                                 </div>
                                 <div class="media">
-                                    <div class="frame-13" id="frame-13"></div>
+                                    <div class="picture-wrapper" id="picture-wrapper">
+                                        <div class="picture">Your Picture<br/>Generated is<br/>here ;)</div>
+                                        <div class="frame-13" id="frame-13"></div>
+                                    </div>
                                 </div>
                                 <img class="image" src="https://c.animaapp.com/YGZ9wAHJ/img/image-3.png"/>
                             </div>
@@ -113,75 +121,37 @@
                         <p class="text-wrapper-9">AI can generate misinformation and disinformation</p>
                     </div>
                 </div>
-                <img
-                        class="element-mesmerizing"
-                        src="https://c.animaapp.com/YGZ9wAHJ/img/484831-mesmerizing-images-that-ai-generated----xl-1024-v1-0-1-1.png"
-                />
+                <img class="element-mesmerizing"
+                     src="https://c.animaapp.com/YGZ9wAHJ/img/484831-mesmerizing-images-that-ai-generated----xl-1024-v1-0-1-1.png"/>
             </div>
         </div>
         <div class="frame-16">
             <div class="component-3">
                 <button class="button-3">Exit</button>
             </div>
-            <button class="component-4">
-                <button class="button-4">Confirm</button>
-            </button>
-        </div>
-    </div>
-</div>
-
-
-<div class="container">
-
-    <div class="row">
-        <!-- Textbox on the left -->
-        <div class="col-md-6">
-            <!-- Suggested Prompts -->
-            <!--<div id="suggested-prompts">
-                {% for prompt in theme.suggested_prompts %}
-                <button type="button" class="btn btn-outline-primary btn-sm m-1 prompt-option" onclick="addPrompt('{{ prompt }}')">{{ prompt }}</button>
-                {% endfor %}
-            </div>-->
-
-            <div class="textarea-container">
-                <!-- <textarea id="suggested-prompt" class="form-control" rows="3" placeholder="Type something here or Click on the theme description to fill this with suggested prompt."></textarea> -->
-                <!-- <button id="generate-btn" class="btn btn-primary submit-btn">Generate</button> -->
+            <div class="component-4">
+                <button class="button-4" id="confirm-btn" disabled>Confirm</button>
             </div>
-
-            <!--<div id="generated-images-container" class="row mt-3"></div>-->
-
-            <!-- Add your form for submitting a new question here -->
         </div>
-
-        <!-- Images on the right -->
-        <div class="col-md-6">
-            <!-- Textarea for user's words -->
-            <textarea id="user-words" class="form-control" rows="3" placeholder="Type your words here..."></textarea>
-
-            <!-- Frame for the selected image -->
-            <!-- <div id="selected-image-frame" class="mt-3">
-                   The selected image will be inserted here </div>
-           -->
-
-            <button id="confirm-btn" class="btn btn-success mt-3" style="display: none;">Confirm</button>
-        </div>
-
-
     </div>
 </div>
 
 <div id="creator-modal" class="modal">
     <div class="modal-content">
-        <span class="close-btn">&times;</span>
+<!--        <span class="close-btn">&times;</span>-->
         <form id="creator-form">
-            <label for="creator-name">Enter your name:</label>
-            <input type="text" id="creator-name" required>
-            <input type="hidden" id="theme-id" name="theme_id" value="{{ theme.id }}">
+            <div class="model-frame">
+                <div class="model-frame-2">
+                    <div class="submit-test">Submit test</div>
+                    <label for="creator-name">Name display the tester (it can also be psudo name): </label>
+                </div>
+                <input type="text" id="creator-name" required>
+            </div>
             <input type="submit" id="submit-btn" disabled>
+            <input type="hidden" id="theme-id" name="theme_id" value="{{ theme.id }}">
         </form>
     </div>
 </div>
-
 <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>

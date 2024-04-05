@@ -52,5 +52,5 @@ def import_posts_from_csv(csv_path):
 if __name__ == '__main__':
 	print('Importing themes and images from CSV')
 	import_themes_from_csv('data/themes.csv')
-	import_images_from_csv('data/images.csv')
+	#import_images_from_csv('data/images.csv')
 	import_posts_from_csv('data/posts.csv')

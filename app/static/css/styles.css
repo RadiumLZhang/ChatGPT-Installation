@@ -1,694 +1,1090 @@
 .fooler-image {
-  background-color: #9c358705;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
+    background-color: #9c358705;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
 }
 
 .fooler-image .div {
-  background-color: #9c358705;
-  width: 1920px;
-  height: 1080px;
-  position: relative;
+    background-color: #9c358705;
+    width: 1920px;
+    height: 1080px;
+    position: relative;
 }
 
 .fooler-image .overlap {
-  position: absolute;
-  width: 1920px;
-  height: 779px;
-  top: 126px;
-  left: 0;
+    position: absolute;
+    width: 1920px;
+    height: 779px;
+    top: 126px;
+    left: 0;
 }
 
 .fooler-image .rectangle {
-  position: absolute;
-  width: 833px;
-  height: 646px;
-  top: 70px;
-  left: 997px;
-  background-color: #ffffff;
-  border-radius: 4px;
-  border: 1px solid;
-  border-color: var(--variable-collection-line);
+    position: absolute;
+    width: 833px;
+    height: 646px;
+    top: 70px;
+    left: 997px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: 1px solid;
+    border-color: var(--variable-collection-line);
 }
 
 .fooler-image .text-wrapper {
-  position: absolute;
-  width: 543px;
-  top: 223px;
-  left: 125px;
-  font-family: "Open Sans", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: normal;
+    position: absolute;
+    width: 543px;
+    top: 223px;
+    left: 125px;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
 }
 
 .fooler-image .your {
-  position: absolute;
-  width: 175px;
-  top: 535px;
-  left: 1323px;
-  font-family: "Open Sans", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 24px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
+    position: absolute;
+    width: 175px;
+    top: 535px;
+    left: 1323px;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
 }
 
 .fooler-image .element-primary-button {
-  display: inline-flex;
-  height: 32px;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 0px 12px;
-  position: absolute;
-  top: 290px;
-  left: 782px;
-  background-color: var(--lightbrandbrand-6);
-  border-radius: 6px;
-  overflow: hidden;
+    display: inline-flex;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0px 12px;
+    position: absolute;
+    top: 290px;
+    left: 782px;
+    background-color: var(--lightbrandbrand-6);
+    border-radius: 6px;
+    overflow: hidden;
 }
 
 .fooler-image .leading-icon {
-  position: relative;
-  width: 14px;
-  height: 14px;
+    position: relative;
+    width: 14px;
+    height: 14px;
 }
 
 .fooler-image .text {
-  font-weight: var(--label-medium-font-weight);
-  color: var(--lighttexttextrev-1);
-  text-align: center;
-  position: relative;
-  width: fit-content;
-  font-family: var(--label-medium-font-family);
-  font-size: var(--label-medium-font-size);
-  letter-spacing: var(--label-medium-letter-spacing);
-  line-height: var(--label-medium-line-height);
-  white-space: nowrap;
-  font-style: var(--label-medium-font-style);
+    font-weight: var(--label-medium-font-weight);
+    color: var(--lighttexttextrev-1);
+    text-align: center;
+    position: relative;
+    width: fit-content;
+    font-family: var(--label-medium-font-family);
+    font-size: var(--label-medium-font-size);
+    letter-spacing: var(--label-medium-letter-spacing);
+    line-height: var(--label-medium-line-height);
+    white-space: nowrap;
+    font-style: var(--label-medium-font-style);
 }
 
 .fooler-image .frame {
-  display: flex;
-  flex-direction: column;
-  width: 1920px;
-  height: 779px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 1920px;
+    height: 779px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .fooler-image .frame-2 {
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 96px;
-  position: relative;
-  flex: 0 0 auto;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 96px;
+    position: relative;
+    flex: 0 0 auto;
 }
 
 .fooler-image .frame-3 {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 42px;
-  position: relative;
-  flex: 0 0 auto;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 42px;
+    position: relative;
+    flex: 0 0 auto;
 }
 
 .fooler-image .frame-4 {
-  display: flex;
-  flex-direction: column;
-  width: 800px;
-  align-items: flex-start;
-  gap: 8px;
-  position: relative;
-  flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    align-items: flex-start;
+    gap: 8px;
+    position: relative;
+    flex: 0 0 auto;
 }
 
 .fooler-image .div-wrapper {
-  display: inline-flex;
-  height: 64px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px 10px 10px 0px;
-  position: relative;
+    display: inline-flex;
+    height: 64px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 10px 10px 0px;
+    position: relative;
 }
 
 .fooler-image .p {
-  position: relative;
-  width: 786px;
-  margin-top: -6px;
-  margin-bottom: -4px;
-  font-family: "Open Sans", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: normal;
+    position: relative;
+    width: 786px;
+    margin-top: -6px;
+    margin-bottom: -4px;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
 }
 
 .fooler-image .frame-5 {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
 }
 
 .fooler-image .frame-6 {
-  /*display: inline-flex;*/
-  /*height: 28px;*/
-  /*align-items: center;*/
-  /*justify-content: center;*/
-  /*gap: 10px;*/
-  /*padding: 5px 11px;*/
-  /*position: relative;*/
-  /*flex: 0 0 auto;*/
-  /*background-color: #c486b7;*/
-  /*border-radius: 8px;*/
-  /*overflow: hidden;*/
+    /*display: inline-flex;*/
+    /*height: 28px;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*gap: 10px;*/
+    /*padding: 5px 11px;*/
+    /*position: relative;*/
+    /*flex: 0 0 auto;*/
+    /*background-color: #c486b7;*/
+    /*border-radius: 8px;*/
+    /*overflow: hidden;*/
 }
 
 .fooler-image .text-wrapper-2 {
-  position: relative;
-  width: fit-content;
-  font-family: "Open Sans", Helvetica;
-  font-weight: 600;
-  color: #ffffff;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
+    position: relative;
+    width: fit-content;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: normal;
 }
 
 .fooler-image .button-prompt {
-  position: relative;
-  display: inline-flex;
-  padding: 5px 11px; /* You can adjust padding as needed */
-  font-family: "Open Sans", Helvetica;
-  font-weight: 600;
-  color: #ffffff;
-  background-color: #c486b7; /* Assuming the original background is transparent */
-  border: transparent;
-  border-radius: 4px; /* You can adjust the border-radius as needed */
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-  cursor: pointer; /* Adding pointer cursor to indicate it's clickable */
-  text-decoration: none; /* Removing any default text decoration */
-  height: 28px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border-radius: 8px;
+    position: relative;
+    display: inline-flex;
+    padding: 5px 11px; /* You can adjust padding as needed */
+    font-family: "Open Sans", Helvetica;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #c486b7; /* Assuming the original background is transparent */
+    border: transparent;
+    border-radius: 4px; /* You can adjust the border-radius as needed */
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: normal;
+    cursor: pointer; /* Adding pointer cursor to indicate it's clickable */
+    text-decoration: none; /* Removing any default text decoration */
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 8px;
 }
 
 .fooler-image .button-prompt:active, .active {
-  position: relative;
-  display: inline-flex;
-  padding: 5px 11px; /* You can adjust padding as needed */
-  font-family: "Open Sans", Helvetica;
-  font-weight: 600;
-  color: #ffffff;
-  background-color: #9C3587; /* Assuming the original background is transparent */
-  border: transparent;
-  border-radius: 4px; /* You can adjust the border-radius as needed */
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
-  cursor: pointer; /* Adding pointer cursor to indicate it's clickable */
-  text-decoration: none; /* Removing any default text decoration */
-  height: 28px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border-radius: 8px;
+    position: relative;
+    display: inline-flex;
+    padding: 5px 11px; /* You can adjust padding as needed */
+    font-family: "Open Sans", Helvetica;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #9C3587; /* Assuming the original background is transparent */
+    border: transparent;
+    border-radius: 4px; /* You can adjust the border-radius as needed */
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: normal;
+    cursor: pointer; /* Adding pointer cursor to indicate it's clickable */
+    text-decoration: none; /* Removing any default text decoration */
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 8px;
 }
-
-
 
 
 .fooler-image .general-rotate {
-  position: relative;
-  width: 15px;
-  height: 15px;
+    position: relative;
+    width: 15px;
+    height: 15px;
 }
 
 .fooler-image .rectangle-2 {
-  position: relative;
-  width: 800px;
-  height: 118px;
-  background-color: #ffffff;
-  border-radius: 4px;
-  border: 1px solid;
-  border-color: var(--variable-collection-line);
+    position: relative;
+    width: 800px;
+    height: 118px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: 1px solid;
+    border-color: var(--variable-collection-line);
 }
 
-.fooler-image .rectangle-2 textarea{
-  position: relative;
-  width: 100%;
-  height: 100%; /* Adjust height for text input */
-  background-color: #ffffff;
-  border-radius: 4px;
-  border: 1px solid var(--variable-collection-line); /* Use the same border color */
-  font-family: "Open Sans", Helvetica; /* Add font-family if needed */
-  font-size: 14px; /* Add font-size if needed */
-  padding: 10px; /* Add padding to make it look like a textbox */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  outline: none;
-  resize: none; /* Disable resizing */
+.fooler-image .rectangle-2 textarea {
+    position: relative;
+    width: 100%;
+    height: 100%; /* Adjust height for text input */
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: 1px solid var(--variable-collection-line); /* Use the same border color */
+    font-family: "Open Sans", Helvetica; /* Add font-family if needed */
+    font-size: 14px; /* Add font-size if needed */
+    padding: 10px; /* Add padding to make it look like a textbox */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    outline: none;
+    resize: none; /* Disable resizing */
 }
 
 .fooler-image .generate-btn {
-  width: 128px;
-  height: 48px;
-  background-color: #9C3587;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  position: relative;
-  border-radius: 8px;
-  border: none; /* Remove border */
-  cursor: pointer; /* Add pointer cursor to indicate it's clickable */
-  font-family: "Open Sans", Helvetica; /* Add font-family if needed */
-  font-weight: 600; /* Add font-weight if needed */
-  color: #ffffff; /* Add text color if needed */
-  font-size: 14px; /* Add font-size if needed */
-  text-align: center; /* Center align text */
-  text-decoration: none; /* Remove any default text decoration */
+    width: 128px;
+    height: 48px;
+    background-color: #9C3587;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    border-radius: 8px;
+    border: none; /* Remove border */
+    cursor: pointer; /* Add pointer cursor to indicate it's clickable */
+    font-family: "Open Sans", Helvetica; /* Add font-family if needed */
+    font-weight: 600; /* Add font-weight if needed */
+    color: #ffffff; /* Add text color if needed */
+    font-size: 14px; /* Add font-size if needed */
+    text-align: center; /* Center align text */
+    text-decoration: none; /* Remove any default text decoration */
 }
 
 .fooler-image .generate-btn:disabled {
-  width: 128px;
-  height: 48px;
-  background-color: #9c358780; /* a lighter shade of the original color */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  position: relative;
-  border-radius: 8px;
-  border: none; /* Remove border */
-  cursor: pointer; /* Add pointer cursor to indicate it's clickable */
-  font-family: "Open Sans", Helvetica; /* Add font-family if needed */
-  font-weight: 600; /* Add font-weight if needed */
-  color: #ffffff; /* Add text color if needed */
-  font-size: 14px; /* Add font-size if needed */
-  text-align: center; /* Center align text */
-  text-decoration: none; /* Remove any default text decoration */
+    width: 128px;
+    height: 48px;
+    background-color: #9c358780; /* a lighter shade of the original color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    border-radius: 8px;
+    border: none; /* Remove border */
+    cursor: pointer; /* Add pointer cursor to indicate it's clickable */
+    font-family: "Open Sans", Helvetica; /* Add font-family if needed */
+    font-weight: 600; /* Add font-weight if needed */
+    color: #ffffff; /* Add text color if needed */
+    font-size: 14px; /* Add font-size if needed */
+    text-align: center; /* Center align text */
+    text-decoration: none; /* Remove any default text decoration */
 }
 
 
 .fooler-image .frame-7 {
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 24px;
-  position: relative;
-  flex: 0 0 auto;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 24px;
+    position: relative;
+    flex: 0 0 auto;
 }
 
 .fooler-image .frame-8 {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 36px;
-  position: relative;
-  flex: 0 0 auto;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 36px;
+    position: relative;
+    flex: 0 0 auto;
 }
 
 .fooler-image .group {
-  position: relative;
-  width: 182.42px;
-  height: 182px;
+    position: relative;
+    width: 182.42px;
+    height: 182px;
 }
 
 .fooler-image .overlap-group {
-  position: relative;
-  width: 182px;
-  height: 182px;
-  border-radius: 8px;
+    position: relative;
+    width: 182px;
+    height: 182px;
+    border-radius: 8px;
 }
 
 .fooler-image .element-primary-button-2 {
-  display: flex;
-  width: 182px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 0px 16px;
-  position: absolute;
-  top: 67px;
-  left: 0;
-  background-color: #ffffff;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 2px solid;
-  border-color: #7459ff;
+    display: flex;
+    width: 182px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0px 16px;
+    position: absolute;
+    top: 67px;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid;
+    border-color: #7459ff;
 }
 
 .fooler-image .text-2 {
-  font-weight: 700;
-  color: #7459ff;
-  position: relative;
-  width: fit-content;
-  font-family: "Mulish", Helvetica;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: 20px;
-  white-space: nowrap;
+    font-weight: 700;
+    color: #7459ff;
+    position: relative;
+    width: fit-content;
+    font-family: "Mulish", Helvetica;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 20px;
+    white-space: nowrap;
 }
 
 .fooler-image .component {
-  width: 182px;
-  height: 48px;
-  position: absolute;
-  top: 67px;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  border: 2px solid;
-  border-color: var(--brand-color);
+    width: 182px;
+    height: 48px;
+    position: absolute;
+    top: 67px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 2px solid;
+    border-color: var(--brand-color);
 }
 
 .fooler-image .button {
-  all: unset;
-  box-sizing: border-box;
-  margin-top: -3px;
-  color: var(--brand-color);
-  font-size: 22px;
-  position: relative;
-  width: fit-content;
-  font-family: "Open Sans", Helvetica;
-  font-weight: 600;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
+    all: unset;
+    box-sizing: border-box;
+    margin-top: -3px;
+    color: var(--brand-color);
+    font-size: 22px;
+    position: relative;
+    width: fit-content;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
 }
 
 .fooler-image .overlap-group-wrapper {
-  position: absolute;
-  width: 182px;
-  height: 182px;
-  top: 0;
-  left: 0;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 3px solid;
-  border-color: var(--variable-collection-accent-color);
-  /*background-image: url(https://c.animaapp.com/YGZ9wAHJ/img/frame-3790-2@2x.png);*/
-  background-size: cover;
-  background-position: 50% 50%;
+    position: absolute;
+    width: 182px;
+    height: 182px;
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 3px solid;
+    border-color: var(--variable-collection-accent-color);
+    /*background-image: url(https://c.animaapp.com/YGZ9wAHJ/img/frame-3790-2@2x.png);*/
+    background-size: cover;
+    background-position: 50% 50%;
 }
 
 .fooler-image .vector-wrapper {
-  position: relative;
-  width: 24px;
-  height: 24px;
-  top: 11px;
-  left: 147px;
-  background-color: #e53f71;
-  border-radius: 4px;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    top: 11px;
+    left: 147px;
+    background-color: #e53f71;
+    border-radius: 4px;
 }
 
 .fooler-image .vector {
-  position: absolute;
-  width: 16px;
-  height: 14px;
-  top: 6px;
-  left: 4px;
+    position: absolute;
+    width: 16px;
+    height: 14px;
+    top: 6px;
+    left: 4px;
 }
 
 .fooler-image .button-wrapper {
-  width: 182px;
-  height: 48px;
-  background-color: #9c3587;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  position: relative;
-  border-radius: 8px;
+    width: 182px;
+    height: 48px;
+    background-color: #9c3587;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    border-radius: 8px;
 }
 
 .fooler-image .button-2 {
-  all: unset;
-  box-sizing: border-box;
-  margin-top: -3.5px;
-  margin-bottom: -1.5px;
-  color: #ffffff;
-  font-size: 24px;
-  position: relative;
-  width: fit-content;
-  font-family: "Open Sans", Helvetica;
-  font-weight: 600;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
+    all: unset;
+    box-sizing: border-box;
+    margin-top: -3.5px;
+    margin-bottom: -1.5px;
+    color: #ffffff;
+    font-size: 24px;
+    position: relative;
+    width: fit-content;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
 }
 
 .fooler-image .frame-image {
-  position: absolute;
-  width: 182px;
-  height: 182px;
-  top: 0;
-  left: 0;
-  border-radius: 8px;
-  background-size: cover;
-  background-position: 50% 50%;
+    position: absolute;
+    width: 182px;
+    height: 182px;
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: 50% 50%;
 }
 
 .fooler-image .component-2 {
-  width: 182px;
-  height: 48px;
-  border: 2px solid;
-  border-color: var(--brand-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  position: relative;
-  border-radius: 8px;
+    width: 182px;
+    height: 48px;
+    border: 2px solid;
+    border-color: var(--brand-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    border-radius: 8px;
 }
 
 .fooler-image .text-wrapper-3 {
-  position: absolute;
-  top: 149px;
-  left: 13px;
-  font-family: "Open Sans", Helvetica;
-  font-weight: 600;
-  color: #424242;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: normal;
+    position: absolute;
+    top: 149px;
+    left: 13px;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 600;
+    color: #424242;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: normal;
 }
 
 .fooler-image .container-wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 820px;
-  height: 643px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 820px;
+    height: 643px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
 }
 
 .fooler-image .container {
-  display: flex;
-  width: 754px;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 12px 18px 0px;
-  position: relative;
-  flex: 0 0 auto;
-  background-color: #ffffff;
+    display: flex;
+    width: 754px;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 18px 0px;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: #ffffff;
 }
 
 .fooler-image .side {
-  display: inline-flex;
-  align-items: flex-start;
-  position: relative;
-  align-self: stretch;
-  flex: 0 0 auto;
+    display: inline-flex;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    flex: 0 0 auto;
 }
 
 .fooler-image .avatar-medium {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  border-radius: 129095.7px;
-  overflow: hidden;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 129095.7px;
+    overflow: hidden;
 }
 
 .fooler-image .profile-picture {
-  position: absolute;
-  width: 39px;
-  height: 39px;
-  top: 1px;
-  left: 0;
-  object-fit: cover;
+    position: absolute;
+    width: 39px;
+    height: 39px;
+    top: 1px;
+    left: 0;
+    object-fit: cover;
 }
 
 .fooler-image .main {
-  display: flex;
-  flex-direction: column;
-  width: 657.1px;
-  align-items: flex-start;
-  gap: 8px;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 657.1px;
+    align-items: flex-start;
+    gap: 8px;
+    position: relative;
 }
 
 .fooler-image .user {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0px 0px 5.16px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0px 0px 5.16px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
 }
 
 .fooler-image .text-wrapper-4 {
-  margin-top: -1.29px;
-  font-family: "Roboto", Helvetica;
-  font-weight: 700;
-  color: var(--black);
-  font-size: 18px;
-  white-space: nowrap;
-  position: relative;
-  width: fit-content;
-  letter-spacing: 0;
-  line-height: normal;
+    margin-top: -1.29px;
+    font-family: "Roboto", Helvetica;
+    font-weight: 700;
+    color: var(--black);
+    font-size: 18px;
+    white-space: nowrap;
+    position: relative;
+    width: fit-content;
+    letter-spacing: 0;
+    line-height: normal;
 }
 
 .fooler-image .text-wrapper-5 {
-  position: relative;
-  width: fit-content;
-  margin-top: -1.29px;
-  font-family: "Roboto", Helvetica;
-  font-weight: 400;
-  color: var(--dark-5);
-  font-size: 18px;
-  letter-spacing: 0;
-  line-height: normal;
-  white-space: nowrap;
+    position: relative;
+    width: fit-content;
+    margin-top: -1.29px;
+    font-family: "Roboto", Helvetica;
+    font-weight: 400;
+    color: var(--dark-5);
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
 }
 
 .fooler-image .content {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
-  border-radius: 8px;
-  border: 2px solid;
-  border-color: var(--variable-collection-accent-color);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    border-radius: 8px;
+    border: 2px solid;
+    border-color: var(--variable-collection-accent-color);
 }
 
 .fooler-image .frame-wrapper {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  position: relative;
-  flex: 1;
-  flex-grow: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
 }
 
 .fooler-image .frame-12 {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 6px;
-  position: relative;
-  flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 6px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.fooler-image .content textarea {
+    position: relative;
+    width: 100%;
+    height: 100%; /* Adjust height for text input */
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: 0px solid var(--variable-collection-line); /* Use the same border color */
+    font-family: "Open Sans", Helvetica; /* Add font-family if needed */
+    font-size: 14px; /* Add font-size if needed */
+    padding: 10px; /* Add padding to make it look like a textbox */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    outline: none;
+    resize: none; /* Disable resizing */
+    padding: 6px;
 }
 
 .fooler-image .text-wrapper-6 {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Roboto", Helvetica;
-  font-weight: 400;
-  color: #0f1419b2;
-  font-size: 18px;
-  letter-spacing: 0;
-  line-height: normal;
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Roboto", Helvetica;
+    font-weight: 400;
+    color: #0f1419b2;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
 }
 
+
 .fooler-image .media {
-  display: flex;
-  align-items: flex-start;
-  padding: 12.91px 0px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
-  border-radius: 20.66px;
-  overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    padding: 12.91px 0px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    border-radius: 20.66px;
+    overflow: hidden;
 }
 
 .fooler-image .frame-13 {
-  position: relative;
-  width: 320px;
-  height: 320px;
-  border-radius: 12px;
-  background-image: url(https://c.animaapp.com/YGZ9wAHJ/img/frame-3921@2x.png);
-  background-size: cover;
-  background-position: 50% 50%;
+    position: relative;
+    width: 320px;
+    height: 320px;
+    border-radius: 12px;
+    /*background-image: url(https://c.animaapp.com/YGZ9wAHJ/img/frame-3921@2x.png);*/
+    background-size: cover;
+    background-position: 50% 50%;
 }
 
 .fooler-image .image {
-  position: relative;
-  width: 655px;
-  height: 50px;
-  object-fit: cover;
+    position: relative;
+    width: 655px;
+    height: 50px;
+    object-fit: cover;
 }
 
 .fooler-image .overlap-wrapper {
-  position: absolute;
-  width: 1920px;
-  height: 126px;
-  top: 0;
-  left: 0;
-  background-color: #00000099;
+    position: absolute;
+    width: 1920px;
+    height: 126px;
+    top: 0;
+    left: 0;
+    background-color: #00000099;
 }
 
 .fooler-image .overlap-2 {
+    position: relative;
+    height: 127px;
+    top: -1px;
+}
+
+.fooler-image .rectangle-3 {
+    position: absolute;
+    width: 1920px;
+    height: 126px;
+    top: 1px;
+    left: 0;
+    background-color: #3f1b4e;
+}
+
+.fooler-image .fool-your-friend {
+    position: absolute;
+    top: 50px;
+    left: 74px;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 34px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.fooler-image .span {
+    font-weight: 800;
+}
+
+.fooler-image .text-wrapper-7 {
+    font-family: "Open Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 34px;
+    letter-spacing: 0;
+}
+
+.fooler-image .text-wrapper-8 {
+    position: absolute;
+    top: 62px;
+    left: 361px;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 22px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.fooler-image .frame-14 {
+    display: inline-flex;
+    flex-direction: column;
+    height: 126px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 64px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.fooler-image .frame-15 {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.fooler-image .fool-your-friend-2 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 34px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.fooler-image .text-wrapper-9 {
+    position: relative;
+    width: fit-content;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 22px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.fooler-image .element-mesmerizing {
+    position: absolute;
+    width: 1920px;
+    height: 123px;
+    top: 1px;
+    left: 0;
+    object-fit: cover;
+}
+
+.fooler-image .frame-16 {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 42px;
+    position: absolute;
+    top: 920px;
+    left: 1468px;
+}
+
+
+.fooler-image .button-3 {
+    all: unset;
+    box-sizing: border-box;
+    color: var(--brand-color);
+    font-size: 24px;
+    position: relative;
+    width: 160px;
+    height: 64px;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+    gap: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 2px solid;
+    border-color: #9c3587;
+}
+
+.fooler-image .button-3:active {
+    all: unset;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-size: 24px;
+    position: relative;
+    width: 160px;
+    height: 64px;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+    gap: 10px;
+    padding: 10px;
+    background-color: #9c3587;
+    border-radius: 8px;
+    border: 2px solid;
+    border-color: #9c3587;
+}
+
+.fooler-image .button-4 {
+    all: unset;
+    box-sizing: border-box;
+    width: 160px;
+    height: 64px;
+    background-color: #9c358780;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 24px;
+    position: relative;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+
+}
+
+.fooler-image .button-4:enabled {
+    all: unset;
+    box-sizing: border-box;
+    width: 160px;
+    height: 64px;
+    background-color: #9c3587;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 24px;
+    position: relative;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+
+.fooler-image .picture-wrapper {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid;
+    border-color: var(--variable-collection-accent-color);
+}
+
+.fooler-image .picture {
+    position: absolute;
+    top: 110px;
+    left: 98px;
+    font-family: "Open Sans", Helvetica;
+    font-weight: 600;
+    color: var(--variable-collection-word-color);
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+/* Styling for the modal */
+.modal {
+    display: none; /* Hide the modal by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black background */
+}
+
+/* Styling for the modal content */
+.modal-content {
+    background-color: #fefefe; /* White background */
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    position: relative;
+}
+
+/*!* Styling for the close button *!*/
+/*.close-btn {*/
+/*    position: absolute;*/
+/*    top: 10px;*/
+/*    right: 10px;*/
+/*    font-size: 24px;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/* Styling for the form elements */
+#creator-form {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 24px;
+    flex: 0 0 auto;
+    flex-direction: column;
+    position: relative;
+}
+
+.model-frame {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 24px;
+    flex: 0 0 auto;
+    flex-direction: column;
+    position: relative;
+}
+
+.model-frame-2 {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 16px;
+    flex: 0 0 auto;
+    flex-direction: column;
+    position: relative;
+}
+
+.submit-test {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "0pen Sans-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #00000D;
+    font-size: 28px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+label[for="creator-name"] {
+    position: relative;
+    width: fit-content;
+    font-family: "Open Sans-Regular", Helvetica;
+    font-weight: 400;
+    color: #00000D;
+    font-size: 18px;
+    Letter-spacing: 0;
+    line-height: normal;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: relative;
+    width: 530px;
+    height: 44px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid;
+    border-color: #c4c6d7;
+}
+
+input[type="submit"] {
+    all: unset;
+    box-sizing: border-box;
+    position: relative;
+    width: fit-content;
+    margin-top: -2px;
+    font-family: "0pen Sans-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 0;
+    Line-height: normal;
+    box-sizing: border-box;
+    display: flex;
+    width: 128px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    background-color: #9c358780;
+    border-radius: 8px;
+}
+
+input[type="submit"]:enabled {
+    background-color: #9c3587;
+}
+
+
+
+
+
+
+
+
+
+.element {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.element .frame {
+  position: relative;
+  width: 1920px;
+  height: 126px;
+  background-color: #00000099;
+}
+
+.element .overlap-group {
   position: relative;
   height: 127px;
   top: -1px;
 }
 
-.fooler-image .rectangle-3 {
+.element .rectangle {
   position: absolute;
   width: 1920px;
   height: 126px;
@@ -697,7 +1093,7 @@
   background-color: #3f1b4e;
 }
 
-.fooler-image .fool-your-friend {
+.element .fool-your-friend {
   position: absolute;
   top: 50px;
   left: 74px;
@@ -709,11 +1105,11 @@
   line-height: normal;
 }
 
-.fooler-image .span {
+.element .text-wrapper {
   font-weight: 800;
 }
 
-.fooler-image .text-wrapper-7 {
+.element .span {
   font-family: "Open Sans", Helvetica;
   font-weight: 400;
   color: #ffffff;
@@ -721,7 +1117,7 @@
   letter-spacing: 0;
 }
 
-.fooler-image .text-wrapper-8 {
+.element .div {
   position: absolute;
   top: 62px;
   left: 361px;
@@ -733,7 +1129,7 @@
   line-height: normal;
 }
 
-.fooler-image .frame-14 {
+.element .frame-wrapper {
   display: inline-flex;
   flex-direction: column;
   height: 126px;
@@ -746,7 +1142,7 @@
   left: 0;
 }
 
-.fooler-image .frame-15 {
+.element .frame-2 {
   display: inline-flex;
   align-items: center;
   gap: 18px;
@@ -754,7 +1150,7 @@
   flex: 0 0 auto;
 }
 
-.fooler-image .fool-your-friend-2 {
+.element .fool-your-friend-2 {
   position: relative;
   width: fit-content;
   margin-top: -1px;
@@ -766,7 +1162,7 @@
   line-height: normal;
 }
 
-.fooler-image .text-wrapper-9 {
+.element .p {
   position: relative;
   width: fit-content;
   font-family: "Open Sans", Helvetica;
@@ -777,7 +1173,7 @@
   line-height: normal;
 }
 
-.fooler-image .element-mesmerizing {
+.element .element-mesmerizing {
   position: absolute;
   width: 1920px;
   height: 123px;
@@ -786,51 +1182,429 @@
   object-fit: cover;
 }
 
-.fooler-image .frame-16 {
+.element .div-wrapper {
+  display: flex;
+  width: 1920px;
+  height: 1080px;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  background-image: url(https://c.animaapp.com/R5lxuzpb/img/1.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.element .frame-3 {
+  display: inline-flex;
+  flex-direction: column;
+  height: 1080px;
+  align-items: flex-start;
+  position: relative;
+  flex: 0 0 auto;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.element .feed {
+  display: flex;
+  flex-direction: column;
+  width: 754px;
+  align-items: flex-start;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+  overflow-y: scroll;
+}
+
+.element .header {
+  position: relative;
+  width: 754px;
+  height: 53px;
+  background-color: transparent;
+}
+
+.element .text-wrapper-2 {
+  position: absolute;
+  top: 14px;
+  left: 15px;
+  opacity: 0.5;
+  font-family: "SF Compact Display-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--black);
+  font-size: 19px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .divider {
+  position: absolute;
+  width: 598px;
+  height: 1px;
+  top: 52px;
+  left: 0;
+  background-color: var(--dark-7);
+}
+
+.element .dark-theme-toptweet {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 15px;
+  left: 560px;
+}
+
+.element .post {
+  display: flex;
+  flex-direction: column;
+  width: 754px;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 15px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element .inner {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 98px;
+}
+
+.element .avatar-medium {
+  position: absolute;
+  width: 49px;
+  height: 49px;
+  top: 0;
+  left: 0;
+  border-radius: 99999px;
+  overflow: hidden;
+  opacity: 0.5;
+}
+
+.element .profile-picture {
+  width: 48px;
+  height: 48px;
+  top: 1px;
+  left: 0;
+  position: absolute;
+  object-fit: cover;
+}
+
+.element .text-wrapper-3 {
+  position: absolute;
+  top: 11px;
+  left: 61px;
+  font-family: "Roboto", Helvetica;
+  font-weight: 400;
+  color: #5b708380;
+  font-size: 20px;
+  letter-spacing: -0.3px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.element .actions {
+  display: flex;
+  width: 180px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 67px;
+  left: 58px;
+}
+
+.element .img {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.element .button-primary {
+  display: flex;
+  width: 77px;
+  height: 39px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 93px;
+  position: absolute;
+  top: 59px;
+  left: 647px;
+  background-color: var(--variable-collection-accent-color);
+  border-radius: 9999px;
+  overflow: hidden;
+  opacity: 0.4;
+}
+
+.element .text-wrapper-4 {
+  position: relative;
+  width: fit-content;
+  margin-top: -6px;
+  margin-bottom: -4px;
+  margin-left: -75.5px;
+  margin-right: -75.5px;
+  font-family: "SF Compact Display-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 15px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 19px;
+  white-space: nowrap;
+}
+
+.element .frame-4 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element .container {
+  display: flex;
+  width: 754px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 18px 0px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+}
+
+.element .side {
   display: inline-flex;
   align-items: flex-start;
-  gap: 42px;
-  position: absolute;
-  top: 920px;
-  left: 1468px;
+  position: relative;
+  align-self: stretch;
+  flex: 0 0 auto;
 }
 
-.fooler-image .component-3 {
-  width: 160px;
-  height: 64px;
+.element .profile-picture-wrapper {
   position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 129095.7px;
+  overflow: hidden;
+}
+
+.element .profile-picture-2 {
+  position: absolute;
+  width: 39px;
+  height: 39px;
+  top: 1px;
+  left: 0;
+  object-fit: cover;
+}
+
+.element .main {
   display: flex;
+  flex-direction: column;
+  width: 657.1px;
+  align-items: flex-start;
+  position: relative;
+}
+
+.element .user {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0px 0px 5.16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.element .text-wrapper-5 {
+  width: fit-content;
+  font-weight: 700;
+  white-space: nowrap;
+  position: relative;
+  margin-top: -1.29px;
+  font-family: "Roboto", Helvetica;
+  color: var(--black);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .text-wrapper-6 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.29px;
+  font-family: "Roboto", Helvetica;
+  font-weight: 400;
+  color: var(--dark-5);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.element .content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.element .text-wrapper-7 {
+  position: relative;
+  flex: 1;
+  margin-top: -1.29px;
+  font-family: "Roboto", Helvetica;
+  font-weight: 400;
+  color: var(--black);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .media {
+  display: flex;
+  align-items: flex-start;
+  padding: 12.91px 0px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  border-radius: 20.66px;
+  overflow: hidden;
+}
+
+.element .frame-5 {
+  width: 320px;
+  height: 320px;
+  background-image: url(https://c.animaapp.com/R5lxuzpb/img/frame-3921-4@2x.png);
+  position: relative;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.element .image {
+  position: relative;
+  width: 655px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.element .frame-6 {
+  width: 320px;
+  height: 320px;
+  background-image: url(https://c.animaapp.com/R5lxuzpb/img/frame-3921-5@2x.png);
+  position: relative;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.element .image-2 {
+  height: 7.03px;
+  position: relative;
+  width: 655px;
+  object-fit: cover;
+}
+
+.element .profile-picture-3 {
+  width: 39px;
+  height: 39px;
+  top: -14721px;
+  left: -4124px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.element .frame-7 {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 12px;
+  background-image: url(https://c.animaapp.com/R5lxuzpb/img/frame-3921-7@2x.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.element .image-3 {
+  height: 50px;
+  margin-top: -14286.98px;
+  margin-left: -4176px;
+  position: relative;
+  width: 655px;
+  object-fit: cover;
+}
+
+.element .profile-picture-4 {
+  width: 39px;
+  height: 39px;
+  top: -15218px;
+  left: -4124px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.element .image-4 {
+  height: 50px;
+  margin-top: -14804.97px;
+  margin-left: -4176px;
+  position: relative;
+  width: 655px;
+  object-fit: cover;
+}
+
+.element .row {
+  display: flex;
+  width: 754px;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 32px;
+  padding: 24px 0px 124px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+}
+
+.element .component {
+  border: 2px solid;
+  border-color: var(--brand-color);
+  display: flex;
+  width: 128px;
+  height: 48px;
   align-items: center;
   justify-content: center;
   gap: 10px;
   padding: 10px;
-  background-color: #ffffff;
+  position: relative;
   border-radius: 8px;
-  border: 2px solid;
-  border-color: #9c3587;
 }
 
-.fooler-image .button-3 {
+.element .button {
   all: unset;
   box-sizing: border-box;
+  margin-top: -3px;
   color: var(--brand-color);
-  font-size: 24px;
   position: relative;
   width: fit-content;
   font-family: "Open Sans", Helvetica;
   font-weight: 600;
+  font-size: 22px;
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
 }
 
-.fooler-image .component-4 {
+.element .button-wrapper {
   all: unset;
   box-sizing: border-box;
-  width: 160px;
-  height: 64px;
   background-color: #9c358780;
   display: flex;
+  width: 128px;
+  height: 48px;
   align-items: center;
   justify-content: center;
   gap: 10px;
@@ -839,16 +1613,240 @@
   border-radius: 8px;
 }
 
-.fooler-image .button-4 {
+.element .button-2 {
   all: unset;
   box-sizing: border-box;
+  margin-top: -2px;
   color: #ffffff;
-  font-size: 24px;
   position: relative;
   width: fit-content;
   font-family: "Open Sans", Helvetica;
   font-weight: 600;
+  font-size: 22px;
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
 }
+
+.element .rectangle-2 {
+  position: absolute;
+  width: 1920px;
+  height: 1080px;
+  top: 126px;
+  left: 0;
+  background-color: #00000080;
+}
+
+.element .frame-8 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 24px 32px;
+  position: absolute;
+  top: 297px;
+  left: 702px;
+  background-color: #ffffff;
+  border-radius: 12px;
+}
+
+.element .frame-9 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+}
+
+.element .frame-10 {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element .text-wrapper-8 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 28px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .text-wrapper-9 {
+  position: relative;
+  width: fit-content;
+  font-family: "Roboto", Helvetica;
+  font-weight: 400;
+  color: var(--black);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.element .frame-11 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 24px 0px 0px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element .frame-12 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element .frame-13 {
+  width: 220px;
+  height: 220px;
+  overflow: hidden;
+  border: 4px solid;
+  border-color: var(--variable-collection-accent-color);
+  background-image: url(https://c.animaapp.com/R5lxuzpb/img/frame-3921-8@2x.png);
+  position: relative;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.element .frame-14 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+  left: 105px;
+}
+
+.element .rectangle-3 {
+  position: relative;
+  width: 115px;
+  height: 40px;
+}
+
+.element .text {
+  left: 41px;
+  position: absolute;
+  height: 20px;
+  top: 10px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.element .frame-15 {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-image: url(https://c.animaapp.com/R5lxuzpb/img/frame-3928@2x.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.element .frame-16 {
+  width: 220px;
+  height: 220px;
+  overflow: hidden;
+  background-image: url(https://c.animaapp.com/R5lxuzpb/img/frame-3921-9@2x.png);
+  position: relative;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.element .text-2 {
+  left: 28px;
+  position: absolute;
+  height: 20px;
+  top: 10px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.element .frame-17 {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-image: url(https://c.animaapp.com/R5lxuzpb/img/frame-3928-1@2x.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.element .text-3 {
+  left: 40px;
+  position: absolute;
+  height: 20px;
+  top: 10px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.element .frame-18 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 24px 0px 0px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.element .frame-19 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element .component-2 {
+  display: flex;
+  width: 128px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  background-color: #9c3587;
+  border-radius: 8px;
+}
+
+

@@ -1,83 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Guesser Page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<html>
+  <head>
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-<div class="container">
-    <div class="row">
-        {% for card in question_cards %}
-        <div class="col-3">
-            <img src="{{ card.image_url }}" class="img-fluid selectable-img" id="img-{{ loop.index }}" data-difficulty="{{ card.difficulty }}" data-theme="{{ card.theme_id }}">
-            <div class="labels">{{ card.username }}, {{ card.difficulty }}</div>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleguide.css') }}">
+  </head>
+  <body>
+    <div class="element">
+      <div class="frame">
+        <div class="overlap-group">
+          <div class="rectangle"></div>
+          <p class="fool-your-friend"><span class="text-wrapper">Fool</span> <span class="span"> your friend</span></p>
+          <p class="div">AI can generate misinformation and disinformation</p>
+          <div class="rectangle"></div>
+          <div class="frame-wrapper">
+            <div class="frame-2">
+              <div class="fool-your-friend-2">Fool Your Friend</div>
+              <p class="p">AI can generate misinformation and disinformation</p>
+            </div>
+          </div>
+          <img
+            class="element-mesmerizing"
+            src="https://c.animaapp.com/R5lxuzpb/img/484831-mesmerizing-images-that-ai-generated----xl-1024-v1-0-1-1.png"
+          />
         </div>
-        {% endfor %}
+      </div>
+      <div class="div-wrapper">
+        <div class="frame-3">
+          <div class="feed">
+            <header class="header">
+              <div class="text-wrapper-2">Home</div>
+              <div class="divider"></div>
+              <img
+                class="dark-theme-toptweet"
+                src="https://c.animaapp.com/R5lxuzpb/img/dark-theme---toptweet---default-3@2x.png"
+              />
+            </header>
+            <div class="post">
+              <div class="inner">
+                <div class="avatar-medium">
+                  <img class="profile-picture" src="https://c.animaapp.com/R5lxuzpb/img/profile-picture-7@2x.png" />
+                </div>
+                <div class="text-wrapper-3">What’s happening?</div>
+                <div class="actions">
+                  <img class="img" src="https://c.animaapp.com/R5lxuzpb/img/dark-theme---media---default-3.svg" />
+                  <img class="img" src="https://c.animaapp.com/R5lxuzpb/img/dark-theme---gif---default-3.svg" />
+                  <img class="img" src="https://c.animaapp.com/R5lxuzpb/img/dark-theme---poll---default-3.svg" />
+                  <img class="img" src="https://c.animaapp.com/R5lxuzpb/img/dark-theme---emoji---default-3.svg" />
+                  <img class="img" src="https://c.animaapp.com/R5lxuzpb/img/dark-theme---schedule---default-3.svg" />
+                </div>
+                <div class="button-primary"><div class="text-wrapper-4">Tweet</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="frame-4">
+            <div class="container">
+              <div class="side">
+                <div class="profile-picture-wrapper">
+                  <img class="profile-picture-2" src="https://c.animaapp.com/R5lxuzpb/img/profile-picture-8@2x.png" />
+                </div>
+              </div>
+              <div class="main">
+                <div class="user">
+                  <div class="text-wrapper-5">Devon Lane</div>
+                  <div class="text-wrapper-6">@johndue</div>
+                </div>
+                <div class="content">
+                  <p class="text-wrapper-7">
+                    Chef Robbert Jan de Veen, created the most expensive burger with his creation of The Golden Boy. The
+                    first one sold for €5,000 and the proceeds for this went to a food charity.
+                  </p>
+                </div>
+                <div class="media"><div class="frame-5"></div></div>
+                <img class="image" src="https://c.animaapp.com/R5lxuzpb/img/image-3-4.png" />
+              </div>
+            </div>
+            <div class="container">
+              <div class="side">
+                <div class="profile-picture-wrapper">
+                  <img class="profile-picture-2" src="https://c.animaapp.com/R5lxuzpb/img/profile-picture-9@2x.png" />
+                </div>
+              </div>
+              <div class="main">
+                <div class="user">
+                  <div class="text-wrapper-5">Devon Lane</div>
+                  <div class="text-wrapper-6">@johndue</div>
+                </div>
+                <div class="content"><p class="text-wrapper-7">John Rogan was born in 1868 in Tennessee, USA.</p></div>
+                <div class="media"><div class="frame-6"></div></div>
+                <img class="image-2" src="https://c.animaapp.com/R5lxuzpb/img/image-3-5.png" />
+              </div>
+            </div>
+            <div class="container">
+              <div class="side">
+                <div class="profile-picture-wrapper">
+                  <img class="profile-picture-3" src="https://c.animaapp.com/R5lxuzpb/img/frame-3921-7@2x.png" />
+                </div>
+              </div>
+              <div class="main">
+                <div class="user">
+                  <div class="text-wrapper-5">Devon Lane</div>
+                  <div class="text-wrapper-6">@johndue</div>
+                </div>
+                <div class="content">
+                  <p class="text-wrapper-7">
+                    Trump was the president who loves junk food including KFC, burger king and MacDonalds. He even
+                    treated his guests in the White House with MacDonald feast once.
+                  </p>
+                </div>
+                <div class="media"><div class="frame-7"></div></div>
+                <img class="image-3" src="https://c.animaapp.com/R5lxuzpb/img/image-3-7.png" />
+              </div>
+            </div>
+            <div class="container">
+              <div class="side">
+                <div class="profile-picture-wrapper">
+                  <img class="profile-picture-4" src="https://c.animaapp.com/R5lxuzpb/img/frame-3921-7@2x.png" />
+                </div>
+              </div>
+              <div class="main">
+                <div class="user">
+                  <div class="text-wrapper-5">Devon Lane</div>
+                  <div class="text-wrapper-6">@johndue</div>
+                </div>
+                <div class="content">
+                  <p class="text-wrapper-7">
+                    Diamond Head Volcano, an iconic natural landmark, is perhaps one of the best-known attractions on
+                    the island of Oahu.
+                  </p>
+                </div>
+                <div class="media"><div class="frame-7"></div></div>
+                <img class="image-4" src="https://c.animaapp.com/R5lxuzpb/img/image-3-7.png" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="component"><button class="button">Exit</button></div>
+            <button class="button-wrapper"><button class="button-2">Confirm</button></button>
+          </div>
+        </div>
+      </div>
+      <div class="rectangle-2"></div>
+      <div class="frame-8">
+        <div class="frame-9">
+          <div class="frame-10">
+            <div class="text-wrapper-8">Select Mode</div>
+            <p class="text-wrapper-9">Now come and pick a mode to have fun with!</p>
+          </div>
+          <div class="frame-11">
+            <div class="frame-12">
+              <div class="frame-13">
+                <div class="frame-14">
+                  <img class="rectangle-3" src="https://c.animaapp.com/R5lxuzpb/img/rectangle-61-1.svg" />
+                  <div class="text">New</div>
+                </div>
+              </div>
+              <div class="frame-15">
+                <div class="frame-14">
+                  <img class="rectangle-3" src="https://c.animaapp.com/R5lxuzpb/img/rectangle-61-2.svg" />
+                  <div class="text">Easy</div>
+                </div>
+              </div>
+            </div>
+            <div class="frame-12">
+              <div class="frame-16">
+                <div class="frame-14">
+                  <img class="rectangle-3" src="https://c.animaapp.com/R5lxuzpb/img/rectangle-61-3.svg" />
+                  <div class="text-2">Medium</div>
+                </div>
+              </div>
+              <div class="frame-17">
+                <div class="frame-14">
+                  <img class="rectangle-3" src="https://c.animaapp.com/R5lxuzpb/img/rectangle-61-4.svg" />
+                  <div class="text-3">Hard</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="frame-18">
+            <div class="frame-19">
+              <div class="component"><button class="button">Exit</button></div>
+              <div class="component-2"><button class="button-2">Choose</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <button id="exit-btn" class="btn btn-primary">Exit</button>
-    <button id="choose-btn" class="btn btn-primary" disabled>Choose</button>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    $(document).ready(function() {
-        // Add click event listener to each image
-        $('.selectable-img').click(function() {
-            // Remove border from all images
-            $('.selectable-img').removeClass('selected-img');
-            // Add border to clicked image
-            $(this).addClass('selected-img');
-            // Enable the "Choose" button
-            $('#choose-btn').prop('disabled', false);
-        });
-
-        // Add click event listener to the "Choose" button
-        $('#choose-btn').click(function() {
-            // Get the difficulty level and theme of the selected image
-            var difficulty = $('.selected-img').data('difficulty');
-            var theme = $('.selected-img').data('theme');
-
-            // Fetch a question based on the difficulty level
-            fetch('/get_question_by_difficulty', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ difficulty: difficulty }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Store the question ID in the session storage
-                sessionStorage.setItem('difficulty_question_id', data.question_id);
-
-                // Fetch a question based on the theme
-                return fetch('/get_post_by_theme', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ theme: theme }),
-                });
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Store the question ID in the session storage
-                sessionStorage.setItem('theme_question_id', data.question_id);
-
-                // Redirect to the post page
-                window.location.href = '/post';
-            });
-        });
-
-        // Add click event listener to the "Exit" button
-        $('#exit-btn').click(function() {
-            // Redirect to the main page
-            window.location.href = '/';
-        });
-    });
-</script>
-</body>
+  </body>
 </html>
