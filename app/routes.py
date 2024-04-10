@@ -162,21 +162,21 @@ from sqlalchemy.sql.expression import func
 @app.route('/guesser')
 def guesser():
     # Randomly select 4 questions
-    questions = Question.query.order_by(func.random()).limit(4).all()
-    question_cards = []
-    for question in questions:
-        # Simplify: Classify difficulty based on a placeholder function
-        difficulty = question.difficulty
-        # Fetch the image related to the question
-        image = Image.query.get(question.generated_image_id)
-        image_url = image.image_path if image else None
-        question_cards.append({
-			'id': question.id,
-            'username': question.creator.username,  # Adjust based on your User model
-            'difficulty': difficulty,
-            'image_url': image_url
-        })
-    return render_template('guesser.html', question_cards=question_cards)
+    # questions = Question.query.order_by(func.random()).limit(4).all()
+    # question_cards = []
+    # for question in questions:
+    #     # Simplify: Classify difficulty based on a placeholder function
+    #     difficulty = question.difficulty
+    #     # Fetch the image related to the question
+    #     image = Image.query.get(question.generated_image_id)
+    #     image_url = image.image_path if image else None
+    #     question_cards.append({
+	# 		'id': question.id,
+    #         'username': question.creator.username,  # Adjust based on your User model
+    #         'difficulty': difficulty,
+    #         'image_url': image_url
+    #     })
+    return render_template('guesser.html', question_cards=None)
 
 
 # def classify_difficulty(question):
@@ -207,28 +207,28 @@ def guesser_selection():
 
 
 
-@app.route('/get_question_by_difficulty', methods=['POST'])
-def get_question_by_difficulty():
-    data = request.get_json()
-    # print the difficulty level
-    print("Difficulty level:", data.get('difficulty'))
-    difficulty = data.get('difficulty')
-
-    # Query the database for a question with the specified difficulty level
-    question = Question.query.filter_by(difficulty=difficulty).order_by(func.random()).first()
-
-    if question is None:
-        return jsonify({'message': 'No question found for the specified difficulty level'}), 404
-
-    # Return the question in the response
-    question_data = {
-        'id': question.id,
-        'content': question.content,
-        'difficulty': question.difficulty,
-        'theme_id': question.theme_id,
-        'creator_id': question.creator_id
-    }
-    return jsonify(question_data)
+# @app.route('/get_question_by_difficulty', methods=['POST'])
+# def get_question_by_difficulty():
+#     data = request.get_json()
+#     # print the difficulty level
+#     print("Difficulty level:", data.get('difficulty'))
+#     difficulty = data.get('difficulty')
+#
+#     # Query the database for a question with the specified difficulty level
+#     question = Question.query.filter_by(difficulty=difficulty).order_by(func.random()).first()
+#
+#     if question is None:
+#         return jsonify({'message': 'No question found for the specified difficulty level'}), 404
+#
+#     # Return the question in the response
+#     question_data = {
+#         'id': question.id,
+#         'content': question.content,
+#         'difficulty': question.difficulty,
+#         'theme_id': question.theme_id,
+#         'creator_id': question.creator_id
+#     }
+#     return jsonify(question_data)
 
 
 
@@ -290,9 +290,9 @@ def get_random_question_and_posts(difficulty):
     # Get all questions with the selected difficulty
     questions = Question.query.filter_by(difficulty=difficulty).all()
 
-    # if questions is less than 3, then make difficulty as New
+    # if questions is less than 3, then random from all questions
     if len(questions) < 3:
-        questions = Question.query.filter_by(difficulty='New').all()
+        questions = Question.query.all()
 
     # Select a random question
     question = random.choice(questions)
