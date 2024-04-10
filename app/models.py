@@ -7,8 +7,6 @@ class User(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(20), unique=True, nullable=False)
 	questions_created = db.relationship('Question', backref='creator', lazy=True)
-	answers = db.relationship('Answer', backref='player', lazy=True)
-
 
 class Image(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
@@ -59,9 +57,5 @@ class Post(db.Model):
 class Answer(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	question_id = db.Column(db.Integer, db.ForeignKey('question.id'), nullable=False)
-	answer_text = db.Column(db.String(200), nullable=False)
-	score = db.Column(db.Integer, nullable=False)
-	player_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+	is_correct = db.Column(db.Boolean, nullable=False)
 	create_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-
-

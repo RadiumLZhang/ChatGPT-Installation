@@ -185,26 +185,24 @@ def guesser():
 
 
 
-# @app.route('/get_question_by_difficulty', methods=['POST'])
-# def get_question_by_difficulty():
-#     data = request.get_json()
-#     difficulty = data.get('difficulty')
-#
-#     # Query the database for a question with the specified difficulty level
-#     question = Question.query.filter_by(difficulty=difficulty).order_by(func.random()).first()
-#
-#     if question is None:
-#         return jsonify({'message': 'No question found for the specified difficulty level'}), 404
-#
-#     # Return the question in the response
-#     question_data = {
-#         'id': question.id,
-#         'content': question.content,
-#         'difficulty': question.difficulty,
-#         'theme_id': question.theme_id,
-#         'creator_id': question.creator_id
-#     }
-#     return jsonify(question_data)
+@app.route('/guesser_selection')
+def guesser_selection():
+    # Get the difficulty from the request parameters
+    difficulty = request.args.get('difficulty')
+
+    if difficulty is None:
+        # If no difficulty was provided, return an error
+        return jsonify({'message': 'Missing difficulty level'}), 400
+
+    # Get the contents and fake index using the get_random_question_and_posts function
+    contents, fake_index, question_id = get_random_question_and_posts(difficulty)
+
+    print("Contents:", contents)
+    print("Fake index:", fake_index)
+    print("Question ID:", question_id)
+
+    # Render the guesser_selection.html template and pass the difficulty level to it
+    return render_template('guesser_selection.html', contents=contents, fake_index=fake_index, question_id=question_id)
 
 
 
@@ -308,3 +306,77 @@ def post_page():
 
     # Render the post page with the selected post and question
     return render_template('post.html', post=post_data, question=question_data)
+
+
+
+import random
+from sqlalchemy.sql.expression import func
+from app.models import db, Question, Post
+
+def get_random_question_and_posts(difficulty):
+    # Get all questions with the selected difficulty
+    questions = Question.query.filter_by(difficulty=difficulty).all()
+
+    # if questions is less than 3, then make difficulty as New
+    if len(questions) < 3:
+        questions = Question.query.filter_by(difficulty='New').all()
+
+    # Select a random question
+    question = random.choice(questions)
+
+    # record the question id
+    question_id = question.id
+
+    # Get three random posts
+    posts = Post.query.order_by(func.random()).limit(3).all()
+
+    # Create a list with the contents of the question and posts
+    contents = [question.content] + [post.content for post in posts]
+
+    images = [question.generated_image_id] + [post.image_id for post in posts]
+
+    # use image_ids in the images list to get the image_path
+    images = [Image.query.get(image_id).image_path for image_id in images]
+
+    # make pairs of content and image
+    contents = list(zip(contents, images))
+
+    # Randomize the order of the contents, and get the index of the question
+    random.shuffle(contents)
+    fake_index = contents.index((question.content, images[0]))
+
+    return contents, fake_index, question_id
+
+
+
+@app.route('/report_fake', methods=['POST'])
+def report_fake():
+    data = request.get_json()
+    user_choice = data.get('user_choice')
+    question_id = data.get('question_id')
+
+    # Get the answers from the database for the specified question
+    answers = Answer.query.filter_by(question_id=question_id).all()
+
+    # Check if the user's choice matches the fake index
+    is_correct = user_choice == 1
+
+    # Create a new answer object for the user's choice
+    answer = Answer(question_id=question_id, is_correct=is_correct)
+    db.session.add(answer)
+    db.session.commit()
+
+    # Get how many users have answered the question
+    n_answers = Answer.query.filter_by(question_id=question_id).count()
+    # Get how many users have answered correctly
+    n_correct = Answer.query.filter_by(question_id=question_id, is_correct=True).count()
+    # Calculate the percentage of correct answers
+    percentage_correct = (n_correct / n_answers) * 100 if n_answers > 0 else 0
+    # Tell the user if they were correct
+    is_correct = user_choice == 1
+    return jsonify({'is_correct': is_correct, 'percentage_correct': percentage_correct, 'n_answers': n_answers, 'n_correct': n_correct})
+
+
+
+
+
