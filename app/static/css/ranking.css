@@ -1,0 +1,662 @@
+.intro {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.intro .frame-wrapper {
+  background-color: #ffffff;
+  width: 1920px;
+  height: 1080px;
+}
+
+.intro .frame {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+  top: 193px;
+  left: 342px;
+}
+
+.intro .element-mesmerizing {
+  position: relative;
+  width: 1237px;
+  height: 695px;
+  object-fit: cover;
+}
+
+.intro .div-wrapper {
+  position: absolute;
+  width: 962px;
+  height: 72px;
+  top: 161px;
+  left: 129px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.intro .div {
+  display: flex;
+  width: 893px;
+  align-items: flex-start;
+  gap: 18px;
+  position: relative;
+  top: 9px;
+  left: 30px;
+}
+
+.intro .frame-2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.intro .icon {
+  position: relative;
+  width: 55px;
+  height: 55px;
+  background-color: var(--variable-collection-duplicate);
+  border-radius: 27.5px;
+}
+
+.intro .overlap-group {
+  position: relative;
+  height: 55px;
+  top: -1px;
+}
+
+.intro .abbr {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  top: 0;
+  left: 0;
+  font-family: var(--field-label-font-family);
+  font-weight: var(--field-label-font-weight);
+  color: var(--primary-contrast);
+  font-size: var(--field-label-font-size);
+  text-align: center;
+  letter-spacing: var(--field-label-letter-spacing);
+  line-height: var(--field-label-line-height);
+  font-style: var(--field-label-font-style);
+}
+
+.intro .image {
+  position: absolute;
+  width: 49px;
+  height: 49px;
+  top: 4px;
+  left: 3px;
+  object-fit: cover;
+}
+
+.intro .text-wrapper {
+  position: relative;
+  width: fit-content;
+  font-family: "Poppins", Helvetica;
+  font-weight: 700;
+  color: var(--variable-collection-accent-color);
+  font-size: 15px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.intro .frame-3 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 788px;
+  height: 55px;
+  align-items: center;
+  justify-content: center;
+  gap: 159px 0px;
+  position: relative;
+}
+
+.intro .frame-4 {
+  display: flex;
+  flex-direction: column;
+  width: 784px;
+  align-items: flex-start;
+  gap: 6px;
+  position: relative;
+}
+
+.intro .frame-5 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.intro .text-wrapper-2 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 700;
+  color: var(--brand-color);
+  font-size: 15px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.intro .points {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 600;
+  color: var(--variable-collection-accent-color);
+  font-size: 11.7px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.intro .overlap-wrapper {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 15.84px;
+}
+
+.intro .overlap {
+  position: relative;
+  width: 784px;
+  height: 16px;
+}
+
+.intro .determinate-progress {
+  position: absolute;
+  width: 784px;
+  height: 7px;
+  top: 5px;
+  left: 0;
+}
+
+.intro .overlap-group-2 {
+  position: relative;
+  width: 785px;
+  height: 8px;
+  top: -1px;
+  left: -1px;
+  border-radius: 7.01px;
+}
+
+.intro .base-bar {
+  position: absolute;
+  width: 785px;
+  height: 8px;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  border-radius: 7.01px;
+  overflow: hidden;
+  border: 0.56px solid;
+  border-color: #c1c1c3;
+}
+
+.intro .frame-6 {
+  position: relative;
+  width: 672px;
+  height: 14px;
+  top: -3px;
+  border-radius: 7.01px;
+  background: linear-gradient(
+    180deg,
+    rgb(145.08, 53.4, 155.47) 0%,
+    rgb(229, 63, 142.68) 50%,
+    rgb(254.46, 196.32, 109.1) 100%
+  );
+}
+
+.intro .element {
+  position: absolute;
+  top: 0;
+  left: 544px;
+  font-family: "Roboto", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 6.1px;
+  text-align: right;
+  letter-spacing: 0.13px;
+  line-height: 7px;
+  white-space: nowrap;
+}
+
+.intro .gray-cat {
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  top: 0;
+  left: 661px;
+}
+
+.intro .overlap-2 {
+  position: relative;
+  width: 19px;
+  height: 16px;
+  left: -1px;
+}
+
+.intro .union {
+  position: absolute;
+  width: 16px;
+  height: 15px;
+  top: 0;
+  left: 1px;
+}
+
+.intro .intersect {
+  left: 1px;
+  position: absolute;
+  width: 9px;
+  height: 10px;
+  top: 0;
+}
+
+.intro .img {
+  left: 9px;
+  position: absolute;
+  width: 9px;
+  height: 10px;
+  top: 0;
+}
+
+.intro .whisker {
+  position: absolute;
+  width: 19px;
+  height: 4px;
+  top: 7px;
+  left: 0;
+}
+
+.intro .nose-and-mouth {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  top: 8px;
+  left: 9px;
+}
+
+.intro .overlap-group-3 {
+  position: relative;
+  width: 3px;
+  height: 2px;
+}
+
+.intro .nose {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: 0;
+  left: 1px;
+}
+
+.intro .rectangle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  top: 0;
+  left: 0;
+}
+
+.intro .rectangle-2 {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  top: 0;
+  left: 1px;
+}
+
+.intro .ellipse {
+  position: absolute;
+  top: 0;
+  left: 2px;
+  border-radius: 0.14px;
+  width: 1px;
+  height: 1px;
+  background-color: #ffffff;
+}
+
+.intro .ears {
+  position: absolute;
+  width: 11px;
+  height: 3px;
+  top: 1px;
+  left: 4px;
+  mix-blend-mode: multiply;
+}
+
+.intro .eyes {
+  position: absolute;
+  width: 9px;
+  height: 2px;
+  top: 6px;
+  left: 5px;
+}
+
+.intro .group {
+  left: 0;
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  top: 0;
+  background-color: #333333;
+  border-radius: 0.93px/1.07px;
+}
+
+.intro .ellipse-2 {
+  border-radius: 0.29px;
+  width: 1px;
+  height: 1px;
+  background-color: #ffffff;
+}
+
+.intro .ellipse-wrapper {
+  left: 7px;
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  top: 0;
+  background-color: #333333;
+  border-radius: 0.93px/1.07px;
+}
+
+.intro .bow-tie {
+  position: absolute;
+  width: 5px;
+  height: 3px;
+  top: 13px;
+  left: 7px;
+}
+
+.intro .frame-7 {
+  position: absolute;
+  width: 962px;
+  height: 72px;
+  top: 263px;
+  left: 129px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.intro .frame-8 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 788px;
+  height: 55px;
+  align-items: center;
+  justify-content: center;
+  gap: 159px 0px;
+  position: relative;
+  margin-right: -3px;
+}
+
+.intro .frame-9 {
+  position: relative;
+  width: 576px;
+  height: 14px;
+  top: -3px;
+  border-radius: 7.01px;
+  background: linear-gradient(
+    180deg,
+    rgb(145.08, 53.4, 155.47) 0%,
+    rgb(229, 63, 142.68) 50%,
+    rgb(254.46, 196.32, 109.1) 100%
+  );
+}
+
+.intro .overlap-group-wrapper {
+  left: 567px;
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  top: 0;
+}
+
+.intro .frame-10 {
+  position: absolute;
+  width: 962px;
+  height: 72px;
+  top: 359px;
+  left: 129px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.intro .frame-11 {
+  position: relative;
+  width: 518px;
+  height: 14px;
+  top: -3px;
+  border-radius: 7.01px;
+  background: linear-gradient(
+    180deg,
+    rgb(145.08, 53.4, 155.47) 0%,
+    rgb(229, 63, 142.68) 50%,
+    rgb(254.46, 196.32, 109.1) 100%
+  );
+}
+
+.intro .gray-cat-2 {
+  left: 500px;
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  top: 0;
+}
+
+.intro .frame-12 {
+  position: absolute;
+  width: 962px;
+  height: 72px;
+  top: 457px;
+  left: 129px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.intro .frame-13 {
+  margin-right: -4px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 788px;
+  height: 55px;
+  align-items: center;
+  justify-content: center;
+  gap: 159px 0px;
+  position: relative;
+}
+
+.intro .frame-14 {
+  position: relative;
+  width: 458px;
+  height: 10px;
+  top: -1px;
+  border-radius: 7.01px;
+  background: linear-gradient(
+    180deg,
+    rgb(145.08, 53.4, 155.47) 0%,
+    rgb(229, 63, 142.68) 50%,
+    rgb(254.46, 196.32, 109.1) 100%
+  );
+}
+
+.intro .gray-cat-3 {
+  left: 449px;
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  top: 0;
+}
+
+.intro .frame-15 {
+  position: absolute;
+  width: 962px;
+  height: 72px;
+  top: 555px;
+  left: 129px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.intro .frame-16 {
+  width: 395px;
+  height: 8px;
+  border-radius: 7.01px;
+  background: linear-gradient(
+    180deg,
+    rgb(145.08, 53.4, 155.47) 0%,
+    rgb(229, 63, 142.68) 50%,
+    rgb(254.46, 196.32, 109.1) 100%
+  );
+}
+
+.intro .gray-cat-4 {
+  left: 386px;
+  position: absolute;
+  width: 18px;
+  height: 16px;
+  top: 0;
+}
+
+.intro .our-top-rankings {
+  position: absolute;
+  width: 556px;
+  top: 60px;
+  left: 124px;
+  -webkit-text-stroke: 2px #3f1651;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 700;
+  color: #3f1651;
+  font-size: 36px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.intro .frame-17 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  top: 24px;
+  left: 1078px;
+}
+
+.intro .frame-18 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.intro .rectangle-3 {
+  position: relative;
+  width: 12px;
+  height: 2px;
+  background-color: var(--brand-color);
+}
+
+.intro .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Open Sans Hebrew-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--brand-color);
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+
+:root {
+  --brand-color: rgba(156, 53, 135, 1);
+  --primary-contrast: rgba(255, 255, 255, 1);
+  --field-label-font-family: "SF Pro Text", Helvetica;
+  --field-label-font-weight: 500;
+  --field-label-font-size: 14px;
+  --field-label-letter-spacing: 0px;
+  --field-label-line-height: normal;
+  --field-label-font-style: normal;
+  --variable-collection: rgba(255, 255, 255, 1);
+  --variable-collection-accent-color: rgba(229, 63, 113, 1);
+  --variable-collection-duplicate: rgba(255, 255, 255, 1);
+  --variable-collection-background-color: rgba(252, 249, 251, 1);
+  --variable-collection-word-color: rgba(67, 67, 67, 1);
+  --variable-collection-line: rgba(193, 194, 195, 1);
+  --variable-collection-line-2: rgba(179, 179, 180, 1);
+  --color-system-fill-fillblock: rgba(247, 248, 250, 1);
+  --color-system-UX-uxhover: rgba(35, 40, 51, 0.06);
+  --color-system-UX-uxactive: rgba(35, 40, 51, 0.12);
+}
+
+/*
+
+To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+
+<body data-color-system-mode="light">
+    <!-- the rest of your content -->
+</body>
+
+You can apply the theme on any DOM node, not just the `body`
+
+*/
+
+[data-color-system-mode="light"] {
+  --color-system-fill-fillblock: rgba(247, 248, 250, 1);
+  --color-system-UX-uxhover: rgba(35, 40, 51, 0.06);
+  --color-system-UX-uxactive: rgba(35, 40, 51, 0.12);
+}
+
+[data-color-system-mode="dark"] {
+  --color-system-fill-fillblock: rgba(39, 48, 71, 1);
+  --color-system-UX-uxhover: rgba(255, 255, 255, 0.08);
+  --color-system-UX-uxactive: rgba(255, 255, 255, 0.12);
+}
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url("https://fonts.googleapis.com/css?family=Poppins:700,600|Roboto:500|Open+Sans:700");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
+}
+@font-face {
+  font-family: "Open Sans Hebrew-Bold";
+  src: url("https://anima-uploads.s3.amazonaws.com/5afa8ed32dd930000b33d32a/OpenSansHebrew-Bold.ttf") format("truetype");
+}

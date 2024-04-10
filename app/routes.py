@@ -379,4 +379,48 @@ def report_fake():
 
 
 
+@app.route('/ranking', methods=['GET'])
+def ranking():
+    # Query the database for all users
+    users = User.query.all()
 
+    # Initialize an empty list to store the user data
+    user_data = []
+
+    # Iterate over each user
+    for user in users:
+        # Get all questions created by the user
+        questions = Question.query.filter_by(creator_id=user.id).all()
+
+        # Initialize counters for the total number of answers and correct answers
+        total_answers = 0
+        correct_answers = 0
+
+        # Iterate over each question
+        for question in questions:
+            # Get all answers for the question
+            answers = Answer.query.filter_by(question_id=question.id).all()
+
+            # Increment the total number of answers by the number of answers for the question
+            total_answers += len(answers)
+
+            # Get all correct answers for the question
+            correct_answers += len([answer for answer in answers if answer.is_correct])
+
+        # Calculate the difficulty of the questions created by the user
+        difficulty = 100 * correct_answers / total_answers if total_answers > 0 else 0
+        # Do rounding
+        difficulty = round(difficulty, 2)
+
+        # Append the user data to the list
+        user_data.append({
+            'username': user.username,
+            'difficulty': difficulty
+        })
+
+    # Sort the user data by difficulty in descending order and get the top 5
+    top_users = sorted(user_data, key=lambda x: x['difficulty'], reverse=True)[:5]
+
+    # Render the ranking.html template and pass the top users to it
+    # pass the top users and their difficulty levels to the template
+    return render_template('ranking.html', top_users=top_users)
