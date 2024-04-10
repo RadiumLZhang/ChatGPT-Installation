@@ -206,33 +206,6 @@ def guesser_selection():
 
 
 
-@app.route('/question/<int:question_id>/answer', methods=['POST'])
-def answer_question(question_id):
-    question = Question.query.get_or_404(question_id)
-    data = request.get_json()
-    user_id = data.get('user_id')
-    content = data.get('content')
-    is_correct = data.get('is_correct', False)  # This needs a method to evaluate correctness
-    answer = Answer(content=content, user_id=user_id, question_id=question.id, is_correct=is_correct)
-    db.session.add(answer)
-
-    # Calculate the new difficulty level
-    n_selected = Answer.query.filter_by(question_id=question.id, is_correct=True).count()
-    n_appear = Answer.query.filter_by(question_id=question.id).count()
-    ratio = n_selected / n_appear if n_appear > 0 else 0
-
-    if ratio < 0.2:
-        difficulty = 'Hard'
-    elif ratio < 0.3:
-        difficulty = 'Medium'
-    else:
-        difficulty = 'Easy'
-
-    # Update the question's difficulty level
-    question.difficulty = difficulty
-
-    db.session.commit()
-    return jsonify({'message': 'Answer submitted successfully'}), 201
 
 @app.route('/get_question_by_difficulty', methods=['POST'])
 def get_question_by_difficulty():
@@ -362,9 +335,11 @@ def report_fake():
     is_correct = user_choice == 1
 
     # Create a new answer object for the user's choice
-    answer = Answer(question_id=question_id, is_correct=is_correct)
-    db.session.add(answer)
-    db.session.commit()
+    answer_question(question_id, is_correct)
+
+    # answer = Answer(question_id=question_id, is_correct=is_correct)
+    # db.session.add(answer)
+    # db.session.commit()
 
     # Get how many users have answered the question
     n_answers = Answer.query.filter_by(question_id=question_id).count()
@@ -376,6 +351,31 @@ def report_fake():
     is_correct = user_choice == 1
     return jsonify({'is_correct': is_correct, 'percentage_correct': percentage_correct, 'n_answers': n_answers, 'n_correct': n_correct})
 
+
+def answer_question(question_id, is_correct):
+
+    answer = Answer(question_id=question_id, is_correct=is_correct)
+    db.session.add(answer)
+
+    # Calculate the new difficulty level
+    n_selected = Answer.query.filter_by(question_id=question_id, is_correct=True).count()
+    n_appear = Answer.query.filter_by(question_id=question_id).count()
+    ratio = n_selected / n_appear if n_appear > 0 else 0
+
+    difficulty = 'New'
+    print("ratio:", ratio)
+    if n_appear > 5:
+        if ratio < 0.2:
+            difficulty = 'Hard'
+        elif ratio < 0.3:
+            difficulty = 'Medium'
+        else:
+            difficulty = 'Easy'
+
+    question = Question.query.get(question_id)
+    # Update the question's difficulty level
+    question.difficulty = difficulty
+    db.session.commit()
 
 
 
