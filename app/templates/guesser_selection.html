@@ -1,10 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/guesser_selection.css') }}">
 </head>
 <body>
+<div class="element">
+    <div class="frame">
+        <div class="overlap-group">
+            <div class="rectangle"></div>
+            <p class="fool-your-friend"><span class="text-wrapper">Fool</span> <span class="span"> your friend</span>
+            </p>
+            <p class="div">AI can generate misinformation and disinformation</p>
+            <div class="rectangle"></div>
+            <div class="frame-wrapper">
+                <div class="frame-2">
+                    <div class="fool-your-friend-2">Fool Your Friend</div>
+                    <p class="p">AI can generate misinformation and disinformation</p>
+                </div>
+            </div>
+            <img
+                    class="element-mesmerizing"
+                    src="https://c.animaapp.com/VlzgyFp1/img/484831-mesmerizing-images-that-ai-generated----xl-1024-v1-0-1-1.png"
+            />
+        </div>
+    </div>
+    <div class="div-2">
+        <div class="frame-3">
+            <div class="feed">
+                <header class="header">
+                    <div class="text-wrapper-2">Home</div>
+                    <div class="divider"></div>
+                </header>
+                <div class="post">
+                    <div class="inner">
+                    </div>
+                </div>
+            </div>
+            <div class="frame-4" data-question-id="{{ question_id }}" data-fake-index="{{fake_index}}">
+
+                {% for content, image_path in contents %}
+                <div class="container">
+                    <div class="side">
+                        <div class="profile-picture-wrapper">
+                            <img class="profile-picture-2"
+                                 src="https://c.animaapp.com/VlzgyFp1/img/profile-picture-4@2x.png"/>
+                        </div>
+                    </div>
+                    <div class="main">
+                        <div class="user">
+                            <div class="text-wrapper-5">Devon Lane</div>
+                            <div class="text-wrapper-6">@johndue</div>
+                        </div>
+                        <div class="content"><p class="text-wrapper-7">{{ content }}</p></div>
+                        <div class="media">
+                            <img class="frame-x" src="{{ image_path }}"/>
+                        </div>
+                        <img class="image" src="https://c.animaapp.com/VlzgyFp1/img/image-3-1.png"/>
+                    </div>
+                    <div class="frame-9" style="display: none;">
+                        <div class="text-2">Fake post!</div>
+                    </div>
+                </div>
+
+                <div class="component-wrapper" style="display: none;">
+                    <div class="component">
+                        <button class="button">Report Fake</button>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+                <div class="row">
+                    <div class="button-wrapper">
+                        <button class="button-2" onclick="window.location.href='/'">Exit</button>
+                    </div>
+                    <div class="component-2">
+                        <button class="button-3" onclick="window.location.href='/guesser'">Play again</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="tweet" style="display: none;">
+            <p class="text-wrapper-8" id="foolTitle">😹 Oops, we fooled you</p>
+            <p class="text-wrapper-8" id="correctTitle">🎉 You’re correct!</p>
+            <p class="unfortunately-you">
+                <span class="text-wrapper-9" id="foolMessage">Unfortunately, you chose wrong. AI can generate misinformation like fake images that can be misleading.<br/><br/>This Image has fooled</span>
+                <span class="text-wrapper-9" id="correctMessage">You win! You’re absolutely good at this. AI can generate misinformation like fake images that can be misleading.<br/><br/>This Image has fooled</span>
+                <span class="text-wrapper-10" id="percentageCorrect">70%</span>
+                <span class="text-wrapper-9"> guessers.</span>
+            </p>
+            <div class="frame-10">
+                <div class="determinate-progress">
+                    <div class="overlap-group-2">
+                        <div class="base-bar">
+                            <div class="frame-11" id="progress"></div>
+                        </div>
+                        <div class="text-wrapper-11"></div>
+                        <div class="gray-cat">
+                            <div class="overlap">
+                                <img class="union" src="https://c.animaapp.com/VlzgyFp1/img/union.svg"/>
+                                <img class="intersect" src="https://c.animaapp.com/VlzgyFp1/img/intersect.svg"/>
+                                <img class="intersect-2" src="https://c.animaapp.com/VlzgyFp1/img/intersect-1.svg"/>
+                                <img class="whisker" src="https://c.animaapp.com/VlzgyFp1/img/whisker@2x.png"/>
+                                <div class="nose-and-mouth">
+                                    <div class="overlap-group-3">
+                                        <img class="nose" src="https://c.animaapp.com/VlzgyFp1/img/nose.svg"/>
+                                        <img class="rectangle-5"
+                                             src="https://c.animaapp.com/VlzgyFp1/img/rectangle-13.svg"/>
+                                        <img class="rectangle-6"
+                                             src="https://c.animaapp.com/VlzgyFp1/img/rectangle-14.svg"/>
+                                        <div class="ellipse"></div>
+                                    </div>
+                                </div>
+                                <img class="ears" src="https://c.animaapp.com/VlzgyFp1/img/ears@2x.png"/>
+                                <div class="eyes">
+                                    <div class="group">
+                                        <div class="ellipse-2"></div>
+                                    </div>
+                                    <div class="ellipse-wrapper">
+                                        <div class="ellipse-2"></div>
+                                    </div>
+                                </div>
+                                <img class="bow-tie" src="https://c.animaapp.com/VlzgyFp1/img/bow-tie.svg"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--                    <img class="divider-2" src="https://c.animaapp.com/VlzgyFp1/img/divider.svg"/>-->
+                <div class="stats">
+                    <div class="stat">
+                        <div class="text-wrapper-12" id="totalAnswers">10</div>
+                        <div class="text-wrapper-13">Played</div>
+                    </div>
+                    <div class="stat">
+                        <div class="text-wrapper-12" id="correctAnswers">03</div>
+                        <div class="text-wrapper-13">Winned</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="{{ url_for('static', filename='js/guesser_selection.js') }}"></script>
+    <script>
+        // Get all the "report fake" buttons
+        const reportFakeButtons = document.querySelectorAll('.button');
+
+        // Add an event listener to each button
+        reportFakeButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                // Get the content of the selected container
+                //const selectedContent = document.querySelectorAll('.text-wrapper-7')[index].textContent;
+
+                // Get the question id
+                const questionId = document.querySelector('.frame-4').dataset.questionId;
+
+                // get the fake index
+                const fakeIndex = document.querySelector('.frame-4').dataset.fakeIndex;
+
+                var userChoice = fakeIndex == index ? 1 : 0;
+                // Call the reportFake function with the selected content and question id
+                reportFake(fakeIndex, userChoice, questionId);
+            });
+        });
+    </script>
 
 </body>
 </html>

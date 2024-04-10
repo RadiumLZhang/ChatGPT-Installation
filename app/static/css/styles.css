@@ -1584,6 +1584,17 @@ input[type="submit"]:enabled {
 }
 
 .element .button {
+  border: 2px solid;
+  border-color: var(--brand-color);
+  display: flex;
+  width: 128px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  border-radius: 8px;
   all: unset;
   box-sizing: border-box;
   margin-top: -3px;
@@ -1596,6 +1607,10 @@ input[type="submit"]:enabled {
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
+}
+
+.element .button:hover {
+  color: #9c358780;
 }
 
 .element .button-wrapper {
@@ -1611,21 +1626,6 @@ input[type="submit"]:enabled {
   padding: 10px;
   position: relative;
   border-radius: 8px;
-}
-
-.element .button-2 {
-  all: unset;
-  box-sizing: border-box;
-  margin-top: -2px;
-  color: #ffffff;
-  position: relative;
-  width: fit-content;
-  font-family: "Open Sans", Helvetica;
-  font-weight: 600;
-  font-size: 22px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: normal;
 }
 
 .element .rectangle-2 {
@@ -1714,9 +1714,9 @@ input[type="submit"]:enabled {
   width: 220px;
   height: 220px;
   overflow: hidden;
-  border: 4px solid;
-  border-color: var(--variable-collection-accent-color);
-  background-image: url(https://c.animaapp.com/R5lxuzpb/img/frame-3921-8@2x.png);
+  /*border: 4px solid;*/
+  /*border-color: var(--variable-collection-accent-color);*/
+  background-image: url(/static/images/1.png);
   position: relative;
   border-radius: 12px;
   background-size: cover;
@@ -1836,7 +1836,19 @@ input[type="submit"]:enabled {
   flex: 0 0 auto;
 }
 
-.element .component-2 {
+.element .button-2 {
+  all: unset;
+  box-sizing: border-box;
+  margin-top: -2px;
+  color: #ffffff;
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
   display: flex;
   width: 128px;
   height: 48px;
@@ -1847,6 +1859,37 @@ input[type="submit"]:enabled {
   position: relative;
   background-color: #9c3587;
   border-radius: 8px;
+}
+
+.element .button-2:hover {
+  all: unset;
+  box-sizing: border-box;
+  margin-top: -2px;
+  color: #9c3587;
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  display: flex;
+  width: 128px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  /*background-color: #ffffff;*/
+  border-radius: 8px;
+  border-color: var(--brand-color);
+}
+
+.selected-frame {
+  border: 4px solid;
+  border-color: var(--variable-collection-accent-color);
 }
 
 

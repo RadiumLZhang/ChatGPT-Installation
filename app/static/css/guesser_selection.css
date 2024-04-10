@@ -1,0 +1,1094 @@
+.element {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  /*display: flex;*/
+  /*flex-direction: row;*/
+  /*justify-content: center;*/
+  /*width: 100%;*/
+}
+
+.element .frame {
+  position: relative;
+  width: 1920px;
+  height: 126px;
+  background-color: #00000099;
+}
+
+.element .overlap-group {
+  position: relative;
+  height: 127px;
+  top: -1px;
+}
+
+.element .rectangle {
+  position: absolute;
+  width: 1920px;
+  height: 126px;
+  top: 1px;
+  left: 0;
+  background-color: #3f1b4e;
+}
+
+.element .fool-your-friend {
+  position: absolute;
+  top: 50px;
+  left: 74px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 34px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .text-wrapper {
+  font-weight: 800;
+}
+
+.element .span {
+  font-family: "Open Sans", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 34px;
+  letter-spacing: 0;
+}
+
+.element .div {
+  position: absolute;
+  top: 62px;
+  left: 361px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 22px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .frame-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  height: 126px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 64px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.element .frame-2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element .fool-your-friend-2 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 800;
+  color: #ffffff;
+  font-size: 34px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .p {
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 22px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .element-mesmerizing {
+  position: absolute;
+  width: 1920px;
+  height: 123px;
+  top: 1px;
+  left: 0;
+  object-fit: cover;
+}
+
+.element .div-2 {
+  display: flex;
+  width: 1920px;
+  height: 1080px;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  background-image: url(/static/background/BG1.svg);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.element .frame-3 {
+  display: inline-flex;
+  flex-direction: column;
+  height: 1080px;
+  align-items: flex-start;
+  position: relative;
+  flex: 0 0 auto;
+  margin-bottom: -1284px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.element .feed {
+  display: flex;
+  flex-direction: column;
+  width: 754px;
+  height: 171px;
+  align-items: flex-start;
+  position: relative;
+  flex: 0 0 auto;
+  /*background-color: #ffffff;*/
+  /*background image*/
+  background-image: url(/static/background/Post.svg);
+  background-size: cover;
+}
+
+.element .header {
+  position: relative;
+  width: 754px;
+  height: 53px;
+  background-color: transparent;
+
+}
+
+.element .text-wrapper-2 {
+  position: absolute;
+  top: 14px;
+  left: 15px;
+  opacity: 0.5;
+  font-family: "SF Compact Display-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--black);
+  font-size: 19px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .divider {
+  position: absolute;
+  width: 598px;
+  height: 1px;
+  top: 52px;
+  left: 0;
+  background-color: var(--dark-7);
+}
+
+.element .dark-theme-toptweet {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 15px;
+  left: 560px;
+}
+
+.element .post {
+  display: flex;
+  flex-direction: column;
+  width: 754px;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 15px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element .inner {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 98px;
+}
+
+.element .avatar-medium {
+  position: absolute;
+  width: 49px;
+  height: 49px;
+  top: 0;
+  left: 0;
+  border-radius: 99999px;
+  overflow: hidden;
+  opacity: 0.5;
+}
+
+.element .profile-picture {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 1px;
+  left: 0;
+  object-fit: cover;
+}
+
+.element .text-wrapper-3 {
+  position: absolute;
+  top: 11px;
+  left: 61px;
+  font-family: "Roboto", Helvetica;
+  font-weight: 400;
+  color: #5b708380;
+  font-size: 20px;
+  letter-spacing: -0.3px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.element .actions {
+  display: flex;
+  width: 180px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  top: 67px;
+  left: 58px;
+}
+
+.element .img {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.element .button-primary {
+  display: flex;
+  width: 77px;
+  height: 39px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 93px;
+  position: absolute;
+  top: 59px;
+  left: 647px;
+  background-color: var(--variable-collection-accent-color);
+  border-radius: 9999px;
+  overflow: hidden;
+  opacity: 0.4;
+}
+
+.element .text-wrapper-4 {
+  position: relative;
+  width: fit-content;
+  margin-top: -6px;
+  margin-bottom: -4px;
+  margin-left: -75.5px;
+  margin-right: -75.5px;
+  font-family: "SF Compact Display-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 15px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 19px;
+  white-space: nowrap;
+}
+
+.element .frame-4 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+}
+
+.element .container {
+  display: flex;
+  /*width: 754px;*/
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 18px 0px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+
+  width: 733px;
+  /*height would be adjusted based on the content*/
+  /*background-color: #00000073;*/
+  /*border-radius: 12px;*/
+  /*border: 3px solid;*/
+  /*border-color: var(--variable-collection-accent-color);*/
+}
+
+.container.selected {
+  border-radius: 12px;
+  border: 3px solid;
+  border-color: var(--variable-collection-accent-color);
+}
+
+/*.container.selected::after {*/
+/*  content: "";*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  border-radius: 10px;*/
+/*  background: rgba(0, 0, 0, 0.5); !* Change this to the color and transparency you want *!*/
+/*}*/
+
+
+.element .side {
+  display: inline-flex;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  flex: 0 0 auto;
+}
+
+.element .profile-picture-wrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 129095.7px;
+  overflow: hidden;
+}
+
+.element .profile-picture-2 {
+  position: absolute;
+  width: 39px;
+  height: 39px;
+  top: 1px;
+  left: 0;
+  object-fit: cover;
+}
+
+.element .main {
+  display: flex;
+  flex-direction: column;
+  width: 657.1px;
+  align-items: flex-start;
+  position: relative;
+}
+
+.element .user {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0px 0px 5.16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.element .text-wrapper-5 {
+  width: fit-content;
+  font-weight: 700;
+  white-space: nowrap;
+  position: relative;
+  margin-top: -1.29px;
+  font-family: "Roboto", Helvetica;
+  color: var(--black);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .text-wrapper-6 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.29px;
+  font-family: "Roboto", Helvetica;
+  font-weight: 400;
+  color: var(--dark-5);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.element .content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.element .text-wrapper-7 {
+  position: relative;
+  flex: 1;
+  margin-top: -1.29px;
+  font-family: "Roboto", Helvetica;
+  font-weight: 400;
+  color: var(--black);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .media {
+  display: flex;
+  align-items: flex-start;
+  padding: 12.91px 0px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  border-radius: 20.66px;
+  overflow: hidden;
+}
+
+.element .frame-5 {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 12px;
+  background-image: url(https://c.animaapp.com/VlzgyFp1/img/frame-3921@2x.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.element .div-wrapper {
+  display: inline-flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: absolute;
+  top: 293px;
+  left: 508px;
+  background-color: #9c3587;
+}
+
+.element .text {
+  margin-top: -1px;
+  font-size: 14px;
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.element .image {
+  position: relative;
+  width: 655px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.element .frame-x {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.element .rectangle-2 {
+  position: absolute;
+  width: 733px;
+  height: 459px;
+  top: 498px;
+  left: 0;
+  background-color: #d9d9d933;
+  border-radius: 12px;
+  border: 2px solid;
+  border-color: var(--variable-collection-accent-color);
+}
+
+.element .rectangle-3 {
+  position: absolute;
+  width: 733px;
+  height: 488px;
+  top: 9px;
+  left: 0;
+  border-radius: 12px;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.element .component-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 754px;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 10px 21px 10px 100px;
+  position: relative;
+  flex: 0 0 auto;
+
+}
+
+.element .component {
+  width: 162px;
+  padding: 16px 10px;
+  background-color: var(--variable-collection-accent-color);
+  border-radius: 16px;
+  display: flex;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+
+.element .button {
+  all: unset;
+  box-sizing: border-box;
+  margin-top: -8px;
+  margin-bottom: -6px;
+  color: #ffffff;
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  background-color: var(--variable-collection-accent-color);
+}
+
+
+.element .frame-7 {
+  background-image: url(https://c.animaapp.com/VlzgyFp1/img/frame-3921-2@2x.png);
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.element .frame-8 {
+  background-image: url(https://c.animaapp.com/VlzgyFp1/img/frame-3921-3@2x.png);
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.element .row {
+  display: flex;
+  width: 754px;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 32px;
+  padding: 24px 0px 124px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+}
+
+.element .button-wrapper {
+  width: 128px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid;
+  border-color: var(--brand-color);
+  display: flex;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+
+.element .button-2 {
+  all: unset;
+  box-sizing: border-box;
+  margin-top: -3px;
+  color: var(--brand-color);
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .component-2 {
+  display: flex;
+  width: 160px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  background-color: #9c3587;
+  border-radius: 8px;
+}
+
+.element .button-3 {
+  all: unset;
+  box-sizing: border-box;
+  margin-top: -2px;
+  color: #ffffff;
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .rectangle-4 {
+  position: absolute;
+  width: 733px;
+  height: 498px;
+  top: 172px;
+  left: 0;
+  background-color: #00000073;
+  border-radius: 12px;
+  border: 2px solid;
+  border-color: var(--variable-collection-accent-color);
+}
+
+.element .frame-9 {
+  display: flex;
+  width: 187px;
+  height: 62px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: absolute;
+  top: 389px;
+  left: 283px;
+  background-color: var(--variable-collection-accent-color);
+  border-radius: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.element .text-2 {
+  font-size: 28px;
+  position: relative;
+  width: fit-content;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.element .tweet {
+  display: flex;
+  flex-direction: column;
+  width: 552px;
+  height: 335px;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 32px 24px;
+  position: absolute;
+  top: 15px;
+  left: 1350px;
+  background-color: var(--pure-white);
+  border-radius: 8px;
+  box-shadow: 0px 8.89px 17.78px #0000001a;
+}
+
+.element .text-wrapper-8 {
+  position: relative;
+  width: 504px;
+  margin-top: -0.44px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 600;
+  color: var(--almost-black);
+  font-size: 28px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .unfortunately-you {
+  position: relative;
+  width: 504px;
+  font-family: "Open Sans", Helvetica;
+  font-weight: 400;
+  color: transparent;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .text-wrapper-9 {
+  color: #000000;
+}
+
+.element .text-wrapper-10 {
+  font-weight: 700;
+  color: #e53f71;
+}
+
+.element .frame-10 {
+  display: flex;
+  flex-direction: column;
+  width: 504px;
+  align-items: flex-start;
+  gap: 10px;
+  padding: -5px 0px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element .determinate-progress {
+  position: relative;
+  width: 503px;
+  height: 12px;
+}
+
+.element .overlap-group-2 {
+  width: 505px;
+  height: 14px;
+  top: -1px;
+  border-radius: 12.48px;
+  position: relative;
+  left: -1px;
+}
+
+.element .base-bar {
+  position: absolute;
+  width: 505px;
+  height: 14px;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  border-radius: 12.48px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #c1c1c3;
+}
+
+.element .frame-11 {
+  width: 437px;
+  height: 12px;
+  border-radius: 12.48px;
+  background: linear-gradient(
+    180deg,
+    rgb(145.08, 53.4, 155.47) 0%,
+    rgb(229, 63, 142.68) 50%,
+    rgb(254.46, 196.32, 109.1) 100%
+  );
+}
+
+.element .text-wrapper-11 {
+  position: absolute;
+  top: 0;
+  left: 349px;
+  font-family: "Roboto", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 10.9px;
+  text-align: right;
+  letter-spacing: 0.23px;
+  line-height: 12.5px;
+  white-space: nowrap;
+}
+
+.element .gray-cat {
+  position: absolute;
+  width: 32px;
+  height: 28px;
+  top: 16px;
+  left: 421px;
+}
+
+.element .overlap {
+  position: relative;
+  width: 34px;
+  height: 28px;
+  left: -1px;
+}
+
+.element .union {
+  position: absolute;
+  width: 29px;
+  height: 26px;
+  top: 0;
+  left: 2px;
+}
+
+.element .intersect {
+  width: 16px;
+  left: 2px;
+  position: absolute;
+  height: 17px;
+  top: 0;
+}
+
+.element .intersect-2 {
+  width: 15px;
+  left: 16px;
+  position: absolute;
+  height: 17px;
+  top: 0;
+}
+
+.element .whisker {
+  position: absolute;
+  width: 34px;
+  height: 8px;
+  top: 12px;
+  left: 0;
+}
+
+.element .nose-and-mouth {
+  position: absolute;
+  width: 4px;
+  height: 3px;
+  top: 15px;
+  left: 15px;
+}
+
+.element .overlap-group-3 {
+  width: 5px;
+  height: 4px;
+  position: relative;
+  left: -1px;
+}
+
+.element .nose {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  top: 0;
+  left: 1px;
+}
+
+.element .rectangle-5 {
+  position: absolute;
+  width: 3px;
+  height: 4px;
+  top: 0;
+  left: 0;
+}
+
+.element .rectangle-6 {
+  position: absolute;
+  width: 3px;
+  height: 4px;
+  top: 0;
+  left: 2px;
+}
+
+.element .ellipse {
+  position: absolute;
+  top: 0;
+  left: 3px;
+  border-radius: 0.24px;
+  width: 1px;
+  height: 1px;
+  background-color: #ffffff;
+}
+
+.element .ears {
+  position: absolute;
+  width: 20px;
+  height: 6px;
+  top: 1px;
+  left: 7px;
+  mix-blend-mode: multiply;
+}
+
+.element .eyes {
+  position: absolute;
+  width: 17px;
+  height: 4px;
+  top: 11px;
+  left: 9px;
+}
+
+.element .group {
+  left: 0;
+  position: absolute;
+  width: 3px;
+  height: 4px;
+  top: 0;
+  background-color: #333333;
+  border-radius: 1.65px/1.9px;
+}
+
+.element .ellipse-2 {
+  position: relative;
+  top: 1px;
+  left: 1px;
+  border-radius: 0.51px;
+  width: 1px;
+  height: 1px;
+  background-color: #ffffff;
+}
+
+.element .ellipse-wrapper {
+  left: 13px;
+  position: absolute;
+  width: 3px;
+  height: 4px;
+  top: 0;
+  background-color: #333333;
+  border-radius: 1.65px/1.9px;
+}
+
+.element .bow-tie {
+  position: absolute;
+  width: 9px;
+  height: 6px;
+  top: 22px;
+  left: 13px;
+}
+
+.element .divider-2 {
+  position: relative;
+  width: 503px;
+  height: 1px;
+}
+
+.element .stats {
+  display: flex;
+  width: 504px;
+  align-items: flex-start;
+  gap: 11.11px;
+  position: relative;
+  flex: 0 0 auto;
+  margin-bottom: -13px;
+}
+
+.element .stat {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2.22px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element .text-wrapper-12 {
+  position: relative;
+  width: fit-content;
+  margin-top: -0.44px;
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  color: var(--almost-black);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element .text-wrapper-13 {
+  position: relative;
+  width: fit-content;
+  margin-top: -0.44px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: var(--dark-grey);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+
+:root {
+  --brand-color: rgba(156, 53, 135, 1);
+  --black: rgba(15, 20, 25, 1);
+  --white: rgba(255, 255, 255, 1);
+  --dark-5: rgba(91, 112, 131, 1);
+  --almost-black: rgba(20, 23, 26, 1);
+  --dark-grey: rgba(101, 119, 134, 1);
+  --dark-7: rgba(235, 238, 240, 1);
+  --pure-white: rgba(255, 255, 255, 1);
+  --primary-blue: rgba(29, 161, 242, 1);
+  --button-font-family: "Roboto", Helvetica;
+  --button-font-weight: 500;
+  --button-font-size: 14px;
+  --button-letter-spacing: 0.30000001192092896px;
+  --button-line-height: 16px;
+  --button-font-style: normal;
+  --variable-collection: rgba(255, 255, 255, 1);
+  --variable-collection-accent-color: rgba(229, 63, 113, 1);
+  --variable-collection-duplicate: rgba(255, 255, 255, 1);
+  --variable-collection-background-color: rgba(252, 249, 251, 1);
+  --variable-collection-word-color: rgba(67, 67, 67, 1);
+  --variable-collection-line: rgba(193, 194, 195, 1);
+  --variable-collection-line-2: rgba(179, 179, 180, 1);
+  --color-system-fill-fillblock: rgba(247, 248, 250, 1);
+  --color-system-UX-uxhover: rgba(35, 40, 51, 0.06);
+  --color-system-UX-uxactive: rgba(35, 40, 51, 0.12);
+}
+
+/*
+
+To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+
+<body data-color-system-mode="light">
+    <!-- the rest of your content -->
+</body>
+
+You can apply the theme on any DOM node, not just the `body`
+
+*/
+
+[data-color-system-mode="light"] {
+  --color-system-fill-fillblock: rgba(247, 248, 250, 1);
+  --color-system-UX-uxhover: rgba(35, 40, 51, 0.06);
+  --color-system-UX-uxactive: rgba(35, 40, 51, 0.12);
+}
+
+[data-color-system-mode="dark"] {
+  --color-system-fill-fillblock: rgba(39, 48, 71, 1);
+  --color-system-UX-uxhover: rgba(255, 255, 255, 0.08);
+  --color-system-UX-uxactive: rgba(255, 255, 255, 0.12);
+}
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:800,600,400,700|Roboto:500,400,700,var(--button-font-weight)|Inter:400,600");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
+}
+@font-face {
+  font-family: "SF Compact Display-Bold";
+  src: url("https://anima-uploads.s3.amazonaws.com/5c40dcb036cd940009ff6a60/SFCompactDisplay-Bold.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: "SF Compact Display-Medium";
+  src: url("https://anima-uploads.s3.amazonaws.com/projects/65c7214062e1f33d686a84b8/fonts/sf-compact-display-medium-5864711817c30.otf")
+    format("opentype");
+}

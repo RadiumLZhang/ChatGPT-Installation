@@ -76,9 +76,11 @@ def main(prompt):
     command = (
         f"cd ~/stable-diffusion; "
         f"conda activate ldm; "
-        f"python scripts/txt2img.py --W 256 --H 256 --prompt '{prompt}';"
+        f"python scripts/txt2img.py --prompt '{prompt}';"
+
     )
 
+    # f"python scripts/txt2img.py --W 256 --H 256 --prompt '{prompt}';"
     # Execute the concatenated command
     output, error, ssh = ssh_command(hostname, username, password, command)
 
