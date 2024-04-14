@@ -715,11 +715,12 @@
   display: flex;
   flex-direction: column;
   width: 552px;
-  height: 335px;
+  height: 400px;
   align-items: flex-start;
   gap: 16px;
   padding: 32px 24px;
-  position: absolute;
+  position: fixed;
+  z-index: 999;
   top: 15px;
   left: 1350px;
   background-color: var(--pure-white);
@@ -828,7 +829,7 @@
   position: absolute;
   width: 32px;
   height: 28px;
-  top: 16px;
+  top: -7px;
   left: 421px;
 }
 
@@ -1021,6 +1022,16 @@
   font-size: 18px;
   letter-spacing: 0;
   line-height: normal;
+}
+
+.element .button-floating-wrapper {
+  width: 504px;
+  position: relative;
+  display: flex;
+  padding: 10px;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 20px;
 }
 
 
