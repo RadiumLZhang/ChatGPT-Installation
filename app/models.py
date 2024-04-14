@@ -42,7 +42,7 @@ class Question(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	prompt = db.Column(db.String(200), nullable=False)
 	content = db.Column(db.String(200), nullable=False)  # Add this line
-	theme_id = db.Column(db.Integer, db.ForeignKey('theme.id'), nullable=False)
+	theme_id = db.Column(db.Integer, db.ForeignKey('theme.id'), nullable=True)
 	creator_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	create_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 	generated_image_id = db.Column(db.Integer, db.ForeignKey('image.id'), nullable=True)
