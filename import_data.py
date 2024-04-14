@@ -32,7 +32,7 @@ def import_fake_questions_from_csv(csv_path):
 
 	with app.app_context():
 		# find the user "Fool Your Friend" and set the theme_id to 1, if user not exist, create a new user
-		user = User.query.filter_by(username='Fool Your Friend Team').first()
+		user = User.query.filter_by(username='Fool Your Friend').first()
 		if user is None:
 			user = User(username='Fool Your Friend')
 			db.session.add(user)
