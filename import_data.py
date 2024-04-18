@@ -29,7 +29,6 @@ def import_themes_from_csv(csv_path):
 def import_fake_questions_from_csv(csv_path):
 	app = create_app()
 
-
 	with app.app_context():
 		# find the user "Fool Your Friend" and set the theme_id to 1, if user not exist, create a new user
 		user = User.query.filter_by(username='Fool Your Friend').first()
