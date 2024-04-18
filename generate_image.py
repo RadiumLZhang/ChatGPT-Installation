@@ -68,8 +68,8 @@ def sftp_transfer(ssh, remote_path, local_path):
 
 def main(prompt):
     # Server details
-    hostname = os.getenv('GT_SERVER')  # Get the hostname from environment variable
-    username = os.getenv('GT_USER')  # Get the username from environment variable
+    hostname = os.getenv('GT_DOMAIN')  # Get the hostname from environment variable
+    username = os.getenv('GT_USERNAME')  # Get the username from environment variable
     password = os.getenv('GT_PASSWORD')  # Get the password from environment variable
 
     # Concatenate commands into a single string

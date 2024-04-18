@@ -13,7 +13,13 @@ conda activate env-ssh
 ```
 pip install -r requirements.txt
 ```
-4. run the script
+4. set the environment variable
+```
+export GT_USERNAME=your_username
+export GT_PASSWORD=your_password
+export GT_domain=your_domain
+```
+5. run the script
 ```
 python3 run.py
 ```
