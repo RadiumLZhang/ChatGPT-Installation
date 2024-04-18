@@ -68,16 +68,17 @@ def sftp_transfer(ssh, remote_path, local_path):
 
 def main(prompt):
     # Server details
-    hostname = "gpu-stats-2021.iac.gatech.edu"
-    username = "lzhang793"
-    password = "Vanessa0729"
+    hostname = os.getenv('GT_SERVER')  # Get the hostname from environment variable
+    username = os.getenv('GT_USER')  # Get the username from environment variable
+    password = os.getenv('GT_PASSWORD')  # Get the password from environment variable
 
     # Concatenate commands into a single string
     command = (
+        f"source ~/anaconda3/etc/profile.dc/conda.sh;"
+        f"conda init bash;  "
         f"cd ~/stable-diffusion; "
         f"conda activate ldm; "
         f"python scripts/txt2img.py --prompt '{prompt}';"
-
     )
 
     # f"python scripts/txt2img.py --W 256 --H 256 --prompt '{prompt}';"

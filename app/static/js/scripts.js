@@ -1,9 +1,13 @@
 
 document.getElementById('generate-btn').addEventListener('click', function () {
     var generateBtn = document.getElementById('generate-btn');
-    generateBtn.style.display = 'none';
+    // generateBtn.style.display = 'none';
+    generateBtn.disabled = true;
 
     var prompt = document.getElementById('suggested-prompt').value;
+
+    // add "realistic photography style," to the prompt
+    prompt += ', realistic photography style';
 
     // Make a POST request to the backend server
     fetch('/generate', {
@@ -100,10 +104,12 @@ document.getElementById('generate-btn').addEventListener('click', function () {
                 });
 
                 generatedImagesContainer.appendChild(frame8Div);
+                generateBtn.disabled = false;
             });
 
             // Show confirm button after all images have been displayed
             document.getElementById('confirm-btn').style.display = 'block';
+
         })
         .catch(error => {
             console.error('Caught an error:', error);

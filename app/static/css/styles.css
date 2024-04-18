@@ -1716,7 +1716,7 @@ input[type="submit"]:enabled {
   overflow: hidden;
   /*border: 4px solid;*/
   /*border-color: var(--variable-collection-accent-color);*/
-  background-image: url(/static/images/1.png);
+  background-image: url(/static/background/11.svg);
   position: relative;
   border-radius: 12px;
   background-size: cover;
@@ -1759,7 +1759,7 @@ input[type="submit"]:enabled {
   height: 220px;
   border-radius: 12px;
   overflow: hidden;
-  background-image: url(/static/images/3.png);
+  background-image: url(/static/background/2.svg);
   background-size: cover;
   background-position: 50% 50%;
 }
@@ -1768,7 +1768,7 @@ input[type="submit"]:enabled {
   width: 220px;
   height: 220px;
   overflow: hidden;
-  background-image: url(/static/images/8.png);
+  background-image: url(/static/background/3.svg);
   position: relative;
   border-radius: 12px;
   background-size: cover;
