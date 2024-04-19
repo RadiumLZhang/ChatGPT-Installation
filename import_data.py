@@ -119,8 +119,6 @@ def clean_nonused_images():
         recursive_remove_unused_images(GENERATED_FOLDER, used_image_paths)
 
 
-
-
 def recursive_remove_unused_images(image_folder, used_image_paths):
     for image_path in os.listdir(image_folder):
         if os.path.isdir(os.path.join(image_folder, image_path)):

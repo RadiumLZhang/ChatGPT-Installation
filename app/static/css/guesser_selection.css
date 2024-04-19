@@ -1035,6 +1035,18 @@
 }
 
 
+#zoomed-image {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    z-index: 1000;
+    display: none; /* Initially hidden */
+}
+
+
 :root {
   --brand-color: rgba(156, 53, 135, 1);
   --black: rgba(15, 20, 25, 1);
