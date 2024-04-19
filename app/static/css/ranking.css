@@ -29,11 +29,21 @@
   object-fit: cover;
 }
 
-.intro .div-wrapper {
+.intro .div-outside{
   position: absolute;
+  top: 161px;
+  align-items: center;
+  display: flex; /* Change this line */
+  flex-direction: column;
+  gap: 26px;
+}
+
+.intro .div-wrapper {
+  /*position: absolute;*/
+  position: relative;
   width: 962px;
   height: 72px;
-  top: 161px;
+  /*top: 161px;*/
   left: 129px;
   background-color: #ffffff;
   border-radius: 12px;

@@ -14,7 +14,7 @@
             />
 
             <p class="our-top-rankings">OUR TOP RANKINGS</p>
-
+            <div class="div-outside">
             {% for user in top_users %}
             <div class="div-wrapper">
                 <div class="div">
@@ -37,8 +37,8 @@
                                 <div class="overlap">
                                     <div class="determinate-progress">
                                         <div class="overlap-group-2">
-                                            <div class="base-bar" style="width: {{ user.difficulty }}%">
-                                                <div class="frame-6"></div>
+                                            <div class="base-bar" >
+                                                <div class="frame-6" style="width: {{ user.difficulty }}%"></div>
                                             </div>
                                             <div class="gray-cat" style="left: {{ user.difficulty }}%">
 
@@ -88,7 +88,7 @@
                 </div>
             </div>
             {% endfor %}
-
+            </div>
             <div class="frame-17" onclick="window.location.href='/'">
                 <img class="square" src="https://c.animaapp.com/ykC4692T/img/square.svg"/>
                 <div class="text-wrapper-3">Main Menu</div>

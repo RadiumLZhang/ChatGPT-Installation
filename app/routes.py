@@ -420,6 +420,7 @@ def ranking():
 
     # Sort the user data by difficulty in descending order and get the top 5
     top_users = sorted(user_data, key=lambda x: x['difficulty'], reverse=True)[:5]
+    print("Top users:", top_users)
 
     # Render the ranking.html template and pass the top users to it
     # pass the top users and their difficulty levels to the template

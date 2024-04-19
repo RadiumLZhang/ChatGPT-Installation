@@ -15,7 +15,10 @@ def create_app():
 def import_themes_from_csv(csv_path):
 
 	app = create_app()
+	# clear all the Theme in the database Theme
+
 	with app.app_context():
+		db.session.query(Theme).delete()
 		with open(csv_path, newline='') as csvfile:
 			reader = csv.DictReader(csvfile)
 			for row in reader:
@@ -40,6 +43,19 @@ def import_fake_questions_from_csv(csv_path):
 			reader = csv.DictReader(csvfile)
 			for row in reader:
 				# Create new image
+				# [1] if the image_path is not exist in the database, create a new image
+				# [2] if the image_path is exist in the database, get the image_id, and renew the question with the image_id
+				image = Image.query.filter_by(image_path=row['image_path']).first()
+				if image is not None:
+					question = Question.query.filter_by(generated_image_id=image.id).first()
+					if question is not None:
+						# renew the question with the image_id
+						question.prompt = row['prompt']
+						question.content = row['post_content']
+						db.session.add(question)
+						continue
+
+				# [3] if the image_path is not exist in the database, create a new image
 				image = Image(image_path=row['image_path'], theme_id=1, is_generated=True)
 				db.session.add(image)
 				db.session.flush()
@@ -55,6 +71,16 @@ def import_posts_from_csv(csv_path):
 		with open(csv_path, newline='') as csvfile:
 			reader = csv.DictReader(csvfile)
 			for row in reader:
+				# [1] if the image_path is not exist in the database, create a new image
+				# [2] if the image_path is exist in the database, get the image_id, and renew the question with the image_id
+				image = Image.query.filter_by(image_path=row['image_path']).first()
+				if image is not None:
+					post = Post.query.filter_by(image_id=image.id).first()
+					if post is not None:
+						# renew the post with the image_id
+						post.content = row['post_content']
+						db.session.add(post)
+						continue
 				image = Image(image_path=row['image_path'], theme_id=row['theme_id'], is_generated=False)
 				db.session.add(image)
 				db.session.flush()  # This is to get the id of the newly created Image object
