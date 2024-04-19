@@ -131,7 +131,7 @@ def recursive_remove_unused_images(image_folder, used_image_paths):
             # convert the full_image_path to the relative path under STATIC_FOLDER
             relative_image_path = '/' + os.path.relpath(full_image_path, APP_ROOT)
             print("relative_image_path: ", relative_image_path)
-            if image_path not in used_image_paths:
+            if relative_image_path not in used_image_paths:
                 os.remove(os.path.join(image_folder, image_path))
                 print("remove image: ", image_path)
 
@@ -139,7 +139,7 @@ def recursive_remove_unused_images(image_folder, used_image_paths):
 
 if __name__ == '__main__':
     # print('Importing themes and images from CSV')
-    # import_themes_from_csv('data/themes.csv')
-    # import_fake_questions_from_csv('data/fake_posts.csv')
-    # import_posts_from_csv('data/posts.csv')
+    import_themes_from_csv('data/themes.csv')
+    import_fake_questions_from_csv('data/fake_posts.csv')
+    import_posts_from_csv('data/posts.csv')
     clean_nonused_images()
