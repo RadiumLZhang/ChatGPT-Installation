@@ -72,6 +72,10 @@ def main(prompt):
     username = os.getenv('GT_USERNAME')  # Get the username from environment variable
     password = os.getenv('GT_PASSWORD')  # Get the password from environment variable
 
+    print("hostname:", hostname)
+    print("username:", username)
+    print("password:", password)
+
     # Concatenate commands into a single string
     command = (
         f"source ~/anaconda3/etc/profile.dc/conda.sh;"

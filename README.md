@@ -17,7 +17,7 @@ pip install -r requirements.txt
 ```
 export GT_USERNAME=your_username
 export GT_PASSWORD=your_password
-export GT_domain=your_domain
+export GT_DOMAIN=your_domain
 ```
 5. run the script
 ```
