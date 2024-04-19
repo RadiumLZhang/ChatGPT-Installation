@@ -69,17 +69,6 @@
                     </div>
                 </div>
                 {% endfor %}
-
-
-<!--                <div class="row">-->
-<!--                    <div class="button-wrapper">-->
-<!--                        <button class="button-2" onclick="window.location.href='/'">Exit</button>-->
-<!--                    </div>-->
-<!--                    <div class="component-2">-->
-<!--                        <button class="button-3" onclick="window.location.href='/guesser'">Play again</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-
             </div>
         </div>
         <div class="tweet" style="display: none;">
@@ -154,8 +143,10 @@
         </div>
 
     </div>
+    <img id="zoomed-image" style="display: none;" />
     <script src="{{ url_for('static', filename='js/guesser_selection.js') }}"></script>
     <script>
+
         // Get all the "report fake" buttons
         const reportFakeButtons = document.querySelectorAll('.button');
 
@@ -176,7 +167,9 @@
                 reportFake(fakeIndex, userChoice, questionId);
             });
         });
+
     </script>
+
 
 </body>
 </html>
