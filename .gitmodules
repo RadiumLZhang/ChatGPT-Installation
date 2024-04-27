@@ -1,0 +1,3 @@
+[submodule "civitai-python"]
+	path = civitai-python
+	url = git@github.com:civitai/civitai-python.git
