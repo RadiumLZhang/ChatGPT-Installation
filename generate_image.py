@@ -1,127 +1,170 @@
-import warnings
-from cryptography.utils import CryptographyDeprecationWarning
-with warnings.catch_warnings():
-    warnings.filterwarnings('ignore', category=CryptographyDeprecationWarning)
-    import paramiko
+# @title Install requirements
+from io import BytesIO
+import IPython
+import json
 import os
-import stat
-def ssh_command(hostname, username, password, command):
-    # Create an SSH client instance
-    ssh = paramiko.SSHClient()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-
-    try:
-        # Connect to the server
-        ssh.connect(hostname, username=username, password=password)
-
-        # Execute the command
-        stdin, stdout, stderr = ssh.exec_command(command)
-
-        # Read and return the output
-        output = stdout.read().decode()
-        error = stderr.read().decode()
-
-        return output, error, ssh
-
-    except paramiko.AuthenticationException:
-        return None, "Authentication failed. Please check your credentials.", None
-    except Exception as e:
-        return None, str(e), None
+from PIL import Image
+import requests
+import time
 
 
-def sftp_transfer(ssh, remote_path, local_path):
-    try:
-        # Create a transport object based on the existing SSH connection
-        transport = ssh.get_transport()
+import json
 
-        # Create an SFTP client instance
-        sftp = paramiko.SFTPClient.from_transport(transport)
+# Load the config.json file
+with open('config.json') as f:
+    config = json.load(f)
 
-        # Recursive function to transfer directories and files
-        def _transfer_files(remote_dir, local_dir):
-            items = sftp.listdir_attr(remote_dir)
-            # Sort the items by their modification time (mtime)
-            items.sort(key=lambda item: item.st_mtime)
-            # Only keep the last 4 items
-            items = items[-5:]
-            for item in items:
-                remote_item = os.path.join(remote_dir, item.filename)
-                local_item = os.path.join(local_dir, item.filename)
+# Get the host URL and STABILITY_KEY from the config
 
-                if stat.S_ISDIR(item.st_mode):
-                    os.makedirs(local_item, exist_ok=True)
-                    _transfer_files(remote_item, local_item)
-                else:
-                    sftp.get(remote_item, local_item)
-        # Call the recursive function to transfer files
-        _transfer_files(remote_path, local_path)
+STABILITY_KEY = config['sdxl']['stability_key']
 
-        return True, None
-    except Exception as e:
-        return False, str(e)
-    finally:
-        # Close the SFTP connection
-        if 'sftp' in locals():
-            sftp.close()
-        if 'transport' in locals():
-            transport.close()
+def send_generation_request(host,params,):
 
-def main(prompt):
-    # Server details
-    hostname = os.getenv('GT_DOMAIN')  # Get the hostname from environment variable
-    username = os.getenv('GT_USERNAME')  # Get the username from environment variable
-    password = os.getenv('GT_PASSWORD')  # Get the password from environment variable
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": f"Bearer {STABILITY_KEY}"
+    }
 
-    print("hostname:", hostname)
-    print("username:", username)
-    print("password:", password)
+    # Encode parameters
 
-    # Concatenate commands into a single string
-    command = (
-        f"source ~/anaconda3/etc/profile.dc/conda.sh;"
-        f"conda init bash;  "
-        f"cd ~/stable-diffusion; "
-        f"conda activate ldm; "
-        f"python scripts/txt2img.py --prompt '{prompt}';"
+
+    # Send request
+    print(f"Sending REST request to {host}...")
+    response = requests.request(
+        "POST",
+        host,
+        headers=headers,
+        files={"none": ''},
+        data=params
     )
 
-    # f"python scripts/txt2img.py --W 256 --H 256 --prompt '{prompt}';"
-    # Execute the concatenated command
-    output, error, ssh = ssh_command(hostname, username, password, command)
 
-    if error:
-        print("Error:", error)
-        # TODO: global seed is 42, change to random seed
-        # TODO: 'Error: Global seed set to 42', not an error, it's a warning
-        #return output, error
+    # Check for errors
+    if not response.ok:
+        raise Exception(f"HTTP {response.status_code}: {response.text}")
 
-    # Now, perform SFTP transfer
-    remote_path = "/home/lzhang793/stable-diffusion/outputs/txt2img-samples/"
-    local_path = os.path.expanduser("~/ChatGPT-Installation/app/static/generated/")
-
-    success, sftp_error = sftp_transfer(ssh, remote_path, local_path)
-
-    # Close the SSH connection
-    ssh.close()
-
-    if success:
-        return output, None
-    else:
-        return output, sftp_error
+    return response
 
 
+def send_async_generation_request(host, params,):
+    headers = {
+
+        "Accept": "application/json",
+        "Authorization": f"Bearer {STABILITY_KEY}"
+    }
+
+    # Encode parameters
+    files = {}
+    if "init_image" in params:
+        init_image = params.pop("init_image")
+        files = {"image": open(init_image, 'rb')}
+
+    # Send request
+    print(f"Sending REST request to {host}...")
+    response = requests.post(
+        host,
+        headers=headers,
+        files=files,
+        data=params
+    )
+    if not response.ok:
+        raise Exception(f"HTTP {response.status_code}: {response.text}")
+
+    # Process async response
+    response_dict = json.loads(response.text)
+    generation_id = response_dict.get("id", None)
+    assert generation_id is not None, "Expected id in response"
+
+    # Loop until result or timeout
+    timeout = int(os.getenv("WORKER_TIMEOUT", 500))
+    start = time.time()
+    status_code = 202
+    while status_code == 202:
+        response = requests.get(
+            f"{host}/result/{generation_id}",
+            headers={
+                **headers,
+                "Accept": "image/*"
+            },
+        )
+
+        if not response.ok:
+            raise Exception(f"HTTP {response.status_code}: {response.text}")
+        status_code = response.status_code
+        time.sleep(10)
+        if time.time() - start > timeout:
+            raise Exception(f"Timeout after {timeout} seconds")
+
+    return response
+
+
+def generate(prompt):
+
+    host = config['sdxl']['host']
+    model = config['sdxl']['model']
+    aspect_ratio = config['sdxl']['aspect_ratio']
+    seed = config['sdxl']['seed']
+    negative_prompt = config['sdxl']['negative_prompt']
+    output_format = config['sdxl']['output_format']
+    style_preset = config['sdxl']['style_preset']
+    # params = {
+    #     "prompt": prompt,
+    #     "negative_prompt": negative_prompt if model == "sd3" else "",
+    #
+    #     "aspect_ratio": aspect_ratio,
+    #     "seed": seed,
+    #     "output_format": output_format,
+    #     "model": model,
+    #     "mode": "text-to-image",
+    #     "style_preset": style_preset
+    # }
+
+    params = json.dumps({
+        "key":  "",
+        "model_id":  "anything-v5",
+        "prompt":  "actual 8K portrait photo of gareth person, portrait, happy colors, bright eyes, clear eyes, warm smile, smooth soft skin, big dreamy eyes, beautiful intricate colored hair, symmetrical, anime wide eyes, soft lighting, detailed face, by makoto shinkai, stanley artgerm lau, wlop, rossdraws, concept art, digital painting, looking into camera",
+        "negative_prompt":  "painting, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, deformed, ugly, blurry, bad anatomy, bad proportions, extra limbs, cloned face, skinny, glitchy, double torso, extra arms, extra hands, mangled fingers, missing lips, ugly face, distorted face, extra legs, anime",
+        "width":  "512",
+        "height":  "512",
+        "samples":  "1",
+        "num_inference_steps":  "30",
+        "safety_checker":  "no",
+        "enhance_prompt":  "yes",
+        "seed":  None,
+        "guidance_scale":  7.5,
+        "multi_lingual":  "no",
+        "panorama":  "no",
+        "self_attention":  "no",
+        "upscale":  "no",
+        "embeddings":  "embeddings_model_id",
+        "lora":  "lora_model_id",
+        "webhook":  None,
+        "track_id":  None
+    })
+
+    response = send_generation_request(
+        host,
+        params
+    )
+
+    # Decode response
+    output_image = response.content
+    finish_reason = response.headers.get("finish-reason")
+    seed = response.headers.get("seed")
+
+    # Check for NSFW classification
+    if finish_reason == 'CONTENT_FILTERED':
+        raise Warning("Generation failed NSFW classifier")
+
+    # Save and display result
+    generated = f"generated_{seed}.{output_format}"
+    with open(generated, "wb") as f:
+        f.write(output_image)
+    print(f"Saved image {generated}")
+
+
+
+# define main
 if __name__ == "__main__":
-    print("generate_image.py called")
-    import sys
-
-    if len(sys.argv) != 2:
-        print("Usage: python generate_image.py <prompt>")
-        sys.exit(1)
-
-    prompt = sys.argv[1]
-    output, error = main(prompt)
-
-    if output:
-        print("Output:", output)
-    if error:
-        print("Error:", error)
+    generate(["This dreamlike digital art captures a vibrant, kaleidoscopic bird in a lush rainforest"])
