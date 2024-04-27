@@ -49,7 +49,7 @@ def generate_image():
         response = requests.post(
             f"https://api.stability.ai/v2beta/stable-image/generate/core",
             headers={
-                "authorization": f"Bearer sk-MYAPIKEY",
+                "authorization": f"Bearer {config['stability_key']}",
                 "accept": "image/*"
             },
             files={"none": ''},
