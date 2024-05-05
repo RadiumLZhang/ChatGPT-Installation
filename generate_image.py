@@ -1,170 +1,63 @@
-# @title Install requirements
-from io import BytesIO
-import IPython
-import json
-import os
-from PIL import Image
 import requests
-import time
+from app import prodia_config
+
+current_api_keys_index = []
+
+def generate_request(prompt):
+    # loop through the current api keys
+    # if the api key is not exhausted, use it
+    # if the api key is exhausted, move to the next one
+    for i in range(len(current_api_keys_index)):
+        key = prodia_config.api_keys[current_api_keys_index[i]]
+        generate(prompt, key)
 
 
-import json
 
-# Load the config.json file
-with open('config.json') as f:
-    config = json.load(f)
 
-# Get the host URL and STABILITY_KEY from the config
 
-STABILITY_KEY = config['sdxl']['stability_key']
+def generate(prompt, key):
+    url = prodia_config.model_urls["sd"]
 
-def send_generation_request(host,params,):
-
-    headers = {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": f"Bearer {STABILITY_KEY}"
+    payload = {
+        "model": "Realistic_Vision_V5.0.safetensors [614d1063]",
+        "prompt": prompt,
+        "negative_prompt": "",
+        "steps": 20,
+        "cfg_scale": 7,
+        "seed": -1,
+        "sampler": "DPM++ 2M Karras",
+        "width": 512,
+        "height": 512
     }
 
-    # Encode parameters
-
-
-    # Send request
-    print(f"Sending REST request to {host}...")
-    response = requests.request(
-        "POST",
-        host,
-        headers=headers,
-        files={"none": ''},
-        data=params
-    )
-
-
-    # Check for errors
-    if not response.ok:
-        raise Exception(f"HTTP {response.status_code}: {response.text}")
-
-    return response
-
-
-def send_async_generation_request(host, params,):
     headers = {
-
-        "Accept": "application/json",
-        "Authorization": f"Bearer {STABILITY_KEY}"
+        "accept": "application/json",
+        "content-type": "application/json",
+        "X-Prodia-Key": key,
     }
 
-    # Encode parameters
-    files = {}
-    if "init_image" in params:
-        init_image = params.pop("init_image")
-        files = {"image": open(init_image, 'rb')}
+    response = requests.post(url, json=payload, headers=headers)
+    print(response.json())
 
-    # Send request
-    print(f"Sending REST request to {host}...")
-    response = requests.post(
-        host,
-        headers=headers,
-        files=files,
-        data=params
-    )
-    if not response.ok:
-        raise Exception(f"HTTP {response.status_code}: {response.text}")
+def retrieve(jobId):
+    jobId = "be8f99eb-8eb6-48cd-92fe-dd6f925e0756"
+    #url = "https://api.prodia.com/v1/job/jobId"
+    url = "https://api.prodia.com/v1/job/" + jobId
 
-    # Process async response
-    response_dict = json.loads(response.text)
-    generation_id = response_dict.get("id", None)
-    assert generation_id is not None, "Expected id in response"
+    headers = {
+        "accept": "application/json",
+        "X-Prodia-Key": "f5097056-59c6-4fb7-b40a-74f9d75ba1cc"
+    }
 
-    # Loop until result or timeout
-    timeout = int(os.getenv("WORKER_TIMEOUT", 500))
-    start = time.time()
-    status_code = 202
-    while status_code == 202:
-        response = requests.get(
-            f"{host}/result/{generation_id}",
-            headers={
-                **headers,
-                "Accept": "image/*"
-            },
-        )
+    response = requests.get(url, headers=headers)
+    # {"job":"be8f99eb-8eb6-48cd-92fe-dd6f925e0756","status":"succeeded","imageUrl":"https://images.prodia.xyz/be8f99eb-8eb6-48cd-92fe-dd6f925e0756.png"}
 
-        if not response.ok:
-            raise Exception(f"HTTP {response.status_code}: {response.text}")
-        status_code = response.status_code
-        time.sleep(10)
-        if time.time() - start > timeout:
-            raise Exception(f"Timeout after {timeout} seconds")
-
-    return response
-
-
-def generate(prompt):
-
-    host = config['sdxl']['host']
-    model = config['sdxl']['model']
-    aspect_ratio = config['sdxl']['aspect_ratio']
-    seed = config['sdxl']['seed']
-    negative_prompt = config['sdxl']['negative_prompt']
-    output_format = config['sdxl']['output_format']
-    style_preset = config['sdxl']['style_preset']
-    # params = {
-    #     "prompt": prompt,
-    #     "negative_prompt": negative_prompt if model == "sd3" else "",
-    #
-    #     "aspect_ratio": aspect_ratio,
-    #     "seed": seed,
-    #     "output_format": output_format,
-    #     "model": model,
-    #     "mode": "text-to-image",
-    #     "style_preset": style_preset
-    # }
-
-    params = json.dumps({
-        "key":  "",
-        "model_id":  "anything-v5",
-        "prompt":  "actual 8K portrait photo of gareth person, portrait, happy colors, bright eyes, clear eyes, warm smile, smooth soft skin, big dreamy eyes, beautiful intricate colored hair, symmetrical, anime wide eyes, soft lighting, detailed face, by makoto shinkai, stanley artgerm lau, wlop, rossdraws, concept art, digital painting, looking into camera",
-        "negative_prompt":  "painting, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, deformed, ugly, blurry, bad anatomy, bad proportions, extra limbs, cloned face, skinny, glitchy, double torso, extra arms, extra hands, mangled fingers, missing lips, ugly face, distorted face, extra legs, anime",
-        "width":  "512",
-        "height":  "512",
-        "samples":  "1",
-        "num_inference_steps":  "30",
-        "safety_checker":  "no",
-        "enhance_prompt":  "yes",
-        "seed":  None,
-        "guidance_scale":  7.5,
-        "multi_lingual":  "no",
-        "panorama":  "no",
-        "self_attention":  "no",
-        "upscale":  "no",
-        "embeddings":  "embeddings_model_id",
-        "lora":  "lora_model_id",
-        "webhook":  None,
-        "track_id":  None
-    })
-
-    response = send_generation_request(
-        host,
-        params
-    )
-
-    # Decode response
-    output_image = response.content
-    finish_reason = response.headers.get("finish-reason")
-    seed = response.headers.get("seed")
-
-    # Check for NSFW classification
-    if finish_reason == 'CONTENT_FILTERED':
-        raise Warning("Generation failed NSFW classifier")
-
-    # Save and display result
-    generated = f"generated_{seed}.{output_format}"
-    with open(generated, "wb") as f:
-        f.write(output_image)
-    print(f"Saved image {generated}")
-
-
+    if response and response.json()["status"] == "succeeded":
+        print(response.json()["imageUrl"])
+    else:
+        print("Job not completed yet")
 
 # define main
 if __name__ == "__main__":
-    generate(["This dreamlike digital art captures a vibrant, kaleidoscopic bird in a lush rainforest"])
+    #generate(["This dreamlike digital art captures a vibrant, kaleidoscopic bird in a lush rainforest"])
+    retrieve()
