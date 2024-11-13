@@ -1,0 +1,40 @@
+name: Conditional Decryption on PR by RadiumLZhang
+
+on:
+  pull_request:
+    branches:
+      - main  # Target branch for the PR
+
+jobs:
+  decrypt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Check PR Author
+        id: check_author
+        run: |
+          if [ "${{ github.actor }}" != "RadiumLZhang" ]; then
+            echo "This PR is not from the authorized user (RadiumLZhang). Skipping decryption."
+            exit 0
+          fi
+        # If the condition fails (actor is not RadiumLZhang), the job exits early.
+
+      - name: Decrypt prodia_config.py
+        if: steps.check_author.outcome == 'success'
+        env:
+          DECRYPTION_KEY: ${{ secrets.DECRYPTION_KEY }}
+        run: |
+          openssl enc -d -aes-256-cbc -in app/prodia_config.py.enc -out app/prodia_config.py -pass pass:"$DECRYPTION_KEY"
+
+      - name: Confirm Decryption
+        if: steps.check_author.outcome == 'success'
+        run: |
+          if [ -f app/prodia_config.py ]; then echo "Decryption successful"; else echo "Decryption failed"; exit 1; fi
+
+      # Further steps can use the decrypted file if the PR author is correct
+      - name: Use decrypted prodia_config.py
+        if: steps.check_author.outcome == 'success'
+        run: echo "Using app/prodia_config.py securely in the workflow"
