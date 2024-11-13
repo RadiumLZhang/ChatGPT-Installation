@@ -49,9 +49,13 @@ def generate_image():
     try:
         for _ in range(num_of_images):  # Generate 4 images
             for key in prodia_config.api_keys:
-                url = prodia_config.model_urls["sd"]
+
+                #model = random.choice(prodia_config.sd_models)
+                #model = prodia_config.sd_models[51]  # Realistic_Vision_V5.0.safetensors [614d1063]
+                model = prodia_config.sd_models[3]  # redshift_diffusion-V10.safetensors [1400e684]
                 payload = {
-                    "style_preset": "photographic",
+                    "model": model,
+                    "style_preset": "cinematic",
                     "prompt": prompt
                 }
                 headers = {
@@ -60,6 +64,7 @@ def generate_image():
                     "X-Prodia-Key": key
                 }
 
+                url = prodia_config.model_urls["sd"]
                 response = requests.post(url, json=payload, headers=headers)
                 print(response.text)
 
