@@ -148,6 +148,10 @@ document.getElementById('confirm-btn').addEventListener('click', function () {
         // use expression it to "/static/generated/samples/00605.png"
         selectedImage = selectedImage.match(/url\("(.*)"\)/)[1];
 
+        // save image to local machine as a copy, because the remote link won't exist forever, and get the image path
+
+        //log select image
+        //console.log("selected image: " + selectedImage);
         // Make a POST request to the backend server
         fetch('/save', {
             method: 'POST',

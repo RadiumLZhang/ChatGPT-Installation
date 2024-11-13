@@ -1,4 +1,4 @@
-from app import app, db
+from app import app, db, prodia_config
 from flask import request, jsonify, render_template
 from app.models import User, Question, Image, Theme, Answer, Post
 from flask import render_template
@@ -39,39 +39,81 @@ def display_submit_question():
 
 @app.route('/generate', methods=['POST'])
 def generate_image():
-    # print the flag to check if the function is called
     print("generate_image called")
-    # Retrieve the prompt from the request
     prompt = request.json.get('prompt')
+    print("prompt:", prompt)
 
+    num_of_images = 4
+    image_urls = []
+    job_ids = []
     try:
+        for _ in range(num_of_images):  # Generate 4 images
+            for key in prodia_config.api_keys:
+                url = prodia_config.model_urls["sd"]
+                payload = {
+                    "style_preset": "photographic",
+                    "prompt": prompt
+                }
+                headers = {
+                    "accept": "application/json",
+                    "content-type": "application/json",
+                    "X-Prodia-Key": key
+                }
 
-        response = requests.post(
-            f"https://api.stability.ai/v2beta/stable-image/generate/core",
-            headers={
-                "authorization": f"Bearer {config['stability_key']}",
-                "accept": "image/*"
-            },
-            files={"none": ''},
-            data={
-                "prompt": prompt,
-                "output_format": "webp",
-            },
-        )
+                response = requests.post(url, json=payload, headers=headers)
+                print(response.text)
 
-        if response.status_code == 200:
-            with open("./dog-wearing-glasses.webp", 'wb') as file:
-                file.write(response.content)
+                if response.status_code == 200:
+                    # {'job': '2015bd00-ba88-41ca-8912-7d818cae3155', 'status': 'queued'}
+                    if response.json().get('status') != 'succeeded':
+                        job_id = response.json().get('job')
+                        job_ids.append(job_id)
+                    else :
+                    # {
+                    #   "job": "xxxx-xxxx-xxxx-xxxx",
+                    #   "params": "{}",
+                    #   "imageUrl": "string"
+                    # }
+                        image_url = response.json().get('imageUrl')
+                        image_urls.append(image_url)
+                    break  # Move to the next image generation
+                elif response.status_code == 400:
+                    return jsonify({'error': 'Invalid Generation Parameters'}), 400
+                elif response.status_code == 401:
+                    continue  # Try the next API key
+                elif response.status_code == 402:
+                    return jsonify({'error': 'API Access Not Enabled'}), 402
+
+        # Process all job_ids until the list is empty
+        while job_ids:
+            print("Job IDs:", job_ids)
+            for job_id in job_ids:
+                url = f"https://api.prodia.com/v1/job/{job_id}"
+                headers = {
+                    "accept": "application/json",
+                    "X-Prodia-Key": prodia_config.api_keys[0]  # Use the first API key for status check
+                }
+
+                response = requests.get(url, headers=headers)
+                print(response.text)
+
+                if response.status_code == 200:
+                    if response.json().get('status') == 'succeeded':
+                        image_url = response.json().get('imageUrl')
+                        image_urls.append(image_url)
+                        job_ids.remove(job_id)
+
+        if len(image_urls) == num_of_images:
+            print("All images generated successfully")
+            print("Image URLs:", image_urls)
+            return jsonify({'images': image_urls}), 200
         else:
-            raise Exception(str(response.json()))
-
-        # Return response with output, error, and list of generated images
-        return jsonify({'output': output, 'error': error, 'images': image_urls}), 200
+            return jsonify({'error': 'All API keys exhausted, not all images generated successfully.'}), 500
 
     except Exception as e:
         print("Error executing script:", e)
-        # Handle error response
         return jsonify({'error': str(e)}), 500
+
 
 
 @app.route('/save', methods=['POST'])
@@ -89,9 +131,32 @@ def save_question():
         db.session.add(creator)
         db.session.flush()
 
-    insert_into_database(prompt, content, image_path, creator.id, theme_id)
+    local_image_path = '/' + save_image_locally(image_path)
+
+    insert_into_database(prompt, content, local_image_path, creator.id, theme_id)
 
     return jsonify({'message': 'Question saved successfully'}), 200
+
+
+def save_image_locally(image_url, save_dir='app/static/generated'):
+    # Ensure the save directory exists
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+
+    # Get the image content
+    response = requests.get(image_url)
+    if response.status_code == 200:
+        # Extract the image name from the URL
+        image_name = os.path.basename(image_url)
+        local_path = os.path.join(save_dir, image_name)
+
+        # Save the image to the local path
+        with open(local_path, 'wb') as f:
+            f.write(response.content)
+
+        return local_path
+    else:
+        raise Exception(f"Failed to download image: {response.status_code}")
 
 
 def insert_into_database(prompt, content, image_path, creator_id, theme_id=1):

@@ -11,10 +11,6 @@ def generate_request(prompt):
         key = prodia_config.api_keys[current_api_keys_index[i]]
         generate(prompt, key)
 
-
-
-
-
 def generate(prompt, key):
     url = prodia_config.model_urls["sd"]
 
