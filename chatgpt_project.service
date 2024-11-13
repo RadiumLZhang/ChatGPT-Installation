@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve chatgpt_project
+After=network.target
+
+[Service]
+User=your_user
+Group=www-data
+WorkingDirectory=/home/your_user/your_project
+Environment="PATH=/home/your_user/prodia_env/bin"
+ExecStart=/home/your_user/prodia_env/bin/gunicorn --workers 3 --bind unix:your_project.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target

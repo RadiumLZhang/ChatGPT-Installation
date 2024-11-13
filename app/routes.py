@@ -11,6 +11,7 @@ import requests
 # Home Page
 @app.route('/')
 def home():
+    update_question_difficulty()
     return render_template('home.html')
 
 
@@ -209,6 +210,7 @@ from sqlalchemy.sql.expression import func
 
 @app.route('/guesser')
 def guesser():
+    # calculate the question difficulties
     return render_template('guesser.html', question_cards=None)
 
 @app.route('/guesser_selection')
@@ -350,6 +352,25 @@ def report_fake():
                     'n_correct': n_correct})
 
 
+def update_question_difficulty():
+    for question in Question.query.all():
+        n_selected = Answer.query.filter_by(question_id=question.id, is_correct=True).count() # correct answers
+        n_appear = Answer.query.filter_by(question_id=question.id).count() # total answers
+        ratio = n_selected / n_appear if n_appear > 0 else 0
+
+        difficulty = 'New'
+        if n_appear > 1:
+            if ratio < 0.2:
+                difficulty = 'Hard'
+            elif ratio < 0.3:
+                difficulty = 'Medium'
+            else:
+                difficulty = 'Easy'
+
+        question.difficulty = difficulty
+        print("Question ID:", question.id, "Selected:", n_selected, "Appear:", n_appear, "Ratio:", ratio, "Difficulty:", difficulty)
+        db.session.commit()
+
 def answer_question(question_id, is_correct):
     answer = Answer(question_id=question_id, is_correct=is_correct)
     db.session.add(answer)
@@ -361,7 +382,7 @@ def answer_question(question_id, is_correct):
 
     difficulty = 'New'
     print("ratio:", ratio)
-    if n_appear > 5:
+    if n_appear > 1:
         if ratio < 0.2:
             difficulty = 'Hard'
         elif ratio < 0.3:
@@ -405,6 +426,9 @@ def ranking():
 
         # Calculate the difficulty of the questions created by the user
         difficulty = 100 * correct_answers / total_answers if total_answers > 0 else 0
+
+        print("User:", user.username, "Difficulty:", difficulty)
+
         # Do rounding
         difficulty = round(difficulty, 2)
 
