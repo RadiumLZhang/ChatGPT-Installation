@@ -11,7 +11,6 @@ import requests
 # Home Page
 @app.route('/')
 def home():
-    update_question_difficulty()
     return render_template('home.html')
 
 
@@ -291,11 +290,18 @@ def get_random_question_and_posts(difficulty):
     questions = Question.query.filter_by(difficulty=difficulty).all()
 
     # if questions is less than 3, then random from all questions
-    if len(questions) < 3:
+    if len(questions) < 1:
         questions = Question.query.all()
 
-    # Select a random question
+    # Select a random question,
+    # we would find the questions with the minimum number of num_appear
+    # then random select the least answered question,
+    # if there are multiple questions with the same number of answers then random select one
+    min_num_appear = min([question.num_appear for question in questions])
+    questions = [question for question in questions if question.num_appear == min_num_appear]
+
     question = random.choice(questions)
+
 
     # record the question id
     question_id = question.id
@@ -352,47 +358,11 @@ def report_fake():
                     'n_correct': n_correct})
 
 
-def update_question_difficulty():
-    for question in Question.query.all():
-        n_selected = Answer.query.filter_by(question_id=question.id, is_correct=True).count() # correct answers
-        n_appear = Answer.query.filter_by(question_id=question.id).count() # total answers
-        ratio = n_selected / n_appear if n_appear > 0 else 0
 
-        difficulty = 'New'
-        if n_appear > 1:
-            if ratio < 0.2:
-                difficulty = 'Hard'
-            elif ratio < 0.3:
-                difficulty = 'Medium'
-            else:
-                difficulty = 'Easy'
-
-        question.difficulty = difficulty
-        print("Question ID:", question.id, "Selected:", n_selected, "Appear:", n_appear, "Ratio:", ratio, "Difficulty:", difficulty)
-        db.session.commit()
 
 def answer_question(question_id, is_correct):
     answer = Answer(question_id=question_id, is_correct=is_correct)
     db.session.add(answer)
-
-    # Calculate the new difficulty level
-    n_selected = Answer.query.filter_by(question_id=question_id, is_correct=True).count()
-    n_appear = Answer.query.filter_by(question_id=question_id).count()
-    ratio = n_selected / n_appear if n_appear > 0 else 0
-
-    difficulty = 'New'
-    print("ratio:", ratio)
-    if n_appear > 1:
-        if ratio < 0.2:
-            difficulty = 'Hard'
-        elif ratio < 0.3:
-            difficulty = 'Medium'
-        else:
-            difficulty = 'Easy'
-
-    question = Question.query.get(question_id)
-    # Update the question's difficulty level
-    question.difficulty = difficulty
     db.session.commit()
 
 

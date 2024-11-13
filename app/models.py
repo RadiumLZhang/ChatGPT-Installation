@@ -46,7 +46,29 @@ class Question(db.Model):
 	creator_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	create_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 	generated_image_id = db.Column(db.Integer, db.ForeignKey('image.id'), nullable=True)
-	difficulty = db.Column(db.String(20), nullable=False, default='New')
+
+	@property
+	def num_select(self):
+		return Answer.query.filter_by(question_id=self.id).count()
+
+	@property
+	def num_appear(self):
+		return Answer.query.filter_by(question_id=self.id, is_correct=True).count()
+
+	@property
+	def difficulty(self):
+		n_appear = self.num_select
+		n_selected = self.num_appear
+		ratio = n_selected / n_appear if n_appear > 0 else 0
+
+		if n_appear > 1:
+			if ratio < 0.2:
+				return 'Hard'
+			elif ratio < 0.3:
+				return 'Medium'
+			else:
+				return 'Easy'
+		return 'New'
 
 class Post(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
