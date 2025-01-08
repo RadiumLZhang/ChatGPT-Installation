@@ -1,11 +1,12 @@
 from app import app, db, prodia_config
 from flask import request, jsonify, render_template
 from app.models import User, Question, Image, Theme, Answer, Post
-from flask import render_template
+from flask import render_template, jsonify, request
 from sqlalchemy.sql.expression import func
 import subprocess
 import shlex, os
 import requests
+
 
 
 # Home Page
@@ -37,6 +38,7 @@ def display_submit_question():
     return render_template('submit_question.html', images=images, theme=random_theme)
 
 
+
 @app.route('/generate', methods=['POST'])
 def generate_image():
     print("generate_image called")
@@ -45,80 +47,50 @@ def generate_image():
 
     num_of_images = 4
     image_urls = []
-    job_ids = []
+
+    # Get the absolute path to the script
+    script_path = os.path.abspath('app/node_modules/prodia/generate_image.js')
+
+    # Set the working directory
+    working_dir = os.path.dirname(script_path)
+
+    print(script_path)
+    print(working_dir)
+
     try:
-        for _ in range(num_of_images):  # Generate 4 images
-            for key in prodia_config.api_keys:
+        for i in range(num_of_images):
+            seed =
+            output_path = f'static/generated/image_{i}.jpg'
 
-                #model = random.choice(prodia_config.sd_models)
-                #model = prodia_config.sd_models[51]  # Realistic_Vision_V5.0.safetensors [614d1063]
-                model = prodia_config.sd_models[3]  # redshift_diffusion-V10.safetensors [1400e684]
-                payload = {
-                    "model": model,
-                    "style_preset": "cinematic",
-                    "prompt": prompt
-                }
-                headers = {
-                    "accept": "application/json",
-                    "content-type": "application/json",
-                    "X-Prodia-Key": key
-                }
+            print(output_path)
+            # Ensure the output directory exists
+            os.makedirs('app/static/generated', exist_ok=True)
 
-                url = prodia_config.model_urls["sd"]
-                response = requests.post(url, json=payload, headers=headers)
-                print(response.text)
+            # Run the Node.js script
+            result = subprocess.run(['node', 'app/node_modules/prodia/generate_image.js', prompt, output_path],
+                                    capture_output=True, text=True, check=True)
 
-                if response.status_code == 200:
-                    # {'job': '2015bd00-ba88-41ca-8912-7d818cae3155', 'status': 'queued'}
-                    if response.json().get('status') != 'succeeded':
-                        job_id = response.json().get('job')
-                        job_ids.append(job_id)
-                    else :
-                    # {
-                    #   "job": "xxxx-xxxx-xxxx-xxxx",
-                    #   "params": "{}",
-                    #   "imageUrl": "string"
-                    # }
-                        image_url = response.json().get('imageUrl')
-                        image_urls.append(image_url)
-                    break  # Move to the next image generation
-                elif response.status_code == 400:
-                    return jsonify({'error': 'Invalid Generation Parameters'}), 400
-                elif response.status_code == 401:
-                    continue  # Try the next API key
-                elif response.status_code == 402:
-                    return jsonify({'error': 'API Access Not Enabled'}), 402
+            print(result.stdout)
 
-        # Process all job_ids until the list is empty
-        while job_ids:
-            print("Job IDs:", job_ids)
-            for job_id in job_ids:
-                url = f"https://api.prodia.com/v1/job/{job_id}"
-                headers = {
-                    "accept": "application/json",
-                    "X-Prodia-Key": prodia_config.api_keys[0]  # Use the first API key for status check
-                }
-
-                response = requests.get(url, headers=headers)
-                print(response.text)
-
-                if response.status_code == 200:
-                    if response.json().get('status') == 'succeeded':
-                        image_url = response.json().get('imageUrl')
-                        image_urls.append(image_url)
-                        job_ids.remove(job_id)
+            if os.path.exists(output_path):
+                image_urls.append(f'/static/generated/image_{i}.jpg')
+            else:
+                print(f"Failed to generate image {i}")
 
         if len(image_urls) == num_of_images:
             print("All images generated successfully")
             print("Image URLs:", image_urls)
             return jsonify({'images': image_urls}), 200
         else:
-            return jsonify({'error': 'All API keys exhausted, not all images generated successfully.'}), 500
+            return jsonify({'error': 'Not all images were generated successfully.'}), 500
 
+    except subprocess.CalledProcessError as e:
+        print("Error executing script:", e)
+        print("Script output:", e.output)
+        return jsonify({'error': str(e)}), 500
     except Exception as e:
         print("Error executing script:", e)
         return jsonify({'error': str(e)}), 500
-
 
 
 @app.route('/save', methods=['POST'])
@@ -136,14 +108,14 @@ def save_question():
         db.session.add(creator)
         db.session.flush()
 
-    local_image_path = '/' + save_image_locally(image_path)
-
+    #local_image_path = save_image_locally(image_path)
+    local_image_path = image_path
     insert_into_database(prompt, content, local_image_path, creator.id, theme_id)
 
     return jsonify({'message': 'Question saved successfully'}), 200
 
 
-def save_image_locally(image_url, save_dir='app/static/generated'):
+def save_image_locally(image_url, save_dir='static/generated'):
     # Ensure the save directory exists
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)

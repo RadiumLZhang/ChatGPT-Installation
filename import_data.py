@@ -66,7 +66,7 @@ def import_fake_questions_from_csv(csv_path):
                 db.session.flush()
 
                 question = Question(prompt=row['prompt'], content=row['post_content'], theme_id=1, creator_id=user.id,
-                                    generated_image_id=image.id, difficulty='New')
+                                    generated_image_id=image.id)
                 db.session.add(question)
             db.session.commit()
 
