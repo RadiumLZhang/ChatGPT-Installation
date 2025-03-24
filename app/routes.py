@@ -8,7 +8,6 @@ import shlex, os
 import requests
 import random
 
-
 # Home Page
 @app.route('/')
 def home():
@@ -48,31 +47,24 @@ def generate_image():
     num_of_images = 4
     image_urls = []
 
-    # Get the absolute path to the script
-    script_path = os.path.abspath('app/node_modules/prodia/generate_image.js')
-
-    # Set the working directory
-    working_dir = os.path.dirname(script_path)
-
-    print(script_path)
-    print(working_dir)
-
     try:
         for i in range(num_of_images):
-            random_seed = random.randint(1000,9999)
-            output_path = f'static/generated/image_{random_seed}.jpg'
+            random_seed = random.randint(100000,999999)
+            output_path = f'app/static/generated/image_{random_seed}.jpg'
 
             print(output_path)
             # Ensure the output directory exists
             os.makedirs('app/static/generated', exist_ok=True)
 
             # Run the Node.js script
-            result = subprocess.run(['node', 'app/node_modules/prodia/generate_image.js', prompt, output_path],
+            result = subprocess.run(['python', 'generate_image.py', prompt, output_path, '--seed', str(random_seed)],
                                     capture_output=True, text=True, check=True)
+
+
 
             print(result.stdout)
 
-            if os.path.exists("app/"+output_path):
+            if os.path.exists(output_path):
                 image_urls.append(f'/static/generated/image_{random_seed}.jpg')
             else:
                 print(f"Failed to generate image {random_seed}")

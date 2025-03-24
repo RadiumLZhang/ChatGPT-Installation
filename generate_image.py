@@ -1,59 +1,67 @@
 import requests
-from app import prodia_config
+import io
+from PIL import Image
+import argparse
+import os
+import sys
+import random
 
-current_api_keys_index = []
+API_URL = "https://router.huggingface.co/hf-inference/models/stabilityai/stable-diffusion-3.5-large"
+headers = {"Authorization": "Bearer hf_xxxxxxxxxxxxxxxxxxxxxxxx"}
 
-def generate_request(prompt):
-    # loop through the current api keys
-    # if the api key is not exhausted, use it
-    # if the api key is exhausted, move to the next one
-    for i in range(len(current_api_keys_index)):
-        key = prodia_config.api_keys[current_api_keys_index[i]]
-        generate(prompt, key)
+def generate_image(prompt, seed=None, guidance_scale=None, negative_prompt=None, num_inference_steps=None, width=None, height=None, scheduler=None):
+    def query(payload):
+        response = requests.post(API_URL, headers=headers, json=payload)
 
-def generate(prompt, key):
-    url = prodia_config.model_urls["sd"]
+        # Debugging: Check response content
+        print("Response status:", response.status_code)
+        print("Response headers:", response.headers)
+        print("Response content:", response.content[:500])  # Print first 500 bytes
 
-    payload = {
-        "model": "Realistic_Vision_V5.0.safetensors [614d1063]",
-        "prompt": prompt,
-        "negative_prompt": "",
-        "steps": 20,
-        "cfg_scale": 7,
-        "seed": -1,
-        "sampler": "DPM++ 2M Karras",
-        "width": 512,
-        "height": 512
-    }
+        if response.status_code != 200:
+            raise ValueError(f"Error from API: {response.status_code}, {response.text}")
 
-    headers = {
-        "accept": "application/json",
-        "content-type": "application/json",
-        "X-Prodia-Key": key,
-    }
+        return response.content
 
-    response = requests.post(url, json=payload, headers=headers)
-    print(response.json())
+    payload = {"inputs": prompt}
+    if seed is not None:
+        payload["seed"] = seed
+    if guidance_scale is not None:
+        payload["guidance_scale"] = guidance_scale
+    if negative_prompt is not None:
+        payload["negative_prompt"] = negative_prompt
+    if num_inference_steps is not None:
+        payload["num_inference_steps"] = num_inference_steps
+    if width is not None:
+        payload["width"] = width
+    if height is not None:
+        payload["height"] = height
+    if scheduler is not None:
+        payload["scheduler"] = scheduler
 
-def retrieve(jobId):
-    jobId = "be8f99eb-8eb6-48cd-92fe-dd6f925e0756"
-    #url = "https://api.prodia.com/v1/job/jobId"
-    url = "https://api.prodia.com/v1/job/" + jobId
+    image_bytes = query(payload)
+    image = Image.open(io.BytesIO(image_bytes))
+    return image
 
-    headers = {
-        "accept": "application/json",
-        "X-Prodia-Key": "f5097056-59c6-4fb7-b40a-74f9d75ba1cc"
-    }
+def save_image(image, path):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    image.save(path)
+    print(f"Image saved to {path}")
 
-    response = requests.get(url, headers=headers)
-    # {"job":"be8f99eb-8eb6-48cd-92fe-dd6f925e0756","status":"succeeded","imageUrl":"https://images.prodia.xyz/be8f99eb-8eb6-48cd-92fe-dd6f925e0756.png"}
-
-    if response and response.json()["status"] == "succeeded":
-        print(response.json()["imageUrl"])
-    else:
-        print("Job not completed yet")
-
-# define main
 if __name__ == "__main__":
-    #generate(["This dreamlike digital art captures a vibrant, kaleidoscopic bird in a lush rainforest"])
-    retrieve()
+    parser = argparse.ArgumentParser(description="Generate and save an image based on a prompt.")
+    parser.add_argument("prompt", type=str, help="The prompt to generate the image.")
+    parser.add_argument("path", type=str, help="The path to save the generated image.")
+    parser.add_argument("--seed", type=int, help="Seed for the random number generator.", default=None)
+    parser.add_argument("--guidance_scale", type=float, help="Guidance scale for image generation.", default=None)
+    parser.add_argument("--negative_prompt", type=str, help="Prompt to guide what NOT to include in image generation.", default=None)
+    parser.add_argument("--num_inference_steps", type=int, help="Number of denoising steps.", default=None)
+    parser.add_argument("--width", type=int, help="Width of the output image in pixels.", default=None)
+    parser.add_argument("--height", type=int, help="Height of the output image in pixels.", default=None)
+    parser.add_argument("--scheduler", type=str, help="Override the scheduler with a compatible one.", default=None)
+    args = parser.parse_args()
+
+    image = generate_image(args.prompt, args.seed, args.guidance_scale, args.negative_prompt, args.num_inference_steps, args.width, args.height, args.scheduler)
+    save_image(image, args.path)
+    sys.exit(0)
+
