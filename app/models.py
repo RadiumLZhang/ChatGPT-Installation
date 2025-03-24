@@ -46,6 +46,7 @@ class Question(db.Model):
 	creator_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 	create_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 	generated_image_id = db.Column(db.Integer, db.ForeignKey('image.id'), nullable=True)
+	difficulty = db.Column(db.String, nullable=True)
 
 	@property
 	def num_select(self):
@@ -69,6 +70,8 @@ class Question(db.Model):
 			else:
 				return 'Easy'
 		return 'New'
+
+
 
 class Post(db.Model):
 	id = db.Column(db.Integer, primary_key=True)

@@ -6,7 +6,7 @@ from sqlalchemy.sql.expression import func
 import subprocess
 import shlex, os
 import requests
-
+import random
 
 
 # Home Page
@@ -59,8 +59,8 @@ def generate_image():
 
     try:
         for i in range(num_of_images):
-            seed =
-            output_path = f'static/generated/image_{i}.jpg'
+            random_seed = random.randint(1000,9999)
+            output_path = f'static/generated/image_{random_seed}.jpg'
 
             print(output_path)
             # Ensure the output directory exists
@@ -72,10 +72,10 @@ def generate_image():
 
             print(result.stdout)
 
-            if os.path.exists(output_path):
-                image_urls.append(f'/static/generated/image_{i}.jpg')
+            if os.path.exists("app/"+output_path):
+                image_urls.append(f'/static/generated/image_{random_seed}.jpg')
             else:
-                print(f"Failed to generate image {i}")
+                print(f"Failed to generate image {random_seed}")
 
         if len(image_urls) == num_of_images:
             print("All images generated successfully")
